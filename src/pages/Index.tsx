@@ -11,166 +11,113 @@ import heroImage from "@/assets/hero-image.jpg";
 // Use the larger logo for header prominence
 const headerLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28yLnBuZyIsImlhdCI6MTc1MjU5NTY4MywiZXhwIjoxNzg0MTMxNjgzfQ.dmGClEzrVqLQwktcym2Ou2ABfVfzZY2rJrmDlq_-XNc";
 const footerLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo05.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28wNS5wbmciLCJpYXQiOjE3NTI1OTU2NDMsImV4cCI6MTc4NDEzMTY0M30.aT2aDtPFlIdcgmbhTQHruBK8G41wgDU0amEB36hkpXY";
-
 const Index = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const legalStructures = [
-    {
-      name: "SASU",
-      fullName: "Société par Actions Simplifiée Unipersonnelle",
-      price: "129€",
-      description: "Structure juridique pour entrepreneur individuel",
-      icon: Building2,
-      advantages: [
-        "Responsabilité limitée",
-        "Statut de dirigeant",
-        "Flexibilité juridique"
-      ]
-    },
-    {
-      name: "SARL",
-      fullName: "Société à Responsabilité Limitée", 
-      price: "129€",
-      description: "Structure pour plusieurs associés",
-      icon: Users,
-      advantages: [
-        "Répartition des parts",
-        "Gestion collective",
-        "Sécurité juridique"
-      ]
-    },
-    {
-      name: "EURL",
-      fullName: "Entreprise Unipersonnelle à Responsabilité Limitée",
-      price: "129€", 
-      description: "Version individuelle de la SARL",
-      icon: FileText,
-      advantages: [
-        "Protection du patrimoine",
-        "Option fiscale",
-        "Simplicité de gestion"
-      ]
-    },
-    {
-      name: "SAS",
-      fullName: "Société par Actions Simplifiée",
-      price: "129€",
-      description: "Structure flexible pour associés multiples",
-      icon: Building2,
-      advantages: [
-        "Liberté statutaire",
-        "Entrée d'investisseurs",
-        "Organes dirigeants"
-      ]
-    },
-    {
-      name: "Micro-entreprise", 
-      fullName: "Régime micro-entrepreneur",
-      price: "79€",
-      description: "Régime simplifié pour débuter",
-      icon: FileText,
-      advantages: [
-        "Formalités allégées",
-        "Comptabilité simple",
-        "Démarrage rapide"
-      ]
-    }
-  ];
-
-  const processSteps = [
-    {
-      number: "1",
-      title: "Sélection du statut juridique",
-      description: "Choisissez la forme juridique adaptée à votre activité",
-      duration: "5 minutes"
-    },
-    {
-      number: "2", 
-      title: "Saisie des informations",
-      description: "Complétez le formulaire avec les données de votre entreprise",
-      duration: "10 minutes"
-    },
-    {
-      number: "3",
-      title: "Validation et transmission",
-      description: "Vérification et envoi au registre du commerce compétent",
-      duration: "48-72h"
-    }
-  ];
-
-  const benefits = [
-    {
-      title: "Conformité aux exigences légales",
-      description: "Traitement conforme à la réglementation en vigueur",
-      icon: Shield
-    },
-    {
-      title: "Traitement par experts certifiés", 
-      description: "Dossier traité par des professionnels agréés",
-      icon: Users
-    },
-    {
-      title: "Délais de traitement garantis",
-      description: "Respect des délais annoncés pour votre immatriculation",
-      icon: Clock
-    },
-    {
-      title: "Sécurité des données personnelles",
-      description: "Protection et confidentialité de vos informations",
-      icon: Shield
-    },
-    {
-      title: "Accompagnement personnalisé",
-      description: "Support téléphonique pendant tout le processus",
-      icon: Phone
-    },
-    {
-      title: "Service après-vente inclus",
-      description: "Assistance post-création pour vos démarches",
-      icon: Mail
-    }
-  ];
-
-  const faqs = [
-    {
-      question: "Qu'est-ce que le Registre du Commerce et des Sociétés ?",
-      answer: "Le RCS est le registre officiel tenu par les greffes des tribunaux de commerce. Il recense toutes les entreprises commerciales et sociétés en France.",
-      category: "Général"
-    },
-    {
-      question: "Quels documents dois-je fournir pour l'immatriculation ?",
-      answer: "Les documents requis varient selon le statut juridique : pièce d'identité, justificatif de domicile, statuts signés, attestation de dépôt des fonds.",
-      category: "Documents"
-    },
-    {
-      question: "Quel est le délai pour recevoir l'extrait Kbis ?",
-      answer: "L'extrait Kbis est généralement délivré sous 48 à 72h après validation complète du dossier par le greffe compétent.",
-      category: "Délais"
-    },
-    {
-      question: "Comment suivre l'avancement de mon dossier ?",
-      answer: "Vous recevez un numéro de suivi et des notifications par email à chaque étape du traitement de votre dossier.",
-      category: "Suivi"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const legalStructures = [{
+    name: "SASU",
+    fullName: "Société par Actions Simplifiée Unipersonnelle",
+    price: "129€",
+    description: "Structure juridique pour entrepreneur individuel",
+    icon: Building2,
+    advantages: ["Responsabilité limitée", "Statut de dirigeant", "Flexibilité juridique"]
+  }, {
+    name: "SARL",
+    fullName: "Société à Responsabilité Limitée",
+    price: "129€",
+    description: "Structure pour plusieurs associés",
+    icon: Users,
+    advantages: ["Répartition des parts", "Gestion collective", "Sécurité juridique"]
+  }, {
+    name: "EURL",
+    fullName: "Entreprise Unipersonnelle à Responsabilité Limitée",
+    price: "129€",
+    description: "Version individuelle de la SARL",
+    icon: FileText,
+    advantages: ["Protection du patrimoine", "Option fiscale", "Simplicité de gestion"]
+  }, {
+    name: "SAS",
+    fullName: "Société par Actions Simplifiée",
+    price: "129€",
+    description: "Structure flexible pour associés multiples",
+    icon: Building2,
+    advantages: ["Liberté statutaire", "Entrée d'investisseurs", "Organes dirigeants"]
+  }, {
+    name: "Micro-entreprise",
+    fullName: "Régime micro-entrepreneur",
+    price: "79€",
+    description: "Régime simplifié pour débuter",
+    icon: FileText,
+    advantages: ["Formalités allégées", "Comptabilité simple", "Démarrage rapide"]
+  }];
+  const processSteps = [{
+    number: "1",
+    title: "Sélection du statut juridique",
+    description: "Choisissez la forme juridique adaptée à votre activité",
+    duration: "5 minutes"
+  }, {
+    number: "2",
+    title: "Saisie des informations",
+    description: "Complétez le formulaire avec les données de votre entreprise",
+    duration: "10 minutes"
+  }, {
+    number: "3",
+    title: "Validation et transmission",
+    description: "Vérification et envoi au registre du commerce compétent",
+    duration: "48-72h"
+  }];
+  const benefits = [{
+    title: "Conformité aux exigences légales",
+    description: "Traitement conforme à la réglementation en vigueur",
+    icon: Shield
+  }, {
+    title: "Traitement par experts certifiés",
+    description: "Dossier traité par des professionnels agréés",
+    icon: Users
+  }, {
+    title: "Délais de traitement garantis",
+    description: "Respect des délais annoncés pour votre immatriculation",
+    icon: Clock
+  }, {
+    title: "Sécurité des données personnelles",
+    description: "Protection et confidentialité de vos informations",
+    icon: Shield
+  }, {
+    title: "Accompagnement personnalisé",
+    description: "Support téléphonique pendant tout le processus",
+    icon: Phone
+  }, {
+    title: "Service après-vente inclus",
+    description: "Assistance post-création pour vos démarches",
+    icon: Mail
+  }];
+  const faqs = [{
+    question: "Qu'est-ce que le Registre du Commerce et des Sociétés ?",
+    answer: "Le RCS est le registre officiel tenu par les greffes des tribunaux de commerce. Il recense toutes les entreprises commerciales et sociétés en France.",
+    category: "Général"
+  }, {
+    question: "Quels documents dois-je fournir pour l'immatriculation ?",
+    answer: "Les documents requis varient selon le statut juridique : pièce d'identité, justificatif de domicile, statuts signés, attestation de dépôt des fonds.",
+    category: "Documents"
+  }, {
+    question: "Quel est le délai pour recevoir l'extrait Kbis ?",
+    answer: "L'extrait Kbis est généralement délivré sous 48 à 72h après validation complète du dossier par le greffe compétent.",
+    category: "Délais"
+  }, {
+    question: "Comment suivre l'avancement de mon dossier ?",
+    answer: "Vous recevez un numéro de suivi et des notifications par email à chaque étape du traitement de votre dossier.",
+    category: "Suivi"
+  }];
+  return <div className="min-h-screen bg-background">
       {/* Premium Administrative Header */}
       <header className="header-administrative shadow-medium">
         <div className="container-administrative">
           <div className="flex h-20 items-center justify-between py-4">
             {/* Enhanced Logo with Real Image */}
             <div className="flex items-center space-x-4">
-              <img 
-                src={headerLogo} 
-                alt="RCS Express" 
-                className="w-16 h-16 rounded-2xl shadow-soft hover:shadow-medium transition-shadow duration-300"
-              />
+              <img src={headerLogo} alt="RCS Express" className="w-16 h-16 rounded-2xl shadow-soft hover:shadow-medium transition-shadow duration-300" />
               <div className="flex flex-col">
-                <span className="text-xl font-bold text-foreground">RCS Express</span>
+                
                 <span className="text-sm text-muted-foreground font-medium">Immatriculation ultra-rapide</span>
               </div>
             </div>
@@ -198,35 +145,22 @@ const Index = () => {
                 <Shield className="w-4 h-4 text-success" />
                 <span>Sécurisé SSL</span>
               </div>
-              <Button 
-                variant="outline" 
-                onClick={() => navigate('/login')} 
-                className="btn-administrative-outline btn-touch"
-              >
+              <Button variant="outline" onClick={() => navigate('/login')} className="btn-administrative-outline btn-touch">
                 Se connecter
               </Button>
-              <Button 
-                onClick={() => navigate('/choisir-statut')} 
-                className="btn-administrative btn-touch"
-              >
+              <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative btn-touch">
                 Commencer ma démarche
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
-            <Button 
-              variant="ghost" 
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
+            <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
 
           {/* Enhanced Mobile Menu */}
-          {isMobileMenuOpen && (
-            <div className="md:hidden border-t border-border bg-background shadow-medium">
+          {isMobileMenuOpen && <div className="md:hidden border-t border-border bg-background shadow-medium">
               <div className="py-6 space-y-6">
                 <nav className="space-y-1">
                   <a href="#services" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
@@ -264,29 +198,21 @@ const Index = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <Button 
-                    variant="outline" 
-                    onClick={() => {
-                      navigate('/login');
-                      setIsMobileMenuOpen(false);
-                    }} 
-                    className="btn-administrative-outline w-full btn-touch-lg"
-                  >
+                  <Button variant="outline" onClick={() => {
+                navigate('/login');
+                setIsMobileMenuOpen(false);
+              }} className="btn-administrative-outline w-full btn-touch-lg">
                     Se connecter
                   </Button>
-                  <Button 
-                    onClick={() => {
-                      navigate('/choisir-statut');
-                      setIsMobileMenuOpen(false);
-                    }} 
-                    className="btn-administrative w-full btn-touch-lg"
-                  >
+                  <Button onClick={() => {
+                navigate('/choisir-statut');
+                setIsMobileMenuOpen(false);
+              }} className="btn-administrative w-full btn-touch-lg">
                     Commencer ma démarche
                   </Button>
                 </div>
               </div>
-            </div>
-          )}
+            </div>}
         </div>
       </header>
 
@@ -312,21 +238,15 @@ const Index = () => {
                   Quel sera votre domaine d'activité ?
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
-                  {legalStructures.slice(0, 6).map((structure) => {
-                    const IconComponent = structure.icon;
-                    return (
-                      <div 
-                        key={structure.name}
-                        className="flex flex-col items-center p-3 sm:p-4 border border-border rounded-lg hover:border-primary hover:bg-primary/5 hover:shadow-medium transition-all duration-300 cursor-pointer group transform hover:scale-105"
-                        onClick={() => navigate('/choisir-statut')}
-                      >
+                  {legalStructures.slice(0, 6).map(structure => {
+                  const IconComponent = structure.icon;
+                  return <div key={structure.name} className="flex flex-col items-center p-3 sm:p-4 border border-border rounded-lg hover:border-primary hover:bg-primary/5 hover:shadow-medium transition-all duration-300 cursor-pointer group transform hover:scale-105" onClick={() => navigate('/choisir-statut')}>
                         <div className="w-6 h-6 sm:w-8 sm:h-8 mb-2 text-primary group-hover:text-primary/80 transition-colors">
                           <IconComponent className="w-full h-full" />
                         </div>
                         <span className="text-xs sm:text-sm font-medium text-center group-hover:text-primary transition-colors">{structure.name}</span>
-                      </div>
-                    );
-                  })}
+                      </div>;
+                })}
                 </div>
               </div>
 
@@ -335,9 +255,7 @@ const Index = () => {
                 <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-2 sm:space-y-0">
                   <div className="flex items-center space-x-2">
                     <div className="flex">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className="h-4 w-4 text-yellow-500 fill-current" />
-                      ))}
+                      {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-4 w-4 text-yellow-500 fill-current" />)}
                     </div>
                     <span className="text-sm font-medium">4.9/5 sur Google</span>
                   </div>
@@ -383,11 +301,7 @@ const Index = () => {
               </div>
 
               {/* CTA Button */}
-              <Button 
-                onClick={() => navigate('/choisir-statut')} 
-                size="lg"
-                className="btn-administrative btn-touch-lg text-lg btn-ripple w-full md:w-auto"
-              >
+              <Button onClick={() => navigate('/choisir-statut')} size="lg" className="btn-administrative btn-touch-lg text-lg btn-ripple w-full md:w-auto">
                 Commencer mon inscription RCS
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
@@ -398,11 +312,7 @@ const Index = () => {
               <div className="card-premium animate-slide-down relative overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0 opacity-10">
-                  <img 
-                    src={heroImage} 
-                    alt="Professional business setup" 
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={heroImage} alt="Professional business setup" className="w-full h-full object-cover" />
                 </div>
                 
                 {/* Content */}
@@ -485,19 +395,16 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-            {processSteps.map((step, index) => (
-              <div key={step.number} className="text-center space-y-6 group">
+            {processSteps.map((step, index) => <div key={step.number} className="text-center space-y-6 group">
                 {/* Step Number with Premium Styling */}
                 <div className="relative mx-auto w-20 h-20">
                   <div className="w-20 h-20 bg-primary text-primary-foreground rounded-3xl flex items-center justify-center text-2xl font-bold shadow-large group-hover:shadow-xl transition-all duration-300">
                     {step.number}
                   </div>
                   {/* Connection Line */}
-                  {index < processSteps.length - 1 && (
-                    <div className="hidden md:block absolute top-10 left-20 w-full h-0.5 bg-gradient-to-r from-primary to-transparent">
+                  {index < processSteps.length - 1 && <div className="hidden md:block absolute top-10 left-20 w-full h-0.5 bg-gradient-to-r from-primary to-transparent">
                       <ArrowRight className="absolute -top-2 -right-2 w-4 h-4 text-primary" />
-                    </div>
-                  )}
+                    </div>}
                 </div>
 
                 <div className="space-y-4">
@@ -512,16 +419,11 @@ const Index = () => {
                     <span>Durée estimée : {step.duration}</span>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
 
           <div className="text-center mt-16">
-            <Button 
-              onClick={() => navigate('/choisir-statut')} 
-              className="btn-administrative btn-touch-lg text-lg btn-ripple"
-              size="lg"
-            >
+            <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative btn-touch-lg text-lg btn-ripple" size="lg">
               Démarrer ma démarche
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
@@ -540,14 +442,9 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {legalStructures.map((structure) => {
-              const IconComponent = structure.icon;
-              return (
-                <Card 
-                  key={structure.name}
-                  className="card-administrative cursor-pointer hover-administrative"
-                  onClick={() => navigate('/choisir-statut')}
-                >
+            {legalStructures.map(structure => {
+            const IconComponent = structure.icon;
+            return <Card key={structure.name} className="card-administrative cursor-pointer hover-administrative" onClick={() => navigate('/choisir-statut')}>
                   <CardHeader className="text-center space-y-4">
                     <div className="w-12 h-12 mx-auto bg-primary/10 rounded-sm flex items-center justify-center">
                       <IconComponent className="h-6 w-6 text-primary" />
@@ -571,28 +468,22 @@ const Index = () => {
                     <div className="space-y-2">
                       <h4 className="font-medium text-sm">Avantages principaux :</h4>
                       <ul className="space-y-1">
-                        {structure.advantages.map((advantage, i) => (
-                          <li key={i} className="flex items-center text-xs text-muted-foreground">
+                        {structure.advantages.map((advantage, i) => <li key={i} className="flex items-center text-xs text-muted-foreground">
                             <CheckCircle className="h-3 w-3 text-success mr-2 flex-shrink-0" />
                             {advantage}
-                          </li>
-                        ))}
+                          </li>)}
                       </ul>
                     </div>
 
-                    <Button 
-                      className="w-full btn-administrative-outline text-sm"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigate('/choisir-statut');
-                      }}
-                    >
+                    <Button className="w-full btn-administrative-outline text-sm" onClick={e => {
+                  e.stopPropagation();
+                  navigate('/choisir-statut');
+                }}>
                       Sélectionner
                     </Button>
                   </CardContent>
-                </Card>
-              );
-            })}
+                </Card>;
+          })}
           </div>
         </div>
       </section>
@@ -661,10 +552,7 @@ const Index = () => {
                   </div>
                 </div>
 
-                <Button 
-                  onClick={() => navigate('/choisir-statut')}
-                  className="w-full btn-administrative btn-touch-lg text-lg btn-ripple"
-                >
+                <Button onClick={() => navigate('/choisir-statut')} className="w-full btn-administrative btn-touch-lg text-lg btn-ripple">
                   Créer ma société
                 </Button>
               </div>
@@ -711,10 +599,7 @@ const Index = () => {
                   </div>
                 </div>
 
-                <Button 
-                  onClick={() => navigate('/choisir-statut')}
-                  className="w-full btn-administrative-outline btn-touch-lg text-lg"
-                >
+                <Button onClick={() => navigate('/choisir-statut')} className="w-full btn-administrative-outline btn-touch-lg text-lg">
                   Créer ma micro-entreprise
                 </Button>
               </div>
@@ -737,9 +622,8 @@ const Index = () => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => {
-              const IconComponent = benefit.icon;
-              return (
-                <div key={index} className="card-premium group text-center space-y-6">
+            const IconComponent = benefit.icon;
+            return <div key={index} className="card-premium group text-center space-y-6">
                   <div className="w-16 h-16 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <IconComponent className="h-8 w-8 text-primary" />
                   </div>
@@ -747,9 +631,8 @@ const Index = () => {
                     <h3 className="text-xl font-semibold text-foreground">{benefit.title}</h3>
                     <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
                   </div>
-                </div>
-              );
-            })}
+                </div>;
+          })}
           </div>
         </div>
       </section>
@@ -845,16 +728,14 @@ const Index = () => {
 
           <div className="max-w-4xl mx-auto">
             <Accordion type="single" collapsible className="space-y-4">
-              {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="card-premium overflow-hidden">
+              {faqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`} className="card-premium overflow-hidden">
                   <AccordionTrigger className="px-6 py-4 text-left font-semibold hover:no-underline text-foreground text-base md:text-lg">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="px-6 pb-6 text-muted-foreground leading-relaxed">
                     {faq.answer}
                   </AccordionContent>
-                </AccordionItem>
-              ))}
+                </AccordionItem>)}
             </Accordion>
           </div>
         </div>
@@ -969,8 +850,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
