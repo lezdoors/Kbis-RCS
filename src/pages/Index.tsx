@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Index = () => {
+  // Force refresh to clear stale cache
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
