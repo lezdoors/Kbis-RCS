@@ -37,23 +37,34 @@ export const FAQSection = () => {
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-4">
-          {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-xl px-6 py-2">
-              <AccordionTrigger className="text-left hover:no-underline">
-                <div className="flex items-center space-x-3">
-                  <Badge variant="outline" className="text-primary border-primary">
-                    {faq.category}
-                  </Badge>
-                  <span className="font-semibold text-foreground">{faq.question}</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pt-4">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <div className="relative">
+          {/* Floating success illustration */}
+          <div className="absolute -top-4 -right-4 hidden lg:block">
+            <img 
+              src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/Toon-red-stairs.jpg.png"
+              alt="Succès client mis en avant par la progression graphique"
+              className="w-44 max-w-[180px] h-auto object-contain rounded-xl shadow-lg pt-4"
+            />
+          </div>
+
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-xl px-6 py-2">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  <div className="flex items-center space-x-3">
+                    <Badge variant="outline" className="text-primary border-primary">
+                      {faq.category}
+                    </Badge>
+                    <span className="font-semibold text-foreground">{faq.question}</span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pt-4">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
     </section>
   );

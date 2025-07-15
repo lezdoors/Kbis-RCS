@@ -36,8 +36,8 @@ export const ProcessSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Illustration */}
-          <div className="relative">
+          {/* Left - Process Steps */}
+          <div className="space-y-8">
             <div className="bg-white rounded-3xl p-8 shadow-lg">
               <div className="space-y-6">
                 {processSteps.map((step, index) => (
@@ -53,10 +53,7 @@ export const ProcessSection = () => {
                 ))}
               </div>
             </div>
-          </div>
-
-          {/* Right - Steps */}
-          <div className="space-y-8">
+            
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
                 <div className="w-3 h-3 bg-primary rounded-full mt-2"></div>
@@ -104,6 +101,17 @@ export const ProcessSection = () => {
               Commencer maintenant
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+          </div>
+
+          {/* Right - Illustration */}
+          <div className="relative flex justify-center lg:justify-end">
+            <div className="max-w-[300px] w-full">
+              <img 
+                src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/Toon-blue-stairs.jpg.png"
+                alt="Progression par étapes vers la création d'entreprise"
+                className="w-full h-auto object-contain rounded-xl shadow-lg"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -98,18 +98,20 @@ export const HeroSection = () => {
 
           {/* Right Column - Illustration */}
           <div className="relative">
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl p-8 flex items-center justify-center min-h-[400px]">
-              <div className="text-center space-y-6">
-                <div className="relative">
-                  <img 
-                    src="/lovable-uploads/baefcc3d-696b-4676-a726-7234c1b77f2e.png"
-                    alt="3D figure climbing business success stairs"
-                    className="w-64 h-64 object-contain mx-auto"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-bold text-foreground">Votre entreprise</h3>
-                  <p className="text-muted-foreground">créée en quelques clics</p>
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl overflow-hidden">
+              <div className="max-w-[400px] mx-auto p-4">
+                <div className="text-center space-y-6">
+                  <div className="relative">
+                    <img 
+                      src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/too-blk-stairs.jpg.png"
+                      alt="Deux personnages en escalade symbolisant l'accompagnement vers la création d'entreprise"
+                      className="w-full h-80 object-contain mx-auto rounded-xl shadow-md"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-bold text-foreground">Votre entreprise</h3>
+                    <p className="text-muted-foreground">créée en quelques clics</p>
+                  </div>
                 </div>
               </div>
             </div>

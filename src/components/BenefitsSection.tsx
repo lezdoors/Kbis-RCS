@@ -46,27 +46,41 @@ export const BenefitsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {benefits.map((benefit, index) => {
-            const IconComponent = benefit.icon;
-            return (
-              <div key={index} className="group bg-white border border-border rounded-2xl p-6 hover:border-primary hover:shadow-lg transition-all duration-300">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <IconComponent className="w-6 h-6 text-primary" />
+        <div className="flex flex-col lg:flex-row gap-12 items-start">
+          {/* Left - Professional illustration */}
+          <div className="w-full lg:w-auto lg:flex-shrink-0">
+            <img 
+              src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/Toon-blk-tie.jpg.png"
+              alt="Personnage professionnel avec cravate illustrant la fiabilité du service"
+              className="w-full max-w-[180px] mx-auto lg:mx-0 object-contain rounded-xl shadow-md"
+            />
+          </div>
+
+          {/* Right - Benefits grid */}
+          <div className="flex-1">
+            <div className="grid md:grid-cols-2 gap-8">
+              {benefits.map((benefit, index) => {
+                const IconComponent = benefit.icon;
+                return (
+                  <div key={index} className="group bg-white border border-border rounded-2xl p-6 hover:border-primary hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                        <IconComponent className="w-6 h-6 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                          {benefit.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {benefit.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
