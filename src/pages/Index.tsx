@@ -8,8 +8,10 @@ import { useState, useEffect } from "react";
 import modernLogo from "@/assets/modern-logo.png";
 import heroImage from "@/assets/hero-image.jpg";
 
-// StartLégal logos
-const startLegalLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/LOGO.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xPR08ucG5nIiwiaWF0IjoxNzUyNTkyNjYzLCJleHAiOjE3ODQxMjg2NjN9.IFzP5SYIn6OfYtUvzaTTNPM0q2at7pKaJaLeG1HjQL0";
+// StartLégal logos - different sizes for different use cases
+const startLegalLogoLarge = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28yLnBuZyIsImlhdCI6MTc1MjU5NTY4MywiZXhwIjoxNzg0MTMxNjgzfQ.dmGClEzrVqLQwktcym2Ou2ABfVfzZY2rJrmDlq_-XNc";
+const startLegalLogoMedium = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo1.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28xLnBuZyIsImlhdCI6MTc1MjU5NTY3MSwiZXhwIjoxNzg0MTMxNjcxfQ.8IxQw_PaWvTQXL1RK9LHcB7hJo2TUQkVrzI7QWSzCjA";
+const startLegalLogoSmall = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo05.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28wNS5wbmciLCJpYXQiOjE3NTI1OTU2NDMsImV4cCI6MTc4NDEzMTY0M30.aT2aDtPFlIdcgmbhTQHruBK8G41wgDU0amEB36hkpXY";
 const Index = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -130,7 +132,7 @@ const Index = () => {
           <div className="flex h-20 items-center justify-between py-4">
             {/* StartLégal Logo */}
             <div className="flex items-center space-x-4">
-              <img src={startLegalLogo} alt="StartLégal" className="h-12 w-auto object-contain" />
+              <img src={startLegalLogoMedium} alt="StartLégal" className="h-12 w-auto object-contain" />
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-foreground">StartLégal</span>
                 <span className="text-sm text-muted-foreground font-medium">RCS officiel en ligne</span>
@@ -730,10 +732,8 @@ const Index = () => {
             {/* Brand Section */}
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-background/10 rounded-2xl flex items-center justify-center">
-                  <Building2 className="w-6 h-6 text-background" />
-                </div>
-                <span className="text-xl font-semibold text-background">RCS Express</span>
+                <img src={startLegalLogoSmall} alt="StartLégal" className="h-8 w-auto object-contain" />
+                <span className="text-xl font-semibold text-background">StartLégal</span>
               </div>
               <p className="text-sm text-background/70 leading-relaxed">
                 Service officiel d'immatriculation au Registre du Commerce et des Sociétés.
@@ -803,7 +803,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
               <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
                 <p className="text-sm text-background/70">
-                  © 2024 RCS Express - Service agréé pour l'immatriculation d'entreprises
+                  © 2024 StartLégal - Service agréé pour l'immatriculation d'entreprises
                 </p>
                 <div className="flex items-center space-x-4">
                   <a href="#" className="text-xs text-background/50 hover:text-background/70 transition-colors">
