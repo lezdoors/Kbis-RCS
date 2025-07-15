@@ -704,3 +704,41 @@
   --sidebar-border: 240 3.7% 15.9%;
   --sidebar-ring: 217.2 91.2% 59.8%;
 }
+
+/* Mobile CTA Optimizations */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 80px; /* Space for sticky CTA */
+  }
+}
+
+.safe-area-padding-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Enhanced Button Styles */
+.btn-primary-optimized {
+  @apply bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-200 hover:scale-105 shadow-lg min-h-[44px];
+}
+
+.btn-secondary-optimized {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 hover:scale-105 min-h-[44px];
+}
+
+/* Urgency Message Styling */
+.urgency-message {
+  @apply text-sm text-gray-600 mt-2 flex items-center gap-1;
+}
+
+/* Enhanced Hover Effects */
+.hover-scale-sm {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+.hover-image-zoom {
+  @apply transition-transform duration-300 hover:scale-110;
+}
+
+.hover-shadow-lift {
+  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+}

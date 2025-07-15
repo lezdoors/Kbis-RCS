@@ -58,7 +58,7 @@ export const BenefitsSection = () => {
             return (
               <div 
                 key={index} 
-                className="group bg-card border border-border rounded-2xl p-6 hover:border-primary hover:shadow-lg transition-all duration-300 shadow-sm hover:shadow-md"
+                className="group bg-card border border-border rounded-2xl p-6 hover:border-primary hover:shadow-lg transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105"
               >
                 <div className="space-y-4">
                   {/* Icon and Title */}

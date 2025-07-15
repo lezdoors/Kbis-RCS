@@ -4,6 +4,7 @@ import { ProcessSection } from "@/components/ProcessSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
 import { LegalStructuresSection } from "@/components/LegalStructuresSection";
 import { FAQSection } from "@/components/FAQSection";
+import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <BenefitsSection />
       <LegalStructuresSection />
       <FAQSection />
+      <MobileStickyCTA />
     </div>
   );
 };

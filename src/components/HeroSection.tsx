@@ -132,23 +132,29 @@ export const HeroSection = ({
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 items-center lg:items-start animate-slide-in-left [animation-delay:0.6s]">
-                <Button 
-                  onClick={finalPrimaryCTA.action}
-                  size="lg" 
-                  className="bg-[#EA580C] hover:bg-[#EA580C]/90 text-white text-base sm:text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 min-h-[48px] sm:min-h-[56px] w-full sm:w-auto order-1 rounded-xl font-semibold"
-                >
-                  {finalPrimaryCTA.text}
-                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                </Button>
-                {secondaryCTA && (
+                <div className="w-full sm:w-auto">
                   <Button 
-                    variant="outline" 
-                    size="lg" 
-                    className="btn-administrative-outline text-base sm:text-lg px-6 py-4 min-h-[48px] sm:min-h-[56px] w-full sm:w-auto order-2"
-                    onClick={finalSecondaryCTA.action}
+                    onClick={finalPrimaryCTA.action}
+                    className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-200 hover:scale-105 shadow-lg w-full sm:w-auto min-h-[44px]"
                   >
-                    {finalSecondaryCTA.text}
+                    {finalPrimaryCTA.text}
+                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                   </Button>
+                  {/* Urgency Message */}
+                  <div className="text-sm text-gray-600 mt-2 flex items-center justify-center sm:justify-start gap-1">
+                    ⏰ <span>Commandez avant 16h = traitement aujourd'hui</span>
+                  </div>
+                </div>
+                
+                {secondaryCTA && (
+                  <div className="w-full sm:w-auto">
+                    <Button 
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 hover:scale-105 w-full sm:w-auto min-h-[44px]"
+                      onClick={finalSecondaryCTA.action}
+                    >
+                      {finalSecondaryCTA.text}
+                    </Button>
+                  </div>
                 )}
               </div>
 

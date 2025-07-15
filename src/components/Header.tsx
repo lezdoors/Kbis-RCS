@@ -38,10 +38,16 @@ export const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-3">
-            <Button variant="outline" onClick={() => navigate('/login')} className="btn-administrative-outline">
+            <Button 
+              onClick={() => navigate('/login')} 
+              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 hover:scale-105 min-h-[44px]"
+            >
               Se connecter
             </Button>
-            <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative">
+            <Button 
+              onClick={() => navigate('/choisir-statut')} 
+              className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 hover:scale-105 shadow-lg min-h-[44px]"
+            >
               Commencer
             </Button>
           </div>
@@ -69,16 +75,22 @@ export const Header = () => {
               </nav>
               
               <div className="space-y-3">
-                <Button variant="outline" onClick={() => {
-                  navigate('/login');
-                  setIsMobileMenuOpen(false);
-                }} className="btn-administrative-outline w-full">
+                <Button 
+                  onClick={() => {
+                    navigate('/login');
+                    setIsMobileMenuOpen(false);
+                  }} 
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 w-full min-h-[44px]"
+                >
                   Se connecter
                 </Button>
-                <Button onClick={() => {
-                  navigate('/choisir-statut');
-                  setIsMobileMenuOpen(false);
-                }} className="btn-administrative w-full">
+                <Button 
+                  onClick={() => {
+                    navigate('/choisir-statut');
+                    setIsMobileMenuOpen(false);
+                  }} 
+                  className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg w-full min-h-[44px]"
+                >
                   Commencer
                 </Button>
               </div>

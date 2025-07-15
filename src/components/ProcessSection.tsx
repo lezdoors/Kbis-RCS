@@ -57,13 +57,13 @@ export const ProcessSection = () => {
             {processSteps.map((step, index) => (
               <div key={step.number} className="flex flex-col items-center text-center">
                 {/* Step Card */}
-                <div className="bg-card border border-border rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden w-full max-w-sm">
+                <div className="bg-card border border-border rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden w-full max-w-sm hover:scale-105">
                   {/* Image */}
                   <div className="relative p-6 pb-4">
                     <img 
                       src={step.image}
                       alt={step.altText}
-                      className="w-full h-40 object-contain mx-auto rounded-lg"
+                      className="w-full h-40 object-contain mx-auto rounded-lg transition-transform duration-300 hover:scale-110"
                     />
                   </div>
 
@@ -113,14 +113,25 @@ export const ProcessSection = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <Button 
-            onClick={() => navigate('/choisir-statut')} 
-            size="lg" 
-            className="bg-[#EA580C] hover:bg-[#EA580C]/90 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 rounded-xl font-semibold"
-          >
-            Commencer maintenant - Battez vos concurrents
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+          <div className="space-y-4">
+            <Button 
+              onClick={() => navigate('/choisir-statut')} 
+              className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-200 hover:scale-105 shadow-lg min-h-[44px]"
+            >
+              Créer mon entreprise maintenant
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            
+            {/* Urgency Messages */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
+              <div className="text-sm text-gray-600 flex items-center gap-1">
+                📊 <span>47 entreprises créées cette semaine</span>
+              </div>
+              <div className="text-sm text-gray-600 flex items-center gap-1">
+                🔥 <span>Offre limitée</span>
+              </div>
+            </div>
+          </div>
           
           <p className="mt-4 text-sm text-muted-foreground">
             ⚡ Plus rapide que LegalPlace et tous nos concurrents
