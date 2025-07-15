@@ -6,7 +6,7 @@ interface GuaranteeBadgeProps {
 export const GuaranteeBadge = ({ text, className = "" }: GuaranteeBadgeProps) => {
   return (
     <div className={`inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-800 px-3 py-1 rounded-full text-sm font-medium ${className}`}>
-      <span className="text-green-600">✅</span>
+      <span className="text-green-600">✓</span>
       <span>{text}</span>
     </div>
   );

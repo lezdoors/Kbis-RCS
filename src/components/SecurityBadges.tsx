@@ -1,7 +1,7 @@
 export const SecurityBadges = () => {
   const badges = [
     { icon: "🔒", text: "SSL Certificate" },
-    { icon: "🛡️", text: "RGPD Compliance" },
+    { icon: "🛡", text: "RGPD Compliance" },
     { icon: "🔐", text: "Données sécurisées" },
     { icon: "💳", text: "Paiement sécurisé" }
   ];

@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 
 export const SocialProofTestimonials = () => {
   const testimonials = [
-    "🎉 Marina a créé sa SASU en 18h",
-    "🎉 Thomas a lancé sa SARL hier",  
-    "🎉 Sophie recommande RCS Express",
-    "🎉 Pierre a reçu son KBIS ce matin",
-    "🎉 Julie a validé son dossier en 2 minutes"
+    "Marina a créé sa SASU en 18h",
+    "Thomas a lancé sa SARL hier",  
+    "Sophie recommande RCS Express",
+    "Pierre a reçu son KBIS ce matin",
+    "Julie a validé son dossier en 2 minutes"
   ];
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
