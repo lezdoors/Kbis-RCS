@@ -235,59 +235,131 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Premium Hero Section */}
+      {/* LegalPlace-Inspired Hero Section */}
       <section className="hero-administrative section-administrative">
         <div className="container-administrative">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* LEFT SIDE */}
             <div className="space-y-8 animate-fade-in">
-              <div className="space-y-6">
-                <h1 className="text-hero">
-                  Inscription au Registre du Commerce et des Sociétés
+              {/* Headline & Subheadline */}
+              <div className="space-y-4">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight">
+                  Inscription RCS ultra rapide dès <span className="text-primary">79€</span> !
                 </h1>
-                <h2 className="text-subtitle">
-                  Service en ligne officiel pour l'immatriculation de votre entreprise
-                </h2>
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  Accompagnement personnalisé par un juriste dédié jusqu'à l'obtention du Kbis
+                </p>
               </div>
-              
+
+              {/* Activity Selector */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-foreground">
+                  Quel sera votre domaine d'activité ?
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {legalStructures.slice(0, 6).map((structure) => {
+                    const IconComponent = structure.icon;
+                    return (
+                      <div 
+                        key={structure.name}
+                        className="flex flex-col items-center p-4 border border-border rounded-lg hover:border-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer group"
+                        onClick={() => navigate('/choisir-statut')}
+                      >
+                        <div className="w-8 h-8 mb-2 text-primary group-hover:text-primary/80 transition-colors">
+                          <IconComponent className="w-full h-full" />
+                        </div>
+                        <span className="text-sm font-medium text-center">{structure.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Social Proof Stack */}
+              <div className="space-y-3">
+                <div className="flex items-center space-x-4 text-sm">
+                  <div className="flex items-center space-x-1">
+                    <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                    <span className="font-medium">4.9/5 sur Google</span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <div className="flex">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="h-4 w-4 text-yellow-500 fill-current" />
+                      ))}
+                    </div>
+                    <span className="font-medium">Excellent</span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <span className="text-xl">🏆</span>
+                    <span className="font-medium">Trustpilot</span>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground font-medium">
+                  + 3,247 entreprises créées avec RCS Express
+                </p>
+              </div>
+
+              {/* Visual Testimonial */}
+              <div className="bg-background border border-border rounded-lg p-6 space-y-4">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center text-white font-bold">
+                    M
+                  </div>
+                  <div className="flex-1">
+                    <blockquote className="text-foreground italic mb-2">
+                      "Simple et efficace, j'ai reçu mon Kbis en 48h. Service impeccable !"
+                    </blockquote>
+                    <cite className="text-sm text-muted-foreground font-medium">
+                      - Marie L., Fondatrice SARL
+                    </cite>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Button */}
               <Button 
                 onClick={() => navigate('/choisir-statut')} 
                 size="lg"
-                className="btn-administrative btn-touch-lg text-lg btn-ripple"
+                className="btn-administrative btn-touch-lg text-lg btn-ripple w-full md:w-auto"
               >
-                Commencer ma démarche
+                Commencer mon inscription RCS
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-
-              {/* Trust Indicators */}
-              <div className="space-y-3 text-sm">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-success" />
-                  <span>Service conforme aux exigences du greffe</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Shield className="h-4 w-4 text-success" />
-                  <span>Données sécurisées et chiffrées</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Users className="h-4 w-4 text-success" />
-                  <span>Accompagnement par des experts agréés</span>
-                </div>
-              </div>
             </div>
 
-            <div className="card-premium animate-slide-down">
-              <h3 className="text-xl font-bold mb-6 text-premium">Informations importantes</h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex items-start space-x-2">
-                  <Info className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <p>L'immatriculation au RCS est obligatoire pour exercer une activité commerciale</p>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <Clock className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <p>Délai de traitement : 48 à 72 heures ouvrées</p>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <FileText className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <p>L'extrait Kbis sera envoyé par le greffe compétent</p>
+            {/* RIGHT SIDE - Professional Illustration */}
+            <div className="relative">
+              <div className="card-premium animate-slide-down">
+                <div className="text-center space-y-6">
+                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary to-primary/70 rounded-3xl flex items-center justify-center shadow-large">
+                    <Building2 className="w-12 h-12 text-white" />
+                  </div>
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-bold text-foreground">
+                      Votre Kbis en 48h
+                    </h3>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center">
+                          <CheckCircle className="h-4 w-4 text-success" />
+                        </div>
+                        <span>Dossier traité par un juriste</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center">
+                          <Shield className="h-4 w-4 text-success" />
+                        </div>
+                        <span>Conformité garantie</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center">
+                          <Clock className="h-4 w-4 text-success" />
+                        </div>
+                        <span>Délai respecté</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
