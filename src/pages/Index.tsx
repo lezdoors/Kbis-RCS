@@ -121,19 +121,22 @@ const Index = () => {
     category: "Suivi"
   }];
   return <div className="min-h-screen bg-background">
-      {/* Premium Administrative Header */}
-      <header className="header-administrative shadow-medium">
-        <div className="container-administrative">
-          <div className="flex h-20 items-center justify-between py-4">
-            {/* Centered Logo */}
-            <div className="flex-1 flex justify-center">
-              <img src={centerLogo} alt="Inscription RCS" className="h-16 w-auto object-contain" />
+      {/* Clean Header */}
+      <header className="bg-white border-b border-border shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex h-20 items-center justify-between">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <img src={centerLogo} alt="Inscription RCS" className="h-12 w-auto object-contain" />
             </div>
 
-            {/* Desktop Navigation with Phone */}
+            {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
-              <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium">
-                Services
+              <a href="#comment-ca-marche" className="text-foreground hover:text-primary transition-colors font-medium">
+                Comment ça marche ?
+              </a>
+              <a href="#pourquoi-nous" className="text-foreground hover:text-primary transition-colors font-medium">
+                Pourquoi nous ?
               </a>
               <a href="#faq" className="text-foreground hover:text-primary transition-colors font-medium">
                 Questions fréquentes
@@ -144,17 +147,13 @@ const Index = () => {
               </div>
             </nav>
 
-            {/* Desktop CTA with Trust Elements */}
+            {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-3">
-              <div className="flex items-center space-x-2 text-xs text-muted-foreground">
-                <Shield className="w-4 h-4 text-success" />
-                <span>Sécurisé SSL</span>
-              </div>
-              <Button variant="outline" onClick={() => navigate('/login')} className="btn-administrative-outline btn-touch">
+              <Button variant="outline" onClick={() => navigate('/login')} className="btn-administrative-outline">
                 Se connecter
               </Button>
-              <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative btn-touch">
-                Commencer ma démarche
+              <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative">
+                Commencer
               </Button>
             </div>
 
@@ -164,53 +163,33 @@ const Index = () => {
             </Button>
           </div>
 
-          {/* Enhanced Mobile Menu */}
-          {isMobileMenuOpen && <div className="md:hidden border-t border-border bg-background shadow-medium">
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && <div className="md:hidden border-t border-border bg-background">
               <div className="py-6 space-y-6">
                 <nav className="space-y-1">
-                  <a href="#services" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
-                    Services
+                  <a href="#comment-ca-marche" className="block text-foreground hover:text-primary text-base font-medium py-3 px-4">
+                    Comment ça marche ?
                   </a>
-                  <a href="#faq" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
+                  <a href="#pourquoi-nous" className="block text-foreground hover:text-primary text-base font-medium py-3 px-4">
+                    Pourquoi nous ?
+                  </a>
+                  <a href="#faq" className="block text-foreground hover:text-primary text-base font-medium py-3 px-4">
                     Questions fréquentes
                   </a>
                 </nav>
                 
-                {/* Mobile Contact */}
-                <div className="px-4 py-3 bg-primary/5 rounded-lg">
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-primary" />
-                    <div>
-                      <p className="text-sm font-medium text-foreground">Besoin d'aide ?</p>
-                      <p className="text-sm text-primary font-semibold">01 XX XX XX XX</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Mobile Trust Elements */}
-                <div className="px-4 space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <Shield className="w-4 h-4 text-success" />
-                    <span className="text-sm text-muted-foreground">Sécurisé SSL</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Star className="w-4 h-4 text-yellow-500" />
-                    <span className="text-sm text-muted-foreground">4.9/5 sur Google</span>
-                  </div>
-                </div>
-
                 <div className="space-y-3">
                   <Button variant="outline" onClick={() => {
                 navigate('/login');
                 setIsMobileMenuOpen(false);
-              }} className="btn-administrative-outline w-full btn-touch-lg">
+              }} className="btn-administrative-outline w-full">
                     Se connecter
                   </Button>
                   <Button onClick={() => {
                 navigate('/choisir-statut');
                 setIsMobileMenuOpen(false);
-              }} className="btn-administrative w-full btn-touch-lg">
-                    Commencer ma démarche
+              }} className="btn-administrative w-full">
+                    Commencer
                   </Button>
                 </div>
               </div>
@@ -218,180 +197,242 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Premium StartLégal Hero Section */}
-      <section className="bg-background py-16 sm:py-20 lg:py-24 overflow-hidden">
-        <div className="container-administrative">
-          <div className="max-w-4xl mx-auto text-center space-y-12">
+      {/* Hero Section - LegalPlace Style */}
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             
-            {/* Main Headlines */}
-            <div className="space-y-6 animate-fade-in">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight">
-                Créez • Protégez • Lancez
-              </h1>
-              <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                Votre inscription RCS simplifiée et sécurisée
-              </p>
-            </div>
-
-            {/* Activity Types Grid */}
+            {/* Left Column - Content */}
             <div className="space-y-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-                Quel sera votre domaine d'activité ?
-              </h2>
-              
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
-                {activityTypes.map((activity, index) => {
-                  const IconComponent = activity.icon;
-                  return (
-                    <div 
-                      key={activity.name}
-                      className="group relative bg-white border border-border rounded-2xl p-6 hover:border-primary hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105"
-                      onClick={() => navigate('/choisir-statut')}
-                      style={{ 
-                        animationDelay: `${index * 0.1}s` 
-                      }}
-                    >
-                      {/* Subtle French flag accent */}
-                      <div className="absolute top-2 right-2 w-1 h-6 bg-gradient-to-b from-blue-600 via-white to-red-500 rounded-full opacity-40 group-hover:opacity-60 transition-opacity"></div>
-                      
-                      <div className="flex flex-col items-center space-y-3">
-                        <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                          <IconComponent className="w-6 h-6 text-primary" />
-                        </div>
-                        <span className="text-sm font-medium text-foreground text-center group-hover:text-primary transition-colors">
-                          {activity.name}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="space-y-6">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+                  Créez votre <span className="text-primary">entreprise</span> ultra rapidement dès 0€ !
+                </h1>
+                <p className="text-lg text-muted-foreground max-w-xl">
+                  Accompagnement personnalisé par un juriste dédié jusqu'à l'obtention du Kbis.
+                </p>
               </div>
-            </div>
 
-            {/* Trust Indicators */}
-            <div className="bg-gray-50 rounded-3xl p-8 space-y-6">
-              <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8">
-                {/* Google Rating */}
-                <div className="flex items-center space-x-3">
+              {/* Activity Selection */}
+              <div className="space-y-4">
+                <h2 className="text-xl font-semibold text-foreground">
+                  Quel sera votre domaine d'activité ?
+                </h2>
+                
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {activityTypes.slice(0, 8).map((activity, index) => {
+                    const IconComponent = activity.icon;
+                    return (
+                      <div 
+                        key={activity.name}
+                        className="group bg-white border border-border rounded-lg p-4 hover:border-primary hover:shadow-md transition-all duration-200 cursor-pointer"
+                        onClick={() => navigate('/choisir-statut')}
+                      >
+                        <div className="flex flex-col items-center space-y-2">
+                          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                            <IconComponent className="w-5 h-5 text-primary" />
+                          </div>
+                          <span className="text-xs font-medium text-foreground text-center group-hover:text-primary transition-colors">
+                            {activity.name}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-6">
+                <div className="flex items-center space-x-2">
                   <div className="flex">
                     {[1, 2, 3, 4, 5].map(star => (
-                      <Star key={star} className="h-5 w-5 text-yellow-500 fill-current" />
+                      <Star key={star} className="h-4 w-4 text-yellow-500 fill-current" />
                     ))}
-                    <Star className="h-5 w-5 text-yellow-500 fill-current opacity-50" />
                   </div>
-                  <div className="text-left">
-                    <div className="text-lg font-bold text-foreground">4.5/5</div>
-                    <div className="text-sm text-muted-foreground">Google</div>
-                  </div>
+                  <span className="text-sm font-semibold text-foreground">4.5/5</span>
                 </div>
-
-                {/* Trustpilot Rating */}
-                <div className="flex items-center space-x-3">
-                  <div className="flex">
-                    {[1, 2, 3, 4].map(star => (
-                      <Star key={star} className="h-5 w-5 text-green-500 fill-current" />
-                    ))}
-                    <Star className="h-5 w-5 text-green-500 fill-current opacity-50" />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-lg font-bold text-foreground">4.4/5</div>
-                    <div className="text-sm text-muted-foreground">Trustpilot</div>
-                  </div>
-                </div>
-
-                {/* Companies Created */}
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <Building2 className="w-6 h-6 text-primary" />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-lg font-bold text-foreground">+300,000</div>
-                    <div className="text-sm text-muted-foreground">sociétés accompagnées</div>
-                  </div>
+                <div className="text-sm text-muted-foreground">
+                  <span className="font-semibold text-foreground">Excellent</span> 4.4 sur 5 ⭐ Trustpilot
                 </div>
               </div>
-              
-              {/* Additional Trust Elements */}
-              <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-6 text-sm text-muted-foreground">
-                <div className="flex items-center space-x-2">
-                  <Shield className="h-4 w-4 text-success" />
-                  <span>Service agréé et sécurisé</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Clock className="h-4 w-4 text-primary" />
-                  <span>Kbis sous 48h garanti</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Users className="h-4 w-4 text-primary" />
-                  <span>Accompagnement par juriste</span>
-                </div>
-              </div>
-            </div>
 
-            {/* Call to Action */}
-            <div className="space-y-6">
+              <div className="text-sm text-muted-foreground">
+                <span className="font-semibold text-foreground">+300 000</span> sociétés accompagnées par InscriptionRCS
+              </div>
+
+              {/* CTA Button */}
               <Button 
                 onClick={() => navigate('/choisir-statut')} 
                 size="lg" 
-                className="btn-administrative btn-touch-lg text-xl px-12 py-6 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                className="btn-administrative text-lg px-8 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
                 Commencer mon inscription RCS
-                <ArrowRight className="ml-3 w-6 h-6" />
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              
-              <p className="text-sm text-muted-foreground">
-                🔒 Paiement sécurisé • ✅ Traitement immédiat • 📞 Support 7j/7
-              </p>
+            </div>
+
+            {/* Right Column - Illustration */}
+            <div className="relative">
+              <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl p-8 flex items-center justify-center min-h-[400px]">
+                <div className="text-center space-y-6">
+                  <div className="w-32 h-32 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
+                    <Building2 className="w-16 h-16 text-primary" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-bold text-foreground">Votre entreprise</h3>
+                    <p className="text-muted-foreground">créée en quelques clics</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Premium Process Steps Section */}
-      <section className="section-administrative" id="services">
-        <div className="container-administrative">
+      {/* Comment ça marche? Section - LegalPlace Style */}
+      <section className="bg-gray-50 py-16 sm:py-20 lg:py-24" id="comment-ca-marche">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6 mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
-              Processus d'immatriculation
+              Comment ça marche ?
+            </h2>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left - Illustration */}
+            <div className="relative">
+              <div className="bg-white rounded-3xl p-8 shadow-lg">
+                <div className="space-y-6">
+                  {processSteps.map((step, index) => (
+                    <div key={step.number} className="flex items-center space-x-4">
+                      <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                        {step.number}
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-foreground">{step.title}</h3>
+                        <p className="text-sm text-muted-foreground">{step.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right - Steps */}
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-3 h-3 bg-primary rounded-full mt-2"></div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-2">Vous complétez le questionnaire.</h3>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-3 h-3 bg-primary rounded-full mt-2"></div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-2">Nous préparons votre dossier pour qu'il soit conforme.</h3>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-3 h-3 bg-primary rounded-full mt-2"></div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-2">Nous déposons votre dossier sur le Guichet Unique (INPI).</h3>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-3 h-3 bg-primary rounded-full mt-2"></div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-2">Nous assurons la gestion des échanges avec le greffe.</h3>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-3 h-3 bg-success rounded-full mt-2"></div>
+                  <div>
+                    <h3 className="font-semibold text-success mb-2">Votre entreprise est créée !</h3>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-3 h-3 bg-success rounded-full mt-2"></div>
+                  <div>
+                    <h3 className="font-semibold text-success mb-2">Vous pouvez démarrer votre activité !</h3>
+                  </div>
+                </div>
+              </div>
+
+              <Button 
+                onClick={() => navigate('/choisir-statut')} 
+                size="lg" 
+                className="btn-administrative text-lg px-8 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              >
+                Commencer maintenant
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pourquoi InscriptionRCS? Section - LegalPlace Style */}
+      <section className="bg-white py-16 sm:py-20 lg:py-24" id="pourquoi-nous">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-6 mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
+              Pourquoi InscriptionRCS ?
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Démarche simplifiée en 3 étapes pour créer votre entreprise légalement
+              Devenez indépendant en créant votre entreprise et ne perdez plus de temps ou d'argent avec le juridique.
+            </p>
+            <p className="text-lg md:text-xl font-semibold text-primary max-w-3xl mx-auto leading-relaxed">
+              Faites ce que vous aimez faire, on s'occupe du juridique.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-            {processSteps.map((step, index) => <div key={step.number} className="text-center space-y-6 group">
-                {/* Step Number with Premium Styling */}
-                <div className="relative mx-auto w-20 h-20">
-                  <div className="w-20 h-20 bg-primary text-primary-foreground rounded-3xl flex items-center justify-center text-2xl font-bold shadow-large group-hover:shadow-xl transition-all duration-300">
-                    {step.number}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            {/* Left - Content */}
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center mt-1">
+                    <CheckCircle className="w-4 h-4 text-success" />
                   </div>
-                  {/* Connection Line */}
-                  {index < processSteps.length - 1 && <div className="hidden md:block absolute top-10 left-20 w-full h-0.5 bg-gradient-to-r from-primary to-transparent">
-                      <ArrowRight className="absolute -top-2 -right-2 w-4 h-4 text-primary" />
-                    </div>}
-                </div>
-
-                <div className="space-y-4">
-                  <h3 className="text-xl md:text-2xl font-semibold text-foreground">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {step.description}
-                  </p>
-                  <div className="inline-flex items-center space-x-2 text-sm font-medium text-primary bg-primary/10 px-4 py-2 rounded-full">
-                    <Clock className="w-4 h-4" />
-                    <span>Durée estimée : {step.duration}</span>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-2">Notre service a été construit par des avocats.</h3>
                   </div>
                 </div>
-              </div>)}
-          </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center mt-1">
+                    <CheckCircle className="w-4 h-4 text-success" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-2">Vos données sont en sécurité.</h3>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center mt-1">
+                    <CheckCircle className="w-4 h-4 text-success" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-2">Vous êtes satisfait ou remboursé.</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          <div className="text-center mt-16">
-            <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative btn-touch-lg text-lg btn-ripple" size="lg">
-              Démarrer ma démarche
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+            {/* Right - Illustration */}
+            <div className="relative">
+              <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl p-8 flex items-center justify-center min-h-[300px]">
+                <div className="text-center space-y-6">
+                  <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
+                    <Shield className="w-12 h-12 text-primary" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-bold text-foreground">Service sécurisé</h3>
+                    <p className="text-muted-foreground">par des experts juridiques</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
