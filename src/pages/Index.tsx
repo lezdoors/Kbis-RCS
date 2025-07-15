@@ -8,10 +8,11 @@ import { useState, useEffect } from "react";
 import modernLogo from "@/assets/modern-logo.png";
 import heroImage from "@/assets/hero-image.jpg";
 
-// StartLégal logos - different sizes for different use cases
-const startLegalLogoLarge = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28yLnBuZyIsImlhdCI6MTc1MjU5NTY4MywiZXhwIjoxNzg0MTMxNjgzfQ.dmGClEzrVqLQwktcym2Ou2ABfVfzZY2rJrmDlq_-XNc";
-const startLegalLogoMedium = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo1.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28xLnBuZyIsImlhdCI6MTc1MjU5NTY3MSwiZXhwIjoxNzg0MTMxNjcxfQ.8IxQw_PaWvTQXL1RK9LHcB7hJo2TUQkVrzI7QWSzCjA";
-const startLegalLogoSmall = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo05.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28wNS5wbmciLCJpYXQiOjE3NTI1OTU2NDMsImV4cCI6MTc4NDEzMTY0M30.aT2aDtPFlIdcgmbhTQHruBK8G41wgDU0amEB36hkpXY";
+// Official Inscription RCS logos
+const mainLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/logo/logo%20(Website)-4.png"; // Main website logo for hero section
+const faviconLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/logo/Logo-fav.png"; // Favicon/minimal logo
+const heroLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/logo/Logo-hero%20(1366%20x%20768%20px).png"; // Dark hero logo
+const squareLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/logo/Centre%20(1366%20x%20768%20px)%20(512%20x%20512%20px).png"; // Square center logo
 const Index = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -130,9 +131,9 @@ const Index = () => {
       <header className="header-administrative shadow-medium">
         <div className="container-administrative">
           <div className="flex h-20 items-center justify-between py-4">
-            {/* StartLégal Logo */}
+            {/* Official Inscription RCS Logo */}
             <div className="flex items-center">
-              <img src={startLegalLogoMedium} alt="StartLégal" className="h-12 w-auto object-contain" />
+              <img src={faviconLogo} alt="Inscription RCS" className="h-12 w-auto object-contain" />
             </div>
 
             {/* Desktop Navigation with Phone */}
@@ -234,16 +235,18 @@ const Index = () => {
         <div className="container-administrative">
           <div className="max-w-4xl mx-auto text-center space-y-12">
             
+            {/* Official Main Logo */}
+            <div className="flex justify-center mb-8">
+              <img src={mainLogo} alt="Inscription RCS" className="h-24 w-auto object-contain" />
+            </div>
+
             {/* Main Headlines */}
             <div className="space-y-6 animate-fade-in">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight">
-                Créez votre entreprise<br />
-                <span className="text-transparent bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
-                  facilement dès 0€
-                </span>
+                Créez • Protégez • Lancez
               </h1>
               <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                Accompagnement personnalisé jusqu'à l'obtention de votre Kbis
+                Votre inscription RCS simplifiée et sécurisée
               </p>
             </div>
 
@@ -728,8 +731,8 @@ const Index = () => {
             {/* Brand Section */}
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
-                <img src={startLegalLogoSmall} alt="StartLégal" className="h-8 w-auto object-contain" />
-                <span className="text-xl font-semibold text-background">StartLégal</span>
+                <img src={faviconLogo} alt="Inscription RCS" className="h-8 w-auto object-contain" />
+                <span className="text-xl font-semibold text-background">Inscription RCS</span>
               </div>
               <p className="text-sm text-background/70 leading-relaxed">
                 Service officiel d'immatriculation au Registre du Commerce et des Sociétés.
