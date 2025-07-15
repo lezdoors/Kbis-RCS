@@ -193,7 +193,7 @@ const Index = () => {
           ? 'glass-effect border-b border-white/20 shadow-lg' 
           : 'bg-transparent border-b border-transparent'
       }`}>
-        <div className="container-max flex h-20 items-center justify-between px-6">
+        <div className="container-max flex h-20 items-center justify-between container-fluid">
           {/* Modern Logo */}
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center p-1">
@@ -212,11 +212,11 @@ const Index = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" className="font-medium">
+            <Button variant="outline" className="btn-interactive focus-ring font-medium hover-scale">
               <Play className="w-4 h-4 mr-2" />
               Voir démo
             </Button>
-            <Button onClick={() => navigate('/choisir-statut')} className="btn-primary animate-pulse-glow">
+            <Button onClick={() => navigate('/choisir-statut')} className="btn-primary btn-interactive focus-ring animate-pulse-glow hover-scale">
               Commencer
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -235,22 +235,22 @@ const Index = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden glass-effect border-t border-white/20">
-            <div className="container-max px-6 py-6 space-y-4">
-              <nav className="space-y-3">
-                <a href="#services" className="block text-foreground/80 hover:text-primary transition-colors font-medium">Services</a>
-                <a href="#tarifs" className="block text-foreground/80 hover:text-primary transition-colors font-medium">Tarifs</a>
-                <a href="#avis" className="block text-foreground/80 hover:text-primary transition-colors font-medium">Avis clients</a>
-                <a href="#faq" className="block text-foreground/80 hover:text-primary transition-colors font-medium">FAQ</a>
+          <div className="md:hidden glass-effect border-t border-white/20 mobile-nav-slide">
+            <div className="container-max container-fluid py-6 mobile-spacing">
+              <nav className="space-y-4">
+                <a href="#services" className="block text-foreground/80 hover:text-primary transition-colors font-medium py-2 btn-touch focus-ring">Services</a>
+                <a href="#tarifs" className="block text-foreground/80 hover:text-primary transition-colors font-medium py-2 btn-touch focus-ring">Tarifs</a>
+                <a href="#avis" className="block text-foreground/80 hover:text-primary transition-colors font-medium py-2 btn-touch focus-ring">Avis clients</a>
+                <a href="#faq" className="block text-foreground/80 hover:text-primary transition-colors font-medium py-2 btn-touch focus-ring">FAQ</a>
               </nav>
-              <div className="flex flex-col space-y-3 pt-4 border-t border-white/20">
-                <Button variant="outline" className="justify-center">
-                  <Play className="w-4 h-4 mr-2" />
+              <div className="flex flex-col space-y-4 pt-6 border-t border-white/20">
+                <Button variant="outline" className="btn-touch-lg justify-center btn-interactive focus-ring">
+                  <Play className="w-5 h-5 mr-2" />
                   Voir démo 2 min
                 </Button>
-                <Button onClick={() => navigate('/choisir-statut')} className="btn-primary justify-center">
+                <Button onClick={() => navigate('/choisir-statut')} className="btn-primary btn-touch-lg justify-center btn-interactive focus-ring">
                   Commencer gratuitement
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>
             </div>
@@ -259,7 +259,7 @@ const Index = () => {
       </header>
 
       {/* Revolutionary Hero Section */}
-      <section className="relative pt-24 pb-20 overflow-hidden">
+      <section className="relative section-spacing pt-24 overflow-hidden">
         {/* Animated Background */}
         <div 
           className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent opacity-50"
@@ -271,7 +271,7 @@ const Index = () => {
           }}
         />
         
-        <div className="container-max relative z-10">
+        <div className="container-max container-fluid relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Enhanced Content */}
             <div className="space-y-10 animate-slide-in-left">
@@ -290,11 +290,11 @@ const Index = () => {
               </div>
               
               {/* Two-Button CTA Layout */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 mobile-spacing">
                 <Button 
                   onClick={() => navigate('/choisir-statut')} 
                   size="lg"
-                  className="btn-primary text-lg px-10 py-6 hover-scale shadow-primary text-white font-semibold"
+                  className="btn-primary btn-touch-lg hover-scale shadow-primary text-white font-semibold btn-interactive focus-ring"
                 >
                   <Sparkles className="mr-3 h-5 w-5" />
                   Commencer gratuitement
@@ -302,7 +302,7 @@ const Index = () => {
                 <Button 
                   variant="outline"
                   size="lg"
-                  className="text-lg px-10 py-6 hover-scale border-2 font-semibold"
+                  className="btn-touch-lg hover-scale border-2 font-semibold btn-interactive focus-ring"
                 >
                   <Play className="mr-3 h-5 w-5" />
                   Voir démo 2 min
@@ -556,16 +556,24 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mobile-grid">
             {legalStructures.map((structure, index) => {
               const IconComponent = structure.icon;
               return (
                 <Card 
                   key={structure.name}
-                  className={`relative hover-lift cursor-pointer transition-all duration-500 border-2 group ${
+                  className={`relative card-hover-elevated cursor-pointer border-2 group focus-ring btn-interactive ${
                     structure.badge ? 'border-primary shadow-primary/20 ring-2 ring-primary/10' : 'border-border hover:border-primary/50'
                   }`}
                   onClick={() => navigate('/choisir-statut')}
+                  tabIndex={0}
+                  role="button"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      navigate('/choisir-statut');
+                    }
+                  }}
                 >
                   {structure.badge && (
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
@@ -627,16 +635,18 @@ const Index = () => {
                     {/* Action Buttons */}
                     <div className="space-y-3 pt-4 border-t border-border">
                       <Button 
-                        className="w-full btn-primary"
-                        onClick={() => navigate('/choisir-statut')}
+                        className="w-full btn-primary btn-touch btn-interactive focus-ring"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate('/choisir-statut');
+                        }}
                       >
                         Choisir {structure.name}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                       <Button 
                         variant="outline" 
-                        size="sm" 
-                        className="w-full text-xs"
+                        className="w-full btn-interactive focus-ring mobile-optimized"
                         onClick={(e) => {
                           e.stopPropagation();
                           // Comparer functionality would go here
@@ -987,9 +997,9 @@ const Index = () => {
           </div>
 
           {/* Rotating Testimonials Carousel */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="swipe-container md:grid md:grid-cols-3 gap-8 mb-16 flex md:flex-none overflow-x-auto md:overflow-visible snap-x snap-mandatory">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="floating-card hover-scale group relative overflow-hidden">
+              <Card key={index} className="floating-card card-hover-elevated group relative overflow-hidden swipe-item min-w-[280px] md:min-w-0 flex-shrink-0 md:flex-shrink mr-6 md:mr-0">
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center opacity-5 group-hover:opacity-10 transition-opacity duration-300"
@@ -1043,8 +1053,7 @@ const Index = () => {
                   {/* Case Study Link */}
                   <Button 
                     variant="ghost" 
-                    size="sm" 
-                    className="w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="w-full btn-touch btn-interactive focus-ring opacity-0 group-hover:opacity-100 md:opacity-100 transition-opacity duration-300"
                   >
                     <Play className="w-4 h-4 mr-2" />
                     Voir l'étude de cas complète
@@ -1074,16 +1083,16 @@ const Index = () => {
             </div>
 
             {/* CTA for More Reviews */}
-            <div className="space-y-4">
-              <p className="text-lg text-muted-foreground">Vous voulez voir plus d'avis ?</p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button variant="outline" size="sm" className="hover-scale">
+            <div className="space-y-6 mobile-spacing">
+              <p className="text-lg text-muted-foreground mobile-optimized">Vous voulez voir plus d'avis ?</p>
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+                <Button variant="outline" className="btn-touch btn-interactive focus-ring hover-scale">
                   ⭐ Voir tous les avis Google
                 </Button>
-                <Button variant="outline" size="sm" className="hover-scale">
+                <Button variant="outline" className="btn-touch btn-interactive focus-ring hover-scale">
                   💼 Avis Trustpilot
                 </Button>
-                <Button variant="outline" size="sm" className="hover-scale">
+                <Button variant="outline" className="btn-touch btn-interactive focus-ring hover-scale">
                   📺 Témoignages vidéo
                 </Button>
               </div>
