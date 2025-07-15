@@ -735,6 +735,10 @@
   @apply transition-transform duration-300 hover:scale-105;
 }
 
+.hover:scale-102:hover {
+  transform: scale(1.02);
+}
+
 .hover-image-zoom {
   @apply transition-transform duration-300 hover:scale-110;
 }

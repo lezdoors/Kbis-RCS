@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { HeroSection } from "@/components/HeroSection";
-import { Building2, ArrowLeft, CheckCircle, Info, Users, FileText } from "lucide-react";
+import { Building2, ArrowLeft, CheckCircle, Info, Users, FileText, Lightbulb, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const ChoisirStatut = () => {
   const navigate = useNavigate();
+  const [recommendedStructure] = useState("SASU");
 
   const legalStructures = [
     {
@@ -152,24 +153,51 @@ const ChoisirStatut = () => {
         </div>
       </div>
 
-      {/* Hero Section */}
-      <HeroSection 
-        title="Sélection du statut juridique"
-        subtitle="Choisissez la forme juridique la plus adaptée à votre projet entrepreneurial"
-        showActivityGrid={false}
-        showTrustIndicators={false}
-        primaryCTA={{
-          text: "Besoin d'aide pour choisir ?",
-          action: () => {
-            const helpSection = document.querySelector('#help-section');
-            helpSection?.scrollIntoView({ behavior: 'smooth' });
-          }
-        }}
-        secondaryCTA={{
-          text: "Retour à l'accueil",
-          action: () => navigate('/')
-        }}
-      />
+      {/* Competitive Header */}
+      <section className="bg-background py-12">
+        <div className="container-administrative">
+          {/* Comparison Banner */}
+          <div className="bg-green-100 border border-green-300 text-green-800 p-3 rounded-lg text-center font-medium mb-6">
+            <Zap className="inline w-4 h-4 mr-1" />
+            Création en 24h vs 5 jours chez LegalPlace
+          </div>
+
+          {/* Page Header */}
+          <div className="text-center space-y-4 mb-8">
+            <h1 className="text-3xl font-bold text-center mb-4">
+              Choisissez la structure optimale en 30 secondes
+            </h1>
+            <p className="text-xl text-gray-600 text-center mb-2">
+              Notre IA recommande la meilleure option pour votre projet
+            </p>
+            <div className="bg-orange-100 text-orange-800 p-2 rounded-lg text-center font-medium mb-8 inline-block">
+              <Zap className="inline w-4 h-4 mr-1" />
+              Toutes structures créées en 24h maximum
+            </div>
+          </div>
+
+          {/* Smart Recommendation Box */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8 max-w-4xl mx-auto">
+            <div className="flex items-start space-x-3">
+              <Lightbulb className="w-6 h-6 text-blue-600 mt-1" />
+              <div className="flex-1">
+                <h3 className="font-semibold text-blue-900 mb-2">RECOMMANDATION IA:</h3>
+                <p className="text-blue-800 mb-4">
+                  Basé sur votre activité SERVICE, nous recommandons une {recommendedStructure} pour ses avantages fiscaux et sa flexibilité.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button variant="outline" className="bg-white hover:bg-blue-50 text-blue-600 border-blue-300">
+                    Voir pourquoi
+                  </Button>
+                  <Button className="bg-orange-600 hover:bg-orange-700 text-white">
+                    Choisir {recommendedStructure}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Main Content */}
       <section className="section-administrative">
@@ -179,19 +207,23 @@ const ChoisirStatut = () => {
             {legalStructures.map((structure) => (
               <div 
                 key={structure.name}
-                className="card-premium group cursor-pointer h-full relative overflow-hidden"
+                className="relative bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-orange-300 hover:shadow-lg hover:scale-102 transition-all cursor-pointer h-full"
                 onClick={() => {
                   localStorage.setItem('selectedStructure', JSON.stringify(structure));
                   navigate(structure.route);
                 }}
               >
-                {/* Premium Badge */}
-                <div className="absolute top-6 right-6 z-10">
-                  <div className={`px-4 py-2 rounded-full text-sm font-bold text-white shadow-lg ${
-                    structure.price === '79€' ? 'bg-gradient-to-r from-orange-500 to-red-500' : 'bg-gradient-to-r from-primary to-primary-glow'
-                  }`}>
-                    {structure.price} TTC
+                {/* POPULAIRE Badge for SASU */}
+                {structure.name === "SASU" && (
+                  <div className="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded text-xs font-bold">
+                    POPULAIRE
                   </div>
+                )}
+
+                {/* Speed Indicator */}
+                <div className="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold flex items-center gap-1">
+                  <Zap className="w-3 h-3" />
+                  24h
                 </div>
 
                 <div className="space-y-6">
@@ -205,6 +237,17 @@ const ChoisirStatut = () => {
                       <p className="text-sm text-muted-foreground font-medium">
                         {structure.fullName}
                       </p>
+                    </div>
+
+                    {/* Price with Comparison */}
+                    <div className="text-center space-y-2">
+                      <div className="text-2xl font-bold text-green-600">{structure.price} TTC</div>
+                      <div className="text-sm text-gray-500">
+                        vs <span className="line-through text-red-500">199€ ailleurs</span>
+                      </div>
+                      <button className="text-blue-600 hover:text-blue-800 text-sm underline">
+                        Voir exemple de statuts
+                      </button>
                     </div>
                   </div>
 
