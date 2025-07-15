@@ -176,6 +176,13 @@ const Index = () => {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-3">
+              <Button 
+                variant="outline" 
+                onClick={() => navigate('/login')} 
+                className="btn-administrative-outline"
+              >
+                Se connecter
+              </Button>
               <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative">
                 Commencer ma démarche
               </Button>
@@ -201,9 +208,18 @@ const Index = () => {
                   <a href="#tarifs" className="block text-foreground hover:text-primary transition-colors text-sm font-medium py-2">Tarifs officiels</a>
                   <a href="#faq" className="block text-foreground hover:text-primary transition-colors text-sm font-medium py-2">Questions fréquentes</a>
                 </nav>
-                <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative w-full">
-                  Commencer ma démarche
-                </Button>
+                <div className="space-y-2">
+                  <Button 
+                    variant="outline" 
+                    onClick={() => navigate('/login')} 
+                    className="btn-administrative-outline w-full"
+                  >
+                    Se connecter
+                  </Button>
+                  <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative w-full">
+                    Commencer ma démarche
+                  </Button>
+                </div>
               </div>
             </div>
           )}
