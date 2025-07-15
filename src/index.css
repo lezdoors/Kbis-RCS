@@ -4,41 +4,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* French RCS Express Design System - Official Marianne Blue Theme */
+/* Official French Administrative Portal Design System */
 
 @layer base {
   :root {
-    /* French Official Colors */
-    --primary: 238 100% 28%; /* #000091 - French Marianne Blue */
+    /* Official French Government Colors */
+    --primary: 218 100% 28%; /* #000091 - Official Marianne Blue */
     --primary-foreground: 0 0% 100%;
-    --primary-light: 240 100% 85%; /* Light blue for backgrounds */
-    --primary-glow: 240 100% 70%; /* Glowing blue for accents */
+    --primary-light: 240 14% 97%; /* #F5F5FE - Light blue background */
+    --primary-glow: 218 100% 28%; /* Same as primary - no glowing effects */
     
-    --secondary: 248 54% 67%; /* #6A6AF4 - Secondary Blue */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 240 14% 97%; /* #F5F5FE - Light administrative background */
+    --secondary-foreground: 218 100% 28%;
     
-    /* Success & Status Colors */
-    --success: 140 67% 41%; /* #18753C - French Green */
+    /* Official Status Colors */
+    --success: 118 60% 28%; /* #18753C - Official green */
     --success-foreground: 0 0% 100%;
-    --warning: 33 100% 50%; /* #FF8D00 - Orange */
+    --warning: 21 100% 35%; /* #B34000 - Administrative orange */
     --warning-foreground: 0 0% 100%;
     
-    /* Neutral Colors */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 9%; /* #161616 - Dark Text */
+    /* Official Neutral Colors */
+    --background: 0 0% 100%; /* Pure white */
+    --foreground: 0 0% 9%; /* #161616 - Official dark text */
     
-    --card: 0 0% 100%;
+    --card: 0 0% 100%; /* Pure white cards */
     --card-foreground: 0 0% 9%;
     
-    --muted: 0 0% 97%; /* #F6F6F6 - Light Gray */
+    --muted: 0 0% 96%; /* #F6F6F6 - Light administrative gray */
     --muted-foreground: 0 0% 45%;
     
-    --accent: 240 100% 98%; /* Very light blue */
-    --accent-foreground: 238 100% 28%;
+    --accent: 240 14% 97%; /* Light blue accent */
+    --accent-foreground: 218 100% 28%;
     
-    --border: 0 0% 90%;
-    --input: 0 0% 95%;
-    --ring: 238 100% 28%;
+    --border: 0 0% 87%; /* #DDDDDD - Light gray borders */
+    --input: 0 0% 98%; /* Very light input background */
+    --ring: 218 100% 28%; /* Primary focus ring */
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -46,26 +46,26 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
     
-    --radius: 0.5rem;
+    --radius: 0.25rem; /* Smaller, more conservative radius */
     
-    /* Custom Design Tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(238 100% 28%), hsl(248 54% 67%));
-    --gradient-text: linear-gradient(135deg, hsl(238 100% 28%), hsl(248 54% 67%), hsl(240 100% 70%));
-    --gradient-secondary: linear-gradient(180deg, hsl(240 100% 98%), hsl(0 0% 97%));
-    --gradient-hero: linear-gradient(135deg, hsl(240 100% 95%), hsl(0 0% 100%));
-    --gradient-modern: linear-gradient(135deg, hsl(238 100% 35%), hsl(248 54% 67%), hsl(270 50% 80%));
+    /* Official Administrative Design Tokens */
+    --gradient-primary: none; /* No gradients in government portals */
+    --gradient-text: none;
+    --gradient-secondary: none;
+    --gradient-hero: none;
+    --gradient-modern: none;
 
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
-    --shadow-primary: 0 10px 30px -10px hsl(238 100% 28% / 0.3);
-    --shadow-glow: 0 0 40px hsl(240 100% 70% / 0.4);
-    --shadow-floating: 0 20px 25px -5px hsl(0 0% 0% / 0.1), 0 10px 10px -5px hsl(0 0% 0% / 0.04);
+    --shadow-md: 0 2px 4px -1px hsl(0 0% 0% / 0.06);
+    --shadow-lg: 0 4px 6px -1px hsl(0 0% 0% / 0.08);
+    --shadow-primary: 0 2px 4px hsl(218 100% 28% / 0.1);
+    --shadow-glow: none; /* No glow effects */
+    --shadow-floating: 0 2px 8px -2px hsl(0 0% 0% / 0.08);
 
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-micro: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: all 0.2s ease;
+    --transition-fast: all 0.15s ease;
+    --transition-bounce: none; /* No bounce effects */
+    --transition-micro: all 0.1s ease;
     
     /* Mobile-first spacing system */
     --spacing-section: clamp(3rem, 8vw, 6rem);
@@ -115,93 +115,54 @@
 }
 
 @layer components {
-  /* French Government Style Components */
-  .hero-gradient {
-    background: var(--gradient-hero);
+  /* Official French Administrative Components */  
+  .card-administrative {
+    @apply bg-card border border-border rounded-sm shadow-sm hover:shadow-md transition-shadow duration-200;
   }
   
-  .card-elegant {
-    @apply bg-card border border-border rounded-lg shadow-md hover:shadow-lg transition-all duration-300;
+  .btn-administrative {
+    @apply bg-primary hover:bg-primary/95 text-primary-foreground font-medium px-6 py-3 rounded-sm transition-colors duration-150 shadow-sm;
   }
   
-  .btn-primary {
-    @apply bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg;
+  .btn-administrative-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium px-6 py-3 rounded-sm transition-colors duration-150;
   }
   
-  .btn-secondary {
-    @apply bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium px-6 py-3 rounded-lg transition-all duration-200;
+  .section-administrative {
+    @apply py-12 px-4 md:px-6 lg:px-8;
   }
   
-  .btn-outline {
-    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium px-6 py-3 rounded-lg transition-all duration-200;
+  .container-administrative {
+    @apply max-w-6xl mx-auto;
   }
   
-  .section-padding {
-    @apply py-16 px-4 md:px-6 lg:px-8;
+  .header-administrative {
+    @apply bg-background border-b border-border shadow-sm;
+  }
+
+  .form-administrative {
+    @apply bg-card border border-border rounded-sm p-6 shadow-sm;
+  }
+
+  .breadcrumb-administrative {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .progress-administrative {
+    @apply bg-border rounded-sm h-2 overflow-hidden;
+  }
+
+  .progress-bar-administrative {
+    @apply bg-primary h-full rounded-sm transition-all duration-300 ease-out;
   }
   
-  .container-max {
-    @apply max-w-7xl mx-auto;
+  /* Minimal animation utilities - only functional ones */
+  .fade-in-administrative {
+    animation: fadeInSimple 0.3s ease-out;
   }
   
-  .text-gradient {
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .glass-effect {
-    @apply bg-background/80 backdrop-blur-md border border-white/20;
-  }
-
-  .floating-card {
-    @apply bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-6 shadow-floating hover:shadow-glow transition-all duration-300;
-  }
-
-  .btn-glass {
-    @apply bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-sm font-medium px-6 py-3 rounded-lg transition-all duration-200;
-  }
-
-  .progress-indicator {
-    @apply bg-primary/20 rounded-full h-2 overflow-hidden;
-  }
-
-  .progress-bar {
-    @apply bg-primary h-full rounded-full transition-all duration-1000 ease-out;
-  }
-  
-  /* Animation utilities */
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out;
-  }
-  
-  .animate-slide-up {
-    animation: slideUp 0.8s ease-out;
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
-  }
-
-  .animate-slide-in-left {
-    animation: slideInLeft 0.8s ease-out;
-  }
-
-  .animate-slide-in-right {
-    animation: slideInRight 0.8s ease-out;
-  }
-  
-  .hover-lift {
-    @apply transition-transform duration-200 hover:-translate-y-1;
-  }
-
-  .hover-scale {
-    @apply transition-transform duration-300 hover:scale-105;
+  .hover-administrative {
+    @apply transition-colors duration-150 hover:bg-muted/50;
   }
 
   .timeline-connector {
@@ -396,65 +357,12 @@
   }
 }
 
-@keyframes fadeIn {
+@keyframes fadeInSimple {
   from {
     opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 20px hsl(240 100% 70% / 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px hsl(240 100% 70% / 0.6);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
