@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Building2, FileText, CheckCircle, Shield, Clock, Users, Star, ArrowRight, Phone, Mail, Menu, X, Info } from "lucide-react";
+import { Building2, FileText, CheckCircle, Shield, Clock, Users, Star, ArrowRight, Phone, Mail, Menu, X, Info, Briefcase, Hammer, Truck, ShoppingCart, Store, Package, HeartHandshake, UtensilsCrossed, Home, User, Zap, MoreHorizontal, Calculator, Wrench, Car, ShoppingBag, MapPin, UsersRound, Coffee, Building, PenTool, Globe } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -10,66 +10,66 @@ const Index = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const legalStructures = [
+  const activityDomains = [
     {
-      name: "SASU",
-      fullName: "Société par Actions Simplifiée Unipersonnelle",
-      price: "129€",
-      description: "Structure juridique pour entrepreneur individuel",
-      icon: Building2,
-      advantages: [
-        "Responsabilité limitée",
-        "Statut de dirigeant",
-        "Flexibilité juridique"
-      ]
+      name: "Consultant & freelance",
+      icon: Briefcase,
+      description: "Services de conseil et expertise"
     },
     {
-      name: "SARL",
-      fullName: "Société à Responsabilité Limitée", 
-      price: "129€",
-      description: "Structure pour plusieurs associés",
-      icon: Users,
-      advantages: [
-        "Répartition des parts",
-        "Gestion collective",
-        "Sécurité juridique"
-      ]
+      name: "Artisan & bâtiment",
+      icon: Hammer,
+      description: "Métiers de l'artisanat et BTP"
     },
     {
-      name: "EURL",
-      fullName: "Entreprise Unipersonnelle à Responsabilité Limitée",
-      price: "129€", 
-      description: "Version individuelle de la SARL",
-      icon: FileText,
-      advantages: [
-        "Protection du patrimoine",
-        "Option fiscale",
-        "Simplicité de gestion"
-      ]
+      name: "Transport",
+      icon: Truck,
+      description: "Services de transport et logistique"
     },
     {
-      name: "SAS",
-      fullName: "Société par Actions Simplifiée",
-      price: "129€",
-      description: "Structure flexible pour associés multiples",
-      icon: Building2,
-      advantages: [
-        "Liberté statutaire",
-        "Entrée d'investisseurs",
-        "Organes dirigeants"
-      ]
+      name: "Vente en ligne",
+      icon: ShoppingCart,
+      description: "E-commerce et vente digitale"
     },
     {
-      name: "Micro-entreprise", 
-      fullName: "Régime micro-entrepreneur",
-      price: "79€",
-      description: "Régime simplifié pour débuter",
-      icon: FileText,
-      advantages: [
-        "Formalités allégées",
-        "Comptabilité simple",
-        "Démarrage rapide"
-      ]
+      name: "Commerce local",
+      icon: Store,
+      description: "Commerce de proximité"
+    },
+    {
+      name: "Livraison",
+      icon: Package,
+      description: "Services de livraison"
+    },
+    {
+      name: "Services à la personne",
+      icon: HeartHandshake,
+      description: "Aide et assistance personnelle"
+    },
+    {
+      name: "Restauration",
+      icon: UtensilsCrossed,
+      description: "Métiers de la restauration"
+    },
+    {
+      name: "SCI",
+      icon: Home,
+      description: "Société civile immobilière"
+    },
+    {
+      name: "Auto-entrepreneur",
+      icon: User,
+      description: "Régime micro-entrepreneur"
+    },
+    {
+      name: "Start-up tech",
+      icon: Zap,
+      description: "Innovation et technologie"
+    },
+    {
+      name: "Autres",
+      icon: MoreHorizontal,
+      description: "Autres secteurs d'activité"
     }
   ];
 
@@ -158,9 +158,11 @@ const Index = () => {
           <div className="flex h-16 items-center justify-between">
             {/* Enhanced Logo */}
             <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 rounded-2xl bg-primary flex items-center justify-center shadow-soft">
-                <Building2 className="w-6 h-6 text-primary-foreground" />
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="RCS Express" 
+                className="w-12 h-12 object-contain"
+              />
               <div className="flex flex-col">
                 <span className="text-lg font-semibold text-foreground">RCS Express</span>
                 <span className="text-xs text-muted-foreground font-medium">Service agréé</span>
@@ -236,60 +238,76 @@ const Index = () => {
       </header>
 
       {/* Premium Hero Section */}
-      <section className="hero-administrative section-administrative">
+      <section className="hero-administrative section-administrative bg-gradient-to-br from-[#F8F9FC] to-white">
         <div className="container-administrative">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8 animate-fade-in">
-              <div className="space-y-6">
-                <h1 className="text-hero">
-                  Inscription au Registre du Commerce et des Sociétés
-                </h1>
-                <h2 className="text-subtitle">
-                  Service en ligne officiel pour l'immatriculation de votre entreprise
-                </h2>
-              </div>
-              
-              <Button 
-                onClick={() => navigate('/choisir-statut')} 
-                size="lg"
-                className="btn-administrative btn-touch-lg text-lg btn-ripple"
-              >
-                Commencer ma démarche
-              </Button>
+          <div className="text-center space-y-12 max-w-4xl mx-auto">
+            {/* Hero Title */}
+            <div className="space-y-6 animate-fade-in">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight">
+                Créez votre entreprise ultra rapidement dès 
+                <span className="bg-gradient-to-r from-[#000091] to-[#0055A4] bg-clip-text text-transparent"> 0 € !</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                Accompagnement personnalisé par un juriste dédié jusqu'à l'obtention du Kbis.
+              </p>
+            </div>
 
-              {/* Trust Indicators */}
-              <div className="space-y-3 text-sm">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-success" />
-                  <span>Service conforme aux exigences du greffe</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Shield className="h-4 w-4 text-success" />
-                  <span>Données sécurisées et chiffrées</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Users className="h-4 w-4 text-success" />
-                  <span>Accompagnement par des experts agréés</span>
-                </div>
+            {/* Activity Selection */}
+            <div className="space-y-8">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
+                Quel est votre domaine d'activité ?
+              </h2>
+              
+              {/* Activity Cards Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                {activityDomains.map((domain) => {
+                  const IconComponent = domain.icon;
+                  return (
+                    <Card
+                      key={domain.name}
+                      className="group cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-white border border-gray-100 hover:border-[#0055A4]/20"
+                      style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}
+                      onClick={() => navigate('/choisir-statut')}
+                    >
+                      <CardContent className="p-6 text-center space-y-3">
+                        <div className="w-12 h-12 mx-auto bg-[#0055A4]/10 rounded-xl flex items-center justify-center group-hover:bg-[#0055A4]/20 transition-colors">
+                          <IconComponent className="h-6 w-6 text-[#0055A4]" />
+                        </div>
+                        <h3 className="font-semibold text-sm text-foreground leading-tight">
+                          {domain.name}
+                        </h3>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="card-premium animate-slide-down">
-              <h3 className="text-xl font-bold mb-6 text-premium">Informations importantes</h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex items-start space-x-2">
-                  <Info className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <p>L'immatriculation au RCS est obligatoire pour exercer une activité commerciale</p>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <Clock className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <p>Délai de traitement : 48 à 72 heures ouvrées</p>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <FileText className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <p>L'extrait Kbis sera envoyé par le greffe compétent</p>
-                </div>
+            {/* Trust Indicators */}
+            <div className="space-y-4 pt-8">
+              <div className="flex items-center justify-center space-x-2 text-amber-500">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 fill-current" />
+                ))}
               </div>
+              <p className="text-sm text-muted-foreground">
+                ⭐⭐⭐⭐⭐ 4.9 sur Google | 4.6 sur Trustpilot
+              </p>
+              <p className="text-sm font-medium text-foreground">
+                +100 000 entreprises accompagnées par StartLégal
+              </p>
+            </div>
+
+            {/* CTA Button */}
+            <div className="pt-8">
+              <Button 
+                onClick={() => navigate('/choisir-statut')} 
+                size="lg"
+                className="btn-administrative btn-touch-lg text-lg px-12 py-4"
+              >
+                Commencer ma démarche
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
             </div>
           </div>
         </div>
@@ -352,73 +370,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Structure Selection - Administrative Form Style */}
-      <section className="section-administrative bg-muted" id="structures">
-        <div className="container-administrative">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold">Choisir votre statut juridique</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Sélectionnez la forme juridique adaptée à votre activité
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {legalStructures.map((structure) => {
-              const IconComponent = structure.icon;
-              return (
-                <Card 
-                  key={structure.name}
-                  className="card-administrative cursor-pointer hover-administrative"
-                  onClick={() => navigate('/choisir-statut')}
-                >
-                  <CardHeader className="text-center space-y-4">
-                    <div className="w-12 h-12 mx-auto bg-primary/10 rounded-sm flex items-center justify-center">
-                      <IconComponent className="h-6 w-6 text-primary" />
-                    </div>
-                    <div className="space-y-1">
-                      <CardTitle className="text-lg">{structure.name}</CardTitle>
-                      <CardDescription className="text-sm">
-                        {structure.fullName}
-                      </CardDescription>
-                    </div>
-                  </CardHeader>
-                  
-                  <CardContent className="space-y-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-primary">
-                        {structure.price}
-                      </div>
-                      <p className="text-sm text-muted-foreground mt-1">{structure.description}</p>
-                    </div>
-
-                    <div className="space-y-2">
-                      <h4 className="font-medium text-sm">Avantages principaux :</h4>
-                      <ul className="space-y-1">
-                        {structure.advantages.map((advantage, i) => (
-                          <li key={i} className="flex items-center text-xs text-muted-foreground">
-                            <CheckCircle className="h-3 w-3 text-success mr-2 flex-shrink-0" />
-                            {advantage}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <Button 
-                      className="w-full btn-administrative-outline text-sm"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigate('/choisir-statut');
-                      }}
-                    >
-                      Sélectionner
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* Premium Pricing Section */}
       <section className="section-administrative" id="tarifs">
