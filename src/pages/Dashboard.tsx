@@ -68,30 +68,32 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
+      {/* Premium Header */}
       <header className="header-administrative">
         <div className="container-administrative">
           <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-sm bg-primary flex items-center justify-center">
-                <Building2 className="w-5 h-5 text-primary-foreground" />
+            <div className="flex items-center space-x-4">
+              <div className="w-10 h-10 rounded-2xl bg-primary flex items-center justify-center shadow-soft">
+                <Building2 className="w-6 h-6 text-primary-foreground" />
               </div>
               <div className="flex flex-col">
-                <span className="text-base font-semibold text-foreground">RCS Express</span>
-                <span className="text-xs text-muted-foreground">Espace personnel</span>
+                <span className="text-lg font-semibold text-foreground">RCS Express</span>
+                <span className="text-xs text-muted-foreground font-medium">Espace personnel</span>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-muted-foreground">
-                {user?.email}
-              </span>
+              <div className="hidden sm:flex items-center space-x-2 text-sm">
+                <div className="w-2 h-2 bg-success rounded-full"></div>
+                <span className="text-muted-foreground font-medium">{user?.email}</span>
+              </div>
               <Button 
                 variant="outline" 
                 onClick={handleLogout}
-                className="btn-administrative-outline"
+                className="btn-administrative-outline btn-touch"
               >
                 <LogOut className="h-4 w-4 mr-2" />
-                Se déconnecter
+                <span className="hidden sm:inline">Se déconnecter</span>
+                <span className="sm:hidden">Sortir</span>
               </Button>
             </div>
           </div>
@@ -101,58 +103,71 @@ const Dashboard = () => {
       {/* Main Content */}
       <section className="section-administrative">
         <div className="container-administrative">
-          <div className="mb-8">
-            <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+          {/* Hero Section */}
+          <div className="mb-12 text-center space-y-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
               Tableau de bord
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Bienvenue dans votre espace personnel RCS Express
             </p>
           </div>
 
-          {/* Welcome Alert */}
-          <Alert className="mb-8 border-success bg-success/10">
-            <CheckCircle className="h-4 w-4 text-success" />
-            <AlertDescription className="text-success">
-              <strong>Connexion réussie !</strong> Vous êtes maintenant connecté à votre espace sécurisé.
-            </AlertDescription>
-          </Alert>
-
-          {/* Quick Actions */}
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <Card className="card-administrative">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 mx-auto bg-primary/10 rounded-sm flex items-center justify-center mb-2">
-                  <Building2 className="h-6 w-6 text-primary" />
+          {/* Welcome Status */}
+          <div className="mb-12">
+            <div className="card-premium bg-gradient-to-r from-success/5 to-success/10 border-success/20">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-success/20 rounded-2xl flex items-center justify-center">
+                  <CheckCircle className="h-6 w-6 text-success" />
                 </div>
-                <CardTitle className="text-lg">Nouvelle démarche</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Commencer une nouvelle immatriculation au RCS
-                </p>
+                <div>
+                  <h3 className="font-semibold text-success">Connexion sécurisée</h3>
+                  <p className="text-sm text-success/80">
+                    Vous êtes maintenant connecté à votre espace personnel
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Actions Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            <div className="card-premium group cursor-pointer" onClick={() => navigate('/choisir-statut')}>
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Building2 className="h-8 w-8 text-primary" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-semibold text-foreground">Nouvelle démarche</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Commencer une nouvelle immatriculation au RCS
+                  </p>
+                </div>
                 <Button 
-                  className="w-full btn-administrative"
-                  onClick={() => navigate('/choisir-statut')}
+                  className="w-full btn-administrative btn-touch"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate('/choisir-statut');
+                  }}
                 >
                   Commencer
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <Card className="card-administrative">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 mx-auto bg-primary/10 rounded-sm flex items-center justify-center mb-2">
-                  <FileText className="h-6 w-6 text-primary" />
+            <div className="card-premium group cursor-pointer">
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <FileText className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="text-lg">Mes dossiers</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Consulter l'état de vos démarches en cours
-                </p>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-semibold text-foreground">Mes dossiers</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Consulter l'état de vos démarches en cours
+                  </p>
+                </div>
                 <Button 
-                  className="w-full btn-administrative-outline"
+                  className="w-full btn-administrative-outline btn-touch"
                   onClick={() => toast({
                     title: "Fonctionnalité à venir",
                     description: "Le suivi des dossiers sera bientôt disponible.",
@@ -160,22 +175,22 @@ const Dashboard = () => {
                 >
                   Voir mes dossiers
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <Card className="card-administrative">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 mx-auto bg-primary/10 rounded-sm flex items-center justify-center mb-2">
-                  <User className="h-6 w-6 text-primary" />
+            <div className="card-premium group cursor-pointer sm:col-span-2 lg:col-span-1">
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <User className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="text-lg">Mon compte</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Gérer vos informations personnelles
-                </p>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-semibold text-foreground">Mon compte</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Gérer vos informations personnelles
+                  </p>
+                </div>
                 <Button 
-                  className="w-full btn-administrative-outline"
+                  className="w-full btn-administrative-outline btn-touch"
                   onClick={() => toast({
                     title: "Fonctionnalité à venir",
                     description: "La gestion du compte sera bientôt disponible.",
@@ -183,36 +198,42 @@ const Dashboard = () => {
                 >
                   Gérer mon compte
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
 
-          {/* User Info */}
-          <Card className="card-administrative">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <User className="h-5 w-5 mr-2" />
-                Informations de connexion
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm font-medium text-foreground">Adresse email</p>
-                  <p className="text-sm text-muted-foreground">{user?.email}</p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-foreground">Dernière connexion</p>
-                  <p className="text-sm text-muted-foreground">
-                    {user?.last_sign_in_at 
-                      ? new Date(user.last_sign_in_at).toLocaleString('fr-FR')
-                      : 'Première connexion'
-                    }
-                  </p>
+          {/* Account Information */}
+          <div className="card-premium">
+            <div className="flex items-center space-x-4 mb-6">
+              <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center">
+                <User className="h-6 w-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-foreground">Informations de connexion</h3>
+                <p className="text-sm text-muted-foreground">
+                  Détails de votre compte sécurisé
+                </p>
+              </div>
+            </div>
+            
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <div className="text-sm font-medium text-foreground">Adresse email</div>
+                <div className="text-base text-muted-foreground font-medium bg-muted/50 px-4 py-3 rounded-xl">
+                  {user?.email}
                 </div>
               </div>
-            </CardContent>
-          </Card>
+              <div className="space-y-2">
+                <div className="text-sm font-medium text-foreground">Dernière connexion</div>
+                <div className="text-base text-muted-foreground font-medium bg-muted/50 px-4 py-3 rounded-xl">
+                  {user?.last_sign_in_at 
+                    ? new Date(user.last_sign_in_at).toLocaleString('fr-FR')
+                    : 'Première connexion'
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

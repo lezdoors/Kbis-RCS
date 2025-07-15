@@ -580,42 +580,112 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Official Footer */}
-      <footer className="section-administrative bg-foreground text-background">
-        <div className="container-administrative">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <Building2 className="w-6 h-6" />
-                <span className="font-semibold">RCS Express</span>
+      {/* Premium Apple-Style Footer */}
+      <footer className="bg-foreground text-background">
+        <div className="container-administrative py-16">
+          {/* Main Footer Content */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {/* Brand Section */}
+            <div className="space-y-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-background/10 rounded-2xl flex items-center justify-center">
+                  <Building2 className="w-6 h-6 text-background" />
+                </div>
+                <span className="text-xl font-semibold text-background">RCS Express</span>
               </div>
-              <p className="text-sm text-background/80">
+              <p className="text-sm text-background/70 leading-relaxed">
                 Service officiel d'immatriculation au Registre du Commerce et des Sociétés.
+                Simplifions ensemble vos démarches d'entreprise.
               </p>
             </div>
             
+            {/* Services */}
             <div className="space-y-4">
-              <h3 className="font-semibold">Services</h3>
-              <ul className="space-y-2 text-sm text-background/80">
-                <li>Immatriculation RCS</li>
-                <li>Création de société</li>
-                <li>Micro-entreprise</li>
-                <li>Accompagnement juridique</li>
-              </ul>
+              <h3 className="font-semibold text-background text-base">Services</h3>
+              <nav className="space-y-3">
+                <a href="#" className="block text-sm text-background/70 hover:text-background transition-colors">
+                  Immatriculation RCS
+                </a>
+                <a href="#" className="block text-sm text-background/70 hover:text-background transition-colors">
+                  Création de société
+                </a>
+                <a href="#" className="block text-sm text-background/70 hover:text-background transition-colors">
+                  Micro-entreprise
+                </a>
+                <a href="#" className="block text-sm text-background/70 hover:text-background transition-colors">
+                  Accompagnement juridique
+                </a>
+              </nav>
             </div>
             
+            {/* Support */}
             <div className="space-y-4">
-              <h3 className="font-semibold">Contact</h3>
-              <div className="space-y-2 text-sm text-background/80">
-                <p>Service client : du lundi au vendredi</p>
-                <p>9h00 - 18h00</p>
-                <p>contact@rcs-express.fr</p>
+              <h3 className="font-semibold text-background text-base">Support</h3>
+              <nav className="space-y-3">
+                <a href="#faq" className="block text-sm text-background/70 hover:text-background transition-colors">
+                  Questions fréquentes
+                </a>
+                <a href="#" className="block text-sm text-background/70 hover:text-background transition-colors">
+                  Guide d'utilisation
+                </a>
+                <a href="#" className="block text-sm text-background/70 hover:text-background transition-colors">
+                  Documentation
+                </a>
+                <a href="#" className="block text-sm text-background/70 hover:text-background transition-colors">
+                  Statut du service
+                </a>
+              </nav>
+            </div>
+            
+            {/* Contact */}
+            <div className="space-y-4">
+              <h3 className="font-semibold text-background text-base">Contact</h3>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 bg-success rounded-full"></div>
+                  <span className="text-sm text-background/70">Service ouvert</span>
+                </div>
+                <div className="text-sm text-background/70">
+                  <p>Du lundi au vendredi</p>
+                  <p>9h00 - 18h00</p>
+                </div>
+                <a href="mailto:contact@rcs-express.fr" className="text-sm text-background/70 hover:text-background transition-colors">
+                  contact@rcs-express.fr
+                </a>
               </div>
             </div>
           </div>
           
-          <div className="border-t border-background/20 mt-8 pt-8 text-center text-sm text-background/80">
-            <p>© 2024 RCS Express - Service agréé pour l'immatriculation d'entreprises</p>
+          {/* Bottom Bar */}
+          <div className="border-t border-background/10 pt-8">
+            <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+              <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
+                <p className="text-sm text-background/70">
+                  © 2024 RCS Express - Service agréé pour l'immatriculation d'entreprises
+                </p>
+                <div className="flex items-center space-x-4">
+                  <a href="#" className="text-xs text-background/50 hover:text-background/70 transition-colors">
+                    Mentions légales
+                  </a>
+                  <a href="#" className="text-xs text-background/50 hover:text-background/70 transition-colors">
+                    Politique de confidentialité
+                  </a>
+                  <a href="#" className="text-xs text-background/50 hover:text-background/70 transition-colors">
+                    CGU
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                  <span className="text-xs text-background/70">Sécurisé SSL</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                  <span className="text-xs text-background/70">Conformité RGPD</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </footer>

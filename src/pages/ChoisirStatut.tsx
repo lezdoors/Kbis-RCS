@@ -174,89 +174,105 @@ const ChoisirStatut = () => {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {legalStructures.map((structure) => (
-              <Card 
+              <div 
                 key={structure.name}
-                className="card-administrative cursor-pointer hover-administrative transition-all duration-200 h-full"
+                className="card-premium group cursor-pointer h-full relative overflow-hidden"
                 onClick={() => {
                   localStorage.setItem('selectedStructure', JSON.stringify(structure));
                   navigate(structure.route);
                 }}
               >
-                <CardHeader className="text-center pb-4">
-                  <div className="w-12 h-12 mx-auto mb-3 bg-primary/10 rounded-sm flex items-center justify-center">
-                    <Building2 className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl font-bold">{structure.name}</CardTitle>
-                  <CardDescription className="text-sm text-muted-foreground">
-                    {structure.fullName}
-                  </CardDescription>
-                  <Badge className="bg-primary text-primary-foreground text-base font-semibold px-4 py-1 mt-3">
+                {/* Premium Badge */}
+                <div className="absolute top-6 right-6 z-10">
+                  <div className={`px-4 py-2 rounded-full text-sm font-bold text-white shadow-lg ${
+                    structure.price === '79€' ? 'bg-gradient-to-r from-orange-500 to-red-500' : 'bg-gradient-to-r from-primary to-primary-glow'
+                  }`}>
                     {structure.price} TTC
-                  </Badge>
-                </CardHeader>
+                  </div>
+                </div>
 
-                <CardContent className="space-y-6">
-                  <p className="text-center text-muted-foreground text-sm font-medium">
-                    {structure.description}
-                  </p>
+                <div className="space-y-6">
+                  {/* Header */}
+                  <div className="text-center space-y-4 pt-4">
+                    <div className="w-16 h-16 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <Building2 className="h-8 w-8 text-primary" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-2xl font-bold text-foreground">{structure.name}</h3>
+                      <p className="text-sm text-muted-foreground font-medium">
+                        {structure.fullName}
+                      </p>
+                    </div>
+                  </div>
 
+                  {/* Description */}
+                  <div className="px-2">
+                    <p className="text-center text-muted-foreground leading-relaxed">
+                      {structure.description}
+                    </p>
+                  </div>
+
+                  {/* Benefits & Considerations */}
                   <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold text-success mb-3 flex items-center text-sm">
+                    <div className="bg-success/5 border border-success/20 rounded-2xl p-4">
+                      <h4 className="font-semibold text-success mb-3 flex items-center">
                         <CheckCircle className="h-4 w-4 mr-2" />
                         Avantages principaux
                       </h4>
-                      <ul className="space-y-1.5">
+                      <ul className="space-y-2">
                         {structure.pros.slice(0, 3).map((pro, index) => (
-                          <li key={index} className="flex items-start text-xs text-muted-foreground">
-                            <span className="text-success mr-2 mt-0.5">•</span>
+                          <li key={index} className="flex items-start text-sm text-muted-foreground">
+                            <span className="w-2 h-2 bg-success rounded-full mt-2 mr-3 flex-shrink-0"></span>
                             <span>{pro}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div>
-                      <h4 className="font-semibold text-warning mb-3 flex items-center text-sm">
+                    <div className="bg-warning/5 border border-warning/20 rounded-2xl p-4">
+                      <h4 className="font-semibold text-warning mb-3 flex items-center">
                         <Info className="h-4 w-4 mr-2" />
                         Points d'attention
                       </h4>
-                      <ul className="space-y-1.5">
+                      <ul className="space-y-2">
                         {structure.cons.slice(0, 2).map((con, index) => (
-                          <li key={index} className="flex items-start text-xs text-muted-foreground">
-                            <span className="text-warning mr-2 mt-0.5">•</span>
+                          <li key={index} className="flex items-start text-sm text-muted-foreground">
+                            <span className="w-2 h-2 bg-warning rounded-full mt-2 mr-3 flex-shrink-0"></span>
                             <span>{con}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="bg-accent/30 border border-border rounded-sm p-3">
-                      <h4 className="font-semibold mb-2 flex items-center text-sm">
-                        <Users className="h-4 w-4 mr-2 text-primary" />
+                    <div className="bg-primary/5 border border-primary/20 rounded-2xl p-4">
+                      <h4 className="font-semibold text-primary mb-3 flex items-center">
+                        <Users className="h-4 w-4 mr-2" />
                         Recommandé pour
                       </h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
                         {structure.target}
                       </p>
                     </div>
                   </div>
 
-                  <Button 
-                    className="w-full btn-administrative text-sm"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      localStorage.setItem('selectedStructure', JSON.stringify(structure));
-                      navigate(structure.route);
-                    }}
-                  >
-                    <FileText className="h-4 w-4 mr-2" />
-                    Sélectionner {structure.name}
-                  </Button>
-                </CardContent>
-              </Card>
+                  {/* Action Button */}
+                  <div className="pt-2">
+                    <Button 
+                      className="w-full btn-administrative btn-touch-lg text-base btn-ripple"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        localStorage.setItem('selectedStructure', JSON.stringify(structure));
+                        navigate(structure.route);
+                      }}
+                    >
+                      <FileText className="h-5 w-5 mr-2" />
+                      Sélectionner {structure.name}
+                    </Button>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
 
