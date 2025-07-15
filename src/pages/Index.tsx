@@ -152,26 +152,32 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Official Administrative Header */}
+      {/* Premium Administrative Header */}
       <header className="header-administrative">
         <div className="container-administrative">
           <div className="flex h-16 items-center justify-between">
-            {/* Official Logo */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-sm bg-primary flex items-center justify-center">
+            {/* Enhanced Logo */}
+            <div className="flex items-center space-x-4">
+              <div className="w-10 h-10 rounded-2xl bg-primary flex items-center justify-center shadow-soft">
                 <Building2 className="w-6 h-6 text-primary-foreground" />
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-semibold text-foreground">RCS Express</span>
-                <span className="text-xs text-muted-foreground">Service agréé</span>
+                <span className="text-xs text-muted-foreground font-medium">Service agréé</span>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-6">
-              <a href="#services" className="text-foreground hover:text-primary transition-colors text-sm font-medium">Services</a>
-              <a href="#tarifs" className="text-foreground hover:text-primary transition-colors text-sm font-medium">Tarifs officiels</a>
-              <a href="#faq" className="text-foreground hover:text-primary transition-colors text-sm font-medium">Questions fréquentes</a>
+            <nav className="hidden md:flex items-center space-x-8">
+              <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium">
+                Services
+              </a>
+              <a href="#tarifs" className="text-foreground hover:text-primary transition-colors font-medium">
+                Tarifs officiels
+              </a>
+              <a href="#faq" className="text-foreground hover:text-primary transition-colors font-medium">
+                Questions fréquentes
+              </a>
             </nav>
 
             {/* Desktop CTA */}
@@ -179,12 +185,15 @@ const Index = () => {
               <Button 
                 variant="outline" 
                 onClick={() => navigate('/login')} 
-                className="btn-administrative-outline"
+                className="btn-administrative-outline btn-touch"
               >
                 Se connecter
               </Button>
-              <Button onClick={() => navigate('/commencer')} className="btn-administrative">
-                Commencer mon inscription
+              <Button 
+                onClick={() => navigate('/choisir-statut')} 
+                className="btn-administrative btn-touch"
+              >
+                Commencer ma démarche
               </Button>
             </div>
 
@@ -286,40 +295,58 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Process Steps - Government Style */}
+      {/* Premium Process Steps Section */}
       <section className="section-administrative" id="services">
         <div className="container-administrative">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold">Processus d'immatriculation</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Démarche simplifiée en 3 étapes pour créer votre entreprise
+          <div className="text-center space-y-6 mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
+              Processus d'immatriculation
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Démarche simplifiée en 3 étapes pour créer votre entreprise légalement
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             {processSteps.map((step, index) => (
-              <div key={step.number} className="text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-primary text-primary-foreground rounded-sm flex items-center justify-center text-xl font-bold">
-                  {step.number}
+              <div key={step.number} className="text-center space-y-6 group">
+                {/* Step Number with Premium Styling */}
+                <div className="relative mx-auto w-20 h-20">
+                  <div className="w-20 h-20 bg-primary text-primary-foreground rounded-3xl flex items-center justify-center text-2xl font-bold shadow-large group-hover:shadow-xl transition-all duration-300">
+                    {step.number}
+                  </div>
+                  {/* Connection Line */}
+                  {index < processSteps.length - 1 && (
+                    <div className="hidden md:block absolute top-10 left-20 w-full h-0.5 bg-gradient-to-r from-primary to-transparent">
+                      <ArrowRight className="absolute -top-2 -right-2 w-4 h-4 text-primary" />
+                    </div>
+                  )}
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold">{step.title}</h3>
-                  <p className="text-muted-foreground text-sm">{step.description}</p>
-                  <div className="text-sm font-medium text-primary">
-                    Durée estimée : {step.duration}
+
+                <div className="space-y-4">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground">
+                    {step.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {step.description}
+                  </p>
+                  <div className="inline-flex items-center space-x-2 text-sm font-medium text-primary bg-primary/10 px-4 py-2 rounded-full">
+                    <Clock className="w-4 h-4" />
+                    <span>Durée estimée : {step.duration}</span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-16">
             <Button 
               onClick={() => navigate('/choisir-statut')} 
-              className="btn-administrative"
+              className="btn-administrative btn-touch-lg text-lg btn-ripple"
               size="lg"
             >
               Démarrer ma démarche
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
         </div>
@@ -393,116 +420,156 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Official Pricing */}
+      {/* Premium Pricing Section */}
       <section className="section-administrative" id="tarifs">
         <div className="container-administrative">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold">Tarifs officiels</h2>
-            <p className="text-lg text-muted-foreground">
+          <div className="text-center space-y-6 mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
+              Tarifs officiels
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Prix transparents, tout inclus, sans frais cachés
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* SASU/SARL/EURL/SAS */}
-            <Card className="card-administrative p-6">
-              <CardHeader className="text-center">
-                <CardTitle className="text-xl">SASU / SARL / EURL / SAS</CardTitle>
-                <div className="text-3xl font-bold text-primary">129€ TTC</div>
-                <CardDescription>Tout inclus - Aucun frais supplémentaire</CardDescription>
-              </CardHeader>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Premium Corporate Package */}
+            <div className="card-premium relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-gradient-to-r from-primary to-primary-glow text-white px-6 py-2 rounded-bl-2xl">
+                <span className="text-sm font-semibold">Populaire</span>
+              </div>
               
-              <CardContent className="space-y-4">
+              <div className="text-center space-y-6 mb-8">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center">
+                  <Building2 className="w-8 h-8 text-primary" />
+                </div>
                 <div className="space-y-2">
-                  <h4 className="font-medium text-sm">Services inclus :</h4>
-                  <div className="space-y-1 text-sm">
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-success" />
-                      <span>Traitement complet du dossier</span>
+                  <h3 className="text-2xl font-bold text-foreground">SASU / SARL / EURL / SAS</h3>
+                  <div className="flex items-center justify-center space-x-2">
+                    <span className="text-4xl md:text-5xl font-bold text-primary">129€</span>
+                    <span className="text-sm text-muted-foreground">TTC</span>
+                  </div>
+                  <p className="text-muted-foreground">Tout inclus - Aucun frais supplémentaire</p>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-foreground">Services inclus :</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-4 h-4 text-success" />
+                      </div>
+                      <span className="text-muted-foreground">Traitement complet du dossier</span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-success" />
-                      <span>Rédaction des statuts</span>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-4 h-4 text-success" />
+                      </div>
+                      <span className="text-muted-foreground">Rédaction des statuts</span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-success" />
-                      <span>Transmission au greffe</span>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-4 h-4 text-success" />
+                      </div>
+                      <span className="text-muted-foreground">Transmission au greffe</span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-success" />
-                      <span>Suivi personnalisé</span>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-4 h-4 text-success" />
+                      </div>
+                      <span className="text-muted-foreground">Suivi personnalisé</span>
                     </div>
                   </div>
                 </div>
 
                 <Button 
                   onClick={() => navigate('/choisir-statut')}
-                  className="w-full btn-administrative"
+                  className="w-full btn-administrative btn-touch-lg text-lg btn-ripple"
                 >
                   Créer ma société
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            {/* Micro-entreprise */}
-            <Card className="card-administrative p-6">
-              <CardHeader className="text-center">
-                <CardTitle className="text-xl">Micro-entreprise</CardTitle>
-                <div className="text-3xl font-bold text-primary">79€ TTC</div>
-                <CardDescription>Formule simplifiée</CardDescription>
-              </CardHeader>
-              
-              <CardContent className="space-y-4">
+            {/* Micro-Enterprise Package */}
+            <div className="card-premium">
+              <div className="text-center space-y-6 mb-8">
+                <div className="w-16 h-16 mx-auto bg-orange-100 rounded-3xl flex items-center justify-center">
+                  <FileText className="w-8 h-8 text-orange-600" />
+                </div>
                 <div className="space-y-2">
-                  <h4 className="font-medium text-sm">Services inclus :</h4>
-                  <div className="space-y-1 text-sm">
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-success" />
-                      <span>Déclaration d'activité</span>
+                  <h3 className="text-2xl font-bold text-foreground">Micro-entreprise</h3>
+                  <div className="flex items-center justify-center space-x-2">
+                    <span className="text-4xl md:text-5xl font-bold text-orange-600">79€</span>
+                    <span className="text-sm text-muted-foreground">TTC</span>
+                  </div>
+                  <p className="text-muted-foreground">Formule simplifiée</p>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-foreground">Services inclus :</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-4 h-4 text-success" />
+                      </div>
+                      <span className="text-muted-foreground">Déclaration d'activité</span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-success" />
-                      <span>Immatriculation RCS</span>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-4 h-4 text-success" />
+                      </div>
+                      <span className="text-muted-foreground">Immatriculation RCS</span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-success" />
-                      <span>Accompagnement</span>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-6 h-6 bg-success/20 rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-4 h-4 text-success" />
+                      </div>
+                      <span className="text-muted-foreground">Accompagnement</span>
                     </div>
                   </div>
                 </div>
 
                 <Button 
                   onClick={() => navigate('/choisir-statut')}
-                  className="w-full btn-administrative"
+                  className="w-full btn-administrative-outline btn-touch-lg text-lg"
                 >
                   Créer ma micro-entreprise
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Official Guarantees */}
-      <section className="section-administrative bg-secondary">
+      {/* Premium Service Guarantees */}
+      <section className="section-administrative bg-gradient-to-b from-background to-secondary">
         <div className="container-administrative">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold">Garanties de service</h2>
-            <p className="text-lg text-muted-foreground">
-              Nos engagements pour votre tranquillité
+          <div className="text-center space-y-6 mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
+              Garanties de service
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Nos engagements pour votre tranquillité d'esprit
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => {
               const IconComponent = benefit.icon;
               return (
-                <div key={index} className="bg-card border border-border rounded-sm p-4 text-center space-y-3">
-                  <div className="w-12 h-12 mx-auto bg-primary/10 rounded-sm flex items-center justify-center">
-                    <IconComponent className="h-6 w-6 text-primary" />
+                <div key={index} className="card-premium group text-center space-y-6">
+                  <div className="w-16 h-16 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <IconComponent className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-sm">{benefit.title}</h3>
-                  <p className="text-xs text-muted-foreground">{benefit.description}</p>
+                  <div className="space-y-3">
+                    <h3 className="text-xl font-semibold text-foreground">{benefit.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
+                  </div>
                 </div>
               );
             })}
@@ -510,67 +577,103 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Official References */}
+      {/* Premium Trust & Statistics Section */}
       <section className="section-administrative">
         <div className="container-administrative">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold">Nos références</h2>
-            <p className="text-lg text-muted-foreground">
+          <div className="text-center space-y-6 mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
+              Nos références
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Service reconnu par les institutions officielles
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-primary">3,247</div>
-              <div className="text-sm text-muted-foreground">Entreprises créées en 2024</div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div className="text-center space-y-4 group">
+              <div className="w-20 h-20 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <Building2 className="w-8 h-8 text-primary" />
+              </div>
+              <div className="space-y-2">
+                <div className="text-3xl md:text-4xl font-bold text-primary">3,247</div>
+                <div className="text-sm text-muted-foreground font-medium">Entreprises créées en 2024</div>
+              </div>
             </div>
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-primary">48h</div>
-              <div className="text-sm text-muted-foreground">Délai moyen de traitement</div>
+            <div className="text-center space-y-4 group">
+              <div className="w-20 h-20 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <Clock className="w-8 h-8 text-primary" />
+              </div>
+              <div className="space-y-2">
+                <div className="text-3xl md:text-4xl font-bold text-primary">48h</div>
+                <div className="text-sm text-muted-foreground font-medium">Délai moyen de traitement</div>
+              </div>
             </div>
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-primary">100%</div>
-              <div className="text-sm text-muted-foreground">Conformité légale</div>
+            <div className="text-center space-y-4 group">
+              <div className="w-20 h-20 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <Shield className="w-8 h-8 text-primary" />
+              </div>
+              <div className="space-y-2">
+                <div className="text-3xl md:text-4xl font-bold text-primary">100%</div>
+                <div className="text-sm text-muted-foreground font-medium">Conformité légale</div>
+              </div>
             </div>
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-primary">4.9/5</div>
-              <div className="text-sm text-muted-foreground">Satisfaction client</div>
+            <div className="text-center space-y-4 group">
+              <div className="w-20 h-20 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <Star className="w-8 h-8 text-primary" />
+              </div>
+              <div className="space-y-2">
+                <div className="text-3xl md:text-4xl font-bold text-primary">4.9/5</div>
+                <div className="text-sm text-muted-foreground font-medium">Satisfaction client</div>
+              </div>
             </div>
           </div>
 
-          <div className="mt-12 text-center">
-            <div className="bg-card border border-border rounded-sm p-6 max-w-2xl mx-auto">
-              <h3 className="font-semibold mb-4">Agréments et certifications</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-muted-foreground">
-                <div>Service agréé</div>
-                <div>Conformité RGPD</div>
-                <div>Sécurité ISO 27001</div>
-                <div>Certification greffe</div>
+          <div className="text-center">
+            <div className="card-premium max-w-4xl mx-auto">
+              <h3 className="text-xl font-semibold mb-8 text-foreground">Agréments et certifications</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                  <span className="text-sm text-muted-foreground">Service agréé</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                  <span className="text-sm text-muted-foreground">Conformité RGPD</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                  <span className="text-sm text-muted-foreground">Sécurité ISO 27001</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                  <span className="text-sm text-muted-foreground">Certification greffe</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="section-administrative bg-muted" id="faq">
+      {/* Premium FAQ Section */}
+      <section className="section-administrative bg-gradient-to-b from-background to-muted" id="faq">
         <div className="container-administrative">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold">Questions fréquentes</h2>
-            <p className="text-lg text-muted-foreground">
-              Réponses aux questions les plus courantes
+          <div className="text-center space-y-6 mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
+              Questions fréquentes
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Réponses aux questions les plus courantes sur l'immatriculation RCS
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-2">
+          <div className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="bg-card border border-border rounded-sm">
-                  <AccordionTrigger className="px-4 py-3 text-left font-medium hover:no-underline">
+                <AccordionItem key={index} value={`item-${index}`} className="card-premium overflow-hidden">
+                  <AccordionTrigger className="px-6 py-4 text-left font-semibold hover:no-underline text-foreground text-base md:text-lg">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-3 text-muted-foreground text-sm">
+                  <AccordionContent className="px-6 pb-6 text-muted-foreground leading-relaxed">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
