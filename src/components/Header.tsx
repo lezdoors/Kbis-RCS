@@ -2,21 +2,23 @@ import { Button } from "@/components/ui/button";
 import { Phone, Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { TrustBar } from "@/components/TrustBar";
 
-// Official Inscription RCS logos - uploaded versions
-const centerLogo = "/lovable-uploads/02f38eff-0bf3-4875-88a2-5fce416ad9e4.png"; // Centered logo for navbar
+// Updated logo
+const logoUrl = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/logo%20(Website)-4.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL2xvZ28gKFdlYnNpdGUpLTQucG5nIiwiaWF0IjoxNzUyNjIxNzY1LCJleHAiOjE3ODQxNTc3NjV9.60JyyfwBu1udHkcxoTpXE1yw0ZSnDZ4BxWYKZAOrlwc";
 
 export const Header = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white border-b border-border shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      <header className="bg-white border-b border-border shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img src={centerLogo} alt="Inscription RCS" className="h-12 w-auto object-contain" />
+            <img src={logoUrl} alt="RCS Express" className="h-8 w-auto md:h-10 object-contain" />
           </div>
 
           {/* Desktop Navigation */}
@@ -97,7 +99,9 @@ export const Header = () => {
             </div>
           </div>
         )}
-      </div>
-    </header>
+        </div>
+      </header>
+      <TrustBar />
+    </>
   );
 };

@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Star, ArrowRight, Zap, Trophy, Lock, Smartphone, CheckCircle, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { GuaranteeSection } from "@/components/GuaranteeBadges";
+import { SocialProofTestimonials } from "@/components/SocialProofTestimonials";
 
 interface HeroSectionProps {
   title?: string;
@@ -180,6 +182,16 @@ export const HeroSection = ({
                   </div>
                 </div>
               )}
+
+              {/* Guarantee Badges */}
+              <div className="animate-slide-in-left [animation-delay:1s]">
+                <GuaranteeSection />
+              </div>
+
+              {/* Social Proof Testimonials */}
+              <div className="animate-slide-in-left [animation-delay:1.2s]">
+                <SocialProofTestimonials />
+              </div>
             </div>
 
             {/* Right Column - Enhanced Illustration */}

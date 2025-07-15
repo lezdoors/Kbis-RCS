@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { GuaranteeBadge } from "@/components/GuaranteeBadges";
 
 export const ProcessSection = () => {
   const navigate = useNavigate();
@@ -136,6 +137,11 @@ export const ProcessSection = () => {
           <p className="mt-4 text-sm text-muted-foreground">
             ⚡ Plus rapide que LegalPlace et tous nos concurrents
           </p>
+
+          {/* Guarantee Badge */}
+          <div className="mt-6">
+            <GuaranteeBadge text="Livraison en 24h ou remboursé" />
+          </div>
         </div>
       </div>
     </section>
