@@ -7,112 +7,124 @@ export const ProcessSection = () => {
 
   const processSteps = [
     {
-      number: "1",
-      title: "Sélection du statut juridique",
-      description: "Choisissez la forme juridique adaptée à votre activité",
-      duration: "5 minutes"
+      number: "01",
+      title: "Configuration Ultra-Rapide",
+      description: "Questionnaire intelligent en 2 minutes. Notre IA pré-remplit tout automatiquement.",
+      competitiveNote: "VS 15 minutes chez LegalPlace",
+      image: "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/too-blk-stairs.jpg.png",
+      altText: "Processus rapide de configuration",
+      timeline: "2 minutes"
     },
     {
-      number: "2",
-      title: "Saisie des informations",
-      description: "Complétez le formulaire avec les données de votre entreprise",
-      duration: "10 minutes"
+      number: "02",
+      title: "Traitement Express",
+      description: "Nos experts traitent votre dossier en temps record. Suivi en direct via votre tableau de bord.",
+      competitiveNote: "VS attente aveugle ailleurs",
+      image: "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/Team-red-stairs.jpg.png",
+      altText: "Traitement expert rapide",
+      timeline: "1-12 heures"
     },
     {
-      number: "3",
-      title: "Validation et transmission",
-      description: "Vérification et envoi au registre du commerce compétent",
-      duration: "48-72h"
+      number: "03",
+      title: "Livraison Garantie",
+      description: "KBIS reçu en 24h maximum ou remboursé. Plus rapide que tous nos concurrents.",
+      competitiveNote: "VS 3-5 jours minimum ailleurs",
+      image: "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/Team-green-pie.jpg.png",
+      altText: "Livraison garantie rapide",
+      timeline: "24h max"
     }
   ];
 
   return (
-    <section className="bg-gray-50 py-16 sm:py-20 lg:py-24" id="process">
+    <section className="bg-background py-16 sm:py-20 lg:py-24" id="process">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-6 mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
-            Comment ça marche ?
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            3 étapes pour battre vos concurrents en vitesse
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Process Steps */}
-          <div className="space-y-8">
-            <div className="bg-white rounded-3xl p-8 shadow-lg">
-              <div className="space-y-6">
-                {processSteps.map((step, index) => (
-                  <div key={step.number} className="flex items-center space-x-4">
-                    <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
-                      {step.number}
+        {/* 3-Step Timeline */}
+        <div className="relative">
+          {/* Progress Line - Hidden on mobile */}
+          <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gray-200 z-0">
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-500 to-orange-500 w-full"></div>
+          </div>
+
+          {/* Steps Grid */}
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12 relative z-10">
+            {processSteps.map((step, index) => (
+              <div key={step.number} className="flex flex-col items-center text-center">
+                {/* Step Card */}
+                <div className="bg-card border border-border rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden w-full max-w-sm">
+                  {/* Image */}
+                  <div className="relative p-6 pb-4">
+                    <img 
+                      src={step.image}
+                      alt={step.altText}
+                      className="w-full h-40 object-contain mx-auto rounded-lg"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 pt-2 space-y-4">
+                    {/* Step Number */}
+                    <div className="flex justify-center">
+                      <div className="w-16 h-16 bg-[#EA580C] text-white rounded-full flex items-center justify-center text-xl font-bold">
+                        {step.number}
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground">{step.title}</h3>
-                      <p className="text-sm text-muted-foreground">{step.description}</p>
+
+                    {/* Timeline Badge */}
+                    <div className="flex justify-center">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                        {step.timeline}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-foreground">
+                      {step.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground leading-relaxed">
+                      {step.description}
+                    </p>
+
+                    {/* Competitive Note */}
+                    <div className="pt-2">
+                      <p className="text-red-600 font-medium text-sm">
+                        {step.competitiveNote}
+                      </p>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-            
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-primary rounded-full mt-2"></div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">Vous complétez le questionnaire.</h3>
                 </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-primary rounded-full mt-2"></div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">Nous préparons votre dossier pour qu'il soit conforme.</h3>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-primary rounded-full mt-2"></div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">Nous déposons votre dossier sur le Guichet Unique (INPI).</h3>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-primary rounded-full mt-2"></div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">Nous assurons la gestion des échanges avec le greffe.</h3>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-success rounded-full mt-2"></div>
-                <div>
-                  <h3 className="font-semibold text-success mb-2">Votre entreprise est créée !</h3>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-success rounded-full mt-2"></div>
-                <div>
-                  <h3 className="font-semibold text-success mb-2">Vous pouvez démarrer votre activité !</h3>
-                </div>
-              </div>
-            </div>
 
-            <Button 
-              onClick={() => navigate('/choisir-statut')} 
-              size="lg" 
-              className="btn-administrative text-lg px-8 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              Commencer maintenant
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+                {/* Mobile connector line */}
+                {index < processSteps.length - 1 && (
+                  <div className="md:hidden w-0.5 h-8 bg-orange-500 my-4"></div>
+                )}
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* Right - Illustration */}
-          <div className="relative flex justify-center lg:justify-end">
-            <div className="max-w-[300px] w-full">
-              <img 
-                src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/Toon-blue-stairs.jpg.png"
-                alt="Progression par étapes vers la création d'entreprise"
-                className="w-full h-auto object-contain rounded-xl shadow-lg"
-              />
-            </div>
-          </div>
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <Button 
+            onClick={() => navigate('/choisir-statut')} 
+            size="lg" 
+            className="bg-[#EA580C] hover:bg-[#EA580C]/90 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 rounded-xl font-semibold"
+          >
+            Commencer maintenant - Battez vos concurrents
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+          
+          <p className="mt-4 text-sm text-muted-foreground">
+            ⚡ Plus rapide que LegalPlace et tous nos concurrents
+          </p>
         </div>
       </div>
     </section>
