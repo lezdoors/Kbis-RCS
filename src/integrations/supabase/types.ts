@@ -14,9 +14,111 @@ export type Database = {
   }
   public: {
     Tables: {
+      associes: {
+        Row: {
+          adresse: string | null
+          created_at: string | null
+          demande_id: string | null
+          id: string
+          nom: string
+          pourcentage: number | null
+          prenom: string
+        }
+        Insert: {
+          adresse?: string | null
+          created_at?: string | null
+          demande_id?: string | null
+          id?: string
+          nom: string
+          pourcentage?: number | null
+          prenom: string
+        }
+        Update: {
+          adresse?: string | null
+          created_at?: string | null
+          demande_id?: string | null
+          id?: string
+          nom?: string
+          pourcentage?: number | null
+          prenom?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "associes_demande_id_fkey"
+            columns: ["demande_id"]
+            isOneToOne: false
+            referencedRelation: "demandes_rcs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      demandes_rcs: {
+        Row: {
+          activite: string | null
+          adresse: string | null
+          apport_nature: boolean | null
+          capital_total: number | null
+          created_at: string | null
+          current_step: number | null
+          email: string | null
+          id: string
+          nationalite: string | null
+          nom: string | null
+          nom_entreprise: string | null
+          prenom: string | null
+          status: string | null
+          telephone: string | null
+          type_entreprise: string | null
+          updated_at: string | null
+          user_id: string | null
+          ville: string | null
+        }
+        Insert: {
+          activite?: string | null
+          adresse?: string | null
+          apport_nature?: boolean | null
+          capital_total?: number | null
+          created_at?: string | null
+          current_step?: number | null
+          email?: string | null
+          id?: string
+          nationalite?: string | null
+          nom?: string | null
+          nom_entreprise?: string | null
+          prenom?: string | null
+          status?: string | null
+          telephone?: string | null
+          type_entreprise?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+          ville?: string | null
+        }
+        Update: {
+          activite?: string | null
+          adresse?: string | null
+          apport_nature?: boolean | null
+          capital_total?: number | null
+          created_at?: string | null
+          current_step?: number | null
+          email?: string | null
+          id?: string
+          nationalite?: string | null
+          nom?: string | null
+          nom_entreprise?: string | null
+          prenom?: string | null
+          status?: string | null
+          telephone?: string | null
+          type_entreprise?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+          ville?: string | null
+        }
+        Relationships: []
+      }
       documents: {
         Row: {
           created_at: string | null
+          demande_id: string | null
           form_id: string | null
           id: string
           type: string | null
@@ -24,6 +126,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
+          demande_id?: string | null
           form_id?: string | null
           id?: string
           type?: string | null
@@ -31,12 +134,20 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
+          demande_id?: string | null
           form_id?: string | null
           id?: string
           type?: string | null
           url?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "documents_demande_id_fkey"
+            columns: ["demande_id"]
+            isOneToOne: false
+            referencedRelation: "demandes_rcs"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "documents_form_id_fkey"
             columns: ["form_id"]

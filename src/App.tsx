@@ -8,6 +8,12 @@ import ChoisirStatut from "./pages/ChoisirStatut";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import Commencer from "./pages/Commencer";
+import Coordonnees from "./pages/Coordonnees";
+import Associes from "./pages/Associes";
+import Capital from "./pages/Capital";
+import Documents from "./pages/Documents";
+import Paiement from "./pages/Paiement";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +28,12 @@ const App = () => (
           <Route path="/choisir-statut" element={<ChoisirStatut />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/commencer" element={<Commencer />} />
+          <Route path="/coordonnees" element={<Coordonnees />} />
+          <Route path="/associes" element={<Associes />} />
+          <Route path="/capital" element={<Capital />} />
+          <Route path="/documents" element={<Documents />} />
+          <Route path="/paiement" element={<Paiement />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

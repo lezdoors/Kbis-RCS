@@ -183,8 +183,8 @@ const Index = () => {
               >
                 Se connecter
               </Button>
-              <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative">
-                Commencer ma démarche
+              <Button onClick={() => navigate('/commencer')} className="btn-administrative">
+                Commencer mon inscription
               </Button>
             </div>
 
