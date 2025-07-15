@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Building2, FileText, CheckCircle, Shield, Clock, Users, Star, ArrowRight, Phone, Mail, Menu, X, Info } from "lucide-react";
+import { Building2, FileText, CheckCircle, Shield, Clock, Users, Star, ArrowRight, Phone, Mail, Menu, X, Info, MapPin, Award, MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import modernLogo from "@/assets/modern-logo.png";
+import heroImage from "@/assets/hero-image.jpg";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -153,22 +155,24 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Premium Administrative Header */}
-      <header className="header-administrative">
+      <header className="header-administrative shadow-medium">
         <div className="container-administrative">
-          <div className="flex h-16 items-center justify-between">
-            {/* Enhanced Logo */}
+          <div className="flex h-20 items-center justify-between py-4">
+            {/* Enhanced Logo with Real Image */}
             <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 rounded-2xl bg-primary flex items-center justify-center shadow-soft">
-                <Building2 className="w-6 h-6 text-primary-foreground" />
-              </div>
+              <img 
+                src={modernLogo} 
+                alt="RCS Express" 
+                className="w-16 h-16 rounded-2xl shadow-soft hover:shadow-medium transition-shadow duration-300"
+              />
               <div className="flex flex-col">
-                <span className="text-lg font-semibold text-foreground">RCS Express</span>
-                <span className="text-xs text-muted-foreground font-medium">Service agréé</span>
+                <span className="text-xl font-bold text-foreground">RCS Express</span>
+                <span className="text-sm text-muted-foreground font-medium">Immatriculation ultra-rapide</span>
               </div>
             </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            {/* Desktop Navigation with Phone */}
+            <nav className="hidden lg:flex items-center space-x-8">
               <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium">
                 Services
               </a>
@@ -178,10 +182,18 @@ const Index = () => {
               <a href="#faq" className="text-foreground hover:text-primary transition-colors font-medium">
                 Questions fréquentes
               </a>
+              <div className="flex items-center space-x-2 text-primary font-semibold">
+                <Phone className="w-4 h-4" />
+                <span className="text-sm">01 XX XX XX XX</span>
+              </div>
             </nav>
 
-            {/* Desktop CTA */}
+            {/* Desktop CTA with Trust Elements */}
             <div className="hidden md:flex items-center space-x-3">
+              <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+                <Shield className="w-4 h-4 text-success" />
+                <span>Sécurisé SSL</span>
+              </div>
               <Button 
                 variant="outline" 
                 onClick={() => navigate('/login')} 
@@ -208,24 +220,63 @@ const Index = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Enhanced Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden border-t border-border bg-background">
-              <div className="py-4 space-y-4">
-                <nav className="space-y-2">
-                  <a href="#services" className="block text-foreground hover:text-primary transition-colors text-sm font-medium py-2">Services</a>
-                  <a href="#tarifs" className="block text-foreground hover:text-primary transition-colors text-sm font-medium py-2">Tarifs officiels</a>
-                  <a href="#faq" className="block text-foreground hover:text-primary transition-colors text-sm font-medium py-2">Questions fréquentes</a>
+            <div className="md:hidden border-t border-border bg-background shadow-medium">
+              <div className="py-6 space-y-6">
+                <nav className="space-y-1">
+                  <a href="#services" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
+                    Services
+                  </a>
+                  <a href="#tarifs" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
+                    Tarifs officiels
+                  </a>
+                  <a href="#faq" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
+                    Questions fréquentes
+                  </a>
                 </nav>
-                <div className="space-y-2">
+                
+                {/* Mobile Contact */}
+                <div className="px-4 py-3 bg-primary/5 rounded-lg">
+                  <div className="flex items-center space-x-3">
+                    <Phone className="w-5 h-5 text-primary" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Besoin d'aide ?</p>
+                      <p className="text-sm text-primary font-semibold">01 XX XX XX XX</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile Trust Elements */}
+                <div className="px-4 space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <Shield className="w-4 h-4 text-success" />
+                    <span className="text-sm text-muted-foreground">Sécurisé SSL</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Star className="w-4 h-4 text-yellow-500" />
+                    <span className="text-sm text-muted-foreground">4.9/5 sur Google</span>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
                   <Button 
                     variant="outline" 
-                    onClick={() => navigate('/login')} 
-                    className="btn-administrative-outline w-full"
+                    onClick={() => {
+                      navigate('/login');
+                      setIsMobileMenuOpen(false);
+                    }} 
+                    className="btn-administrative-outline w-full btn-touch-lg"
                   >
                     Se connecter
                   </Button>
-                  <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative w-full">
+                  <Button 
+                    onClick={() => {
+                      navigate('/choisir-statut');
+                      setIsMobileMenuOpen(false);
+                    }} 
+                    className="btn-administrative w-full btn-touch-lg"
+                  >
                     Commencer ma démarche
                   </Button>
                 </div>
@@ -236,84 +287,94 @@ const Index = () => {
       </header>
 
       {/* LegalPlace-Inspired Hero Section */}
-      <section className="hero-administrative section-administrative">
+      <section className="hero-administrative section-administrative overflow-hidden">
         <div className="container-administrative">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* LEFT SIDE */}
-            <div className="space-y-8 animate-fade-in">
+            <div className="space-y-6 lg:space-y-8 animate-fade-in">
               {/* Headline & Subheadline */}
               <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight">
                   Inscription RCS ultra rapide dès <span className="text-primary">79€</span> !
                 </h1>
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
                   Accompagnement personnalisé par un juriste dédié jusqu'à l'obtention du Kbis
                 </p>
               </div>
 
               {/* Activity Selector */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">
+                <h3 className="text-base sm:text-lg font-semibold text-foreground">
                   Quel sera votre domaine d'activité ?
                 </h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
                   {legalStructures.slice(0, 6).map((structure) => {
                     const IconComponent = structure.icon;
                     return (
                       <div 
                         key={structure.name}
-                        className="flex flex-col items-center p-4 border border-border rounded-lg hover:border-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer group"
+                        className="flex flex-col items-center p-3 sm:p-4 border border-border rounded-lg hover:border-primary hover:bg-primary/5 hover:shadow-medium transition-all duration-300 cursor-pointer group transform hover:scale-105"
                         onClick={() => navigate('/choisir-statut')}
                       >
-                        <div className="w-8 h-8 mb-2 text-primary group-hover:text-primary/80 transition-colors">
+                        <div className="w-6 h-6 sm:w-8 sm:h-8 mb-2 text-primary group-hover:text-primary/80 transition-colors">
                           <IconComponent className="w-full h-full" />
                         </div>
-                        <span className="text-sm font-medium text-center">{structure.name}</span>
+                        <span className="text-xs sm:text-sm font-medium text-center group-hover:text-primary transition-colors">{structure.name}</span>
                       </div>
                     );
                   })}
                 </div>
               </div>
 
-              {/* Social Proof Stack */}
-              <div className="space-y-3">
-                <div className="flex items-center space-x-4 text-sm">
-                  <div className="flex items-center space-x-1">
-                    <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                    <span className="font-medium">4.9/5 sur Google</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
+              {/* Enhanced Social Proof Stack */}
+              <div className="space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-2 sm:space-y-0">
+                  <div className="flex items-center space-x-2">
                     <div className="flex">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <Star key={star} className="h-4 w-4 text-yellow-500 fill-current" />
                       ))}
                     </div>
-                    <span className="font-medium">Excellent</span>
+                    <span className="text-sm font-medium">4.9/5 sur Google</span>
                   </div>
-                  <div className="flex items-center space-x-1">
-                    <span className="text-xl">🏆</span>
-                    <span className="font-medium">Trustpilot</span>
+                  <div className="flex items-center space-x-2">
+                    <Award className="h-4 w-4 text-orange-500" />
+                    <span className="text-sm font-medium">Excellent Trustpilot</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Shield className="h-4 w-4 text-success" />
+                    <span className="text-sm font-medium">Service agréé</span>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground font-medium">
-                  + 3,247 entreprises créées avec RCS Express
-                </p>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-2 sm:space-y-0">
+                  <p className="text-sm text-muted-foreground font-medium">
+                    + 3,247 entreprises créées cette année
+                  </p>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                    <span className="text-sm text-muted-foreground">15 créations aujourd'hui</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Visual Testimonial */}
-              <div className="bg-background border border-border rounded-lg p-6 space-y-4">
+              {/* Enhanced Visual Testimonial */}
+              <div className="bg-background border border-border rounded-xl p-6 space-y-4 shadow-soft hover:shadow-medium transition-shadow duration-300">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center text-white font-bold">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center text-white font-bold shadow-soft">
                     M
                   </div>
                   <div className="flex-1">
-                    <blockquote className="text-foreground italic mb-2">
+                    <blockquote className="text-foreground italic mb-2 text-sm sm:text-base">
                       "Simple et efficace, j'ai reçu mon Kbis en 48h. Service impeccable !"
                     </blockquote>
                     <cite className="text-sm text-muted-foreground font-medium">
                       - Marie L., Fondatrice SARL
                     </cite>
                   </div>
+                </div>
+                <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+                  <MessageCircle className="h-3 w-3" />
+                  <span>Avis vérifié - Il y a 2 jours</span>
                 </div>
               </div>
 
@@ -329,9 +390,19 @@ const Index = () => {
             </div>
 
             {/* RIGHT SIDE - Professional Illustration */}
-            <div className="relative">
-              <div className="card-premium animate-slide-down">
-                <div className="text-center space-y-6">
+            <div className="relative hidden lg:block">
+              <div className="card-premium animate-slide-down relative overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 opacity-10">
+                  <img 
+                    src={heroImage} 
+                    alt="Professional business setup" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                {/* Content */}
+                <div className="relative z-10 text-center space-y-6">
                   <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary to-primary/70 rounded-3xl flex items-center justify-center shadow-large">
                     <Building2 className="w-12 h-12 text-white" />
                   </div>
@@ -360,6 +431,36 @@ const Index = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Hero Enhancement */}
+            <div className="lg:hidden mt-8 space-y-4">
+              <div className="bg-primary/5 border border-primary/20 rounded-xl p-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">Garantie satisfait ou remboursé</p>
+                    <p className="text-xs text-muted-foreground">Service 100% sécurisé</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-center space-x-6 text-xs text-muted-foreground">
+                <div className="flex items-center space-x-1">
+                  <Shield className="h-3 w-3 text-success" />
+                  <span>SSL</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Award className="h-3 w-3 text-orange-500" />
+                  <span>Certifié</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Star className="h-3 w-3 text-yellow-500" />
+                  <span>4.9/5</span>
                 </div>
               </div>
             </div>
