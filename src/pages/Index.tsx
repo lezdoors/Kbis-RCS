@@ -8,11 +8,10 @@ import { useState, useEffect } from "react";
 import modernLogo from "@/assets/modern-logo.png";
 import heroImage from "@/assets/hero-image.jpg";
 
-// Official Inscription RCS logos
-const mainLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/logo/logo%20(Website)-4.png"; // Main website logo for hero section
-const faviconLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/logo/Logo-fav.png"; // Favicon/minimal logo
-const heroLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/logo/Logo-hero%20(1366%20x%20768%20px).png"; // Dark hero logo
-const squareLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/logo/Centre%20(1366%20x%20768%20px)%20(512%20x%20512%20px).png"; // Square center logo
+// Official Inscription RCS logos - uploaded versions
+const mainLogo = "/lovable-uploads/44d3fbcd-ea82-40a6-81b1-53e0f643dd45.png"; // Main website logo for hero section
+const faviconLogo = "/lovable-uploads/0bd61b06-875b-4bde-82a0-31d5601427ff.png"; // Favicon/minimal logo
+const squareLogo = "/lovable-uploads/02f38eff-0bf3-4875-88a2-5fce416ad9e4.png"; // Square center logo
 const Index = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
