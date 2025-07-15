@@ -62,12 +62,12 @@ const Login = () => {
       <section className="section-administrative">
         <div className="container-administrative">
           <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)]">
-            <div className="w-full max-w-md">
-              <div className="text-center mb-8">
-                <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            <div className="w-full max-w-md animate-fade-in">
+              <div className="text-center mb-12">
+                <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-premium">
                   Connexion sécurisée
                 </h1>
-                <p className="text-muted-foreground">
+                <p className="text-subtitle">
                   Accédez à votre espace personnel pour suivre vos démarches
                 </p>
               </div>

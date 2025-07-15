@@ -42,13 +42,13 @@ const MagicLinkLogin = () => {
   };
 
   return (
-    <Card className="card-administrative w-full max-w-md mx-auto">
-      <CardHeader className="text-center space-y-4">
-        <div className="w-12 h-12 mx-auto bg-primary/10 rounded-sm flex items-center justify-center">
-          <Mail className="h-6 w-6 text-primary" />
+    <Card className="card-premium w-full max-w-md mx-auto">
+      <CardHeader className="text-center space-y-6">
+        <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center animate-float">
+          <Mail className="h-8 w-8 text-primary" />
         </div>
-        <CardTitle className="text-xl font-bold">Connexion par email</CardTitle>
-        <CardDescription>
+        <CardTitle className="text-2xl font-bold text-premium">Connexion par email</CardTitle>
+        <CardDescription className="text-lg">
           Entrez votre adresse email pour recevoir un lien de connexion sécurisé
         </CardDescription>
       </CardHeader>

@@ -226,16 +226,16 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Official Hero Section */}
-      <section className="section-administrative bg-secondary">
+      {/* Premium Hero Section */}
+      <section className="hero-administrative section-administrative">
         <div className="container-administrative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8 animate-fade-in">
+              <div className="space-y-6">
+                <h1 className="text-hero">
                   Inscription au Registre du Commerce et des Sociétés
                 </h1>
-                <h2 className="text-xl text-muted-foreground">
+                <h2 className="text-subtitle">
                   Service en ligne officiel pour l'immatriculation de votre entreprise
                 </h2>
               </div>
@@ -243,7 +243,7 @@ const Index = () => {
               <Button 
                 onClick={() => navigate('/choisir-statut')} 
                 size="lg"
-                className="btn-administrative text-lg px-8 py-4"
+                className="btn-administrative btn-touch-lg text-lg btn-ripple"
               >
                 Commencer ma démarche
               </Button>
@@ -265,8 +265,8 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="bg-card border border-border rounded-sm p-6 shadow-sm">
-              <h3 className="text-lg font-semibold mb-4">Informations importantes</h3>
+            <div className="card-premium animate-slide-down">
+              <h3 className="text-xl font-bold mb-6 text-premium">Informations importantes</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex items-start space-x-2">
                   <Info className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
