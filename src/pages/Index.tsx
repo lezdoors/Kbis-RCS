@@ -11,7 +11,7 @@ import heroImage from "@/assets/hero-image.jpg";
 // Official Inscription RCS logos - uploaded versions
 const mainLogo = "/lovable-uploads/44d3fbcd-ea82-40a6-81b1-53e0f643dd45.png"; // Main website logo for hero section
 const faviconLogo = "/lovable-uploads/0bd61b06-875b-4bde-82a0-31d5601427ff.png"; // Favicon/minimal logo
-const squareLogo = "/lovable-uploads/02f38eff-0bf3-4875-88a2-5fce416ad9e4.png"; // Square center logo
+const centerLogo = "/lovable-uploads/02f38eff-0bf3-4875-88a2-5fce416ad9e4.png"; // Centered logo for navbar
 const Index = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,35 +34,30 @@ const Index = () => {
   const legalStructures = [{
     name: "SASU",
     fullName: "Société par Actions Simplifiée Unipersonnelle",
-    price: "129€",
     description: "Structure juridique pour entrepreneur individuel",
     icon: Building2,
     advantages: ["Responsabilité limitée", "Statut de dirigeant", "Flexibilité juridique"]
   }, {
     name: "SARL",
     fullName: "Société à Responsabilité Limitée",
-    price: "129€",
     description: "Structure pour plusieurs associés",
     icon: Users,
     advantages: ["Répartition des parts", "Gestion collective", "Sécurité juridique"]
   }, {
     name: "EURL",
     fullName: "Entreprise Unipersonnelle à Responsabilité Limitée",
-    price: "129€",
     description: "Version individuelle de la SARL",
     icon: FileText,
     advantages: ["Protection du patrimoine", "Option fiscale", "Simplicité de gestion"]
   }, {
     name: "SAS",
     fullName: "Société par Actions Simplifiée",
-    price: "129€",
     description: "Structure flexible pour associés multiples",
     icon: Building2,
     advantages: ["Liberté statutaire", "Entrée d'investisseurs", "Organes dirigeants"]
   }, {
     name: "Micro-entreprise",
     fullName: "Régime micro-entrepreneur",
-    price: "79€",
     description: "Régime simplifié pour débuter",
     icon: FileText,
     advantages: ["Formalités allégées", "Comptabilité simple", "Démarrage rapide"]
@@ -130,18 +125,15 @@ const Index = () => {
       <header className="header-administrative shadow-medium">
         <div className="container-administrative">
           <div className="flex h-20 items-center justify-between py-4">
-            {/* Official Inscription RCS Logo */}
-            <div className="flex items-center">
-              <img src={faviconLogo} alt="Inscription RCS" className="h-12 w-auto object-contain" />
+            {/* Centered Logo */}
+            <div className="flex-1 flex justify-center">
+              <img src={centerLogo} alt="Inscription RCS" className="h-16 w-auto object-contain" />
             </div>
 
             {/* Desktop Navigation with Phone */}
             <nav className="hidden lg:flex items-center space-x-8">
               <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium">
                 Services
-              </a>
-              <a href="#tarifs" className="text-foreground hover:text-primary transition-colors font-medium">
-                Tarifs officiels
               </a>
               <a href="#faq" className="text-foreground hover:text-primary transition-colors font-medium">
                 Questions fréquentes
@@ -178,9 +170,6 @@ const Index = () => {
                 <nav className="space-y-1">
                   <a href="#services" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
                     Services
-                  </a>
-                  <a href="#tarifs" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
-                    Tarifs officiels
                   </a>
                   <a href="#faq" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
                     Questions fréquentes
@@ -234,11 +223,6 @@ const Index = () => {
         <div className="container-administrative">
           <div className="max-w-4xl mx-auto text-center space-y-12">
             
-            {/* Official Main Logo */}
-            <div className="flex justify-center mb-8">
-              <img src={mainLogo} alt="Inscription RCS" className="h-24 w-auto object-contain" />
-            </div>
-
             {/* Main Headlines */}
             <div className="space-y-6 animate-fade-in">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight">
@@ -440,10 +424,7 @@ const Index = () => {
                   
                   <CardContent className="space-y-4">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-primary">
-                        {structure.price}
-                      </div>
-                      <p className="text-sm text-muted-foreground mt-1">{structure.description}</p>
+                      <p className="text-sm text-muted-foreground">{structure.description}</p>
                     </div>
 
                     <div className="space-y-2">
@@ -460,7 +441,7 @@ const Index = () => {
                   e.stopPropagation();
                   navigate('/choisir-statut');
                 }}>
-                      Sélectionner
+                      Commencer ma démarche
                     </Button>
                   </CardContent>
                 </Card>;
@@ -469,20 +450,20 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Premium Pricing Section */}
-      <section className="section-administrative" id="tarifs">
+      {/* Premium Service Information Section */}
+      <section className="section-administrative" id="services-info">
         <div className="container-administrative">
           <div className="text-center space-y-6 mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
-              Tarifs officiels
+              Services inclus
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Prix transparents, tout inclus, sans frais cachés
+              Tout ce dont vous avez besoin pour créer votre entreprise
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Premium Corporate Package */}
+            {/* Corporate Package */}
             <div className="card-premium relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-gradient-to-r from-primary to-primary-glow text-white px-6 py-2 rounded-bl-2xl">
                 <span className="text-sm font-semibold">Populaire</span>
@@ -494,11 +475,7 @@ const Index = () => {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold text-foreground">SASU / SARL / EURL / SAS</h3>
-                  <div className="flex items-center justify-center space-x-2">
-                    <span className="text-4xl md:text-5xl font-bold text-primary">129€</span>
-                    <span className="text-sm text-muted-foreground">TTC</span>
-                  </div>
-                  <p className="text-muted-foreground">Tout inclus - Aucun frais supplémentaire</p>
+                  <p className="text-muted-foreground">Tout inclus - Service complet</p>
                 </div>
               </div>
 
@@ -534,7 +511,7 @@ const Index = () => {
                 </div>
 
                 <Button onClick={() => navigate('/choisir-statut')} className="w-full btn-administrative btn-touch-lg text-lg btn-ripple">
-                  Créer ma société
+                  Commencer ma démarche
                 </Button>
               </div>
             </div>
@@ -547,10 +524,6 @@ const Index = () => {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold text-foreground">Micro-entreprise</h3>
-                  <div className="flex items-center justify-center space-x-2">
-                    <span className="text-4xl md:text-5xl font-bold text-orange-600">79€</span>
-                    <span className="text-sm text-muted-foreground">TTC</span>
-                  </div>
                   <p className="text-muted-foreground">Formule simplifiée</p>
                 </div>
               </div>
@@ -581,7 +554,7 @@ const Index = () => {
                 </div>
 
                 <Button onClick={() => navigate('/choisir-statut')} className="w-full btn-administrative-outline btn-touch-lg text-lg">
-                  Créer ma micro-entreprise
+                  Commencer ma démarche
                 </Button>
               </div>
             </div>
