@@ -204,6 +204,10 @@
     box-shadow: var(--shadow-primary);
   }
   
+  .shadow-floating {
+    box-shadow: var(--shadow-floating);
+  }
+  
   .transition-smooth {
     transition: var(--transition-smooth);
   }
