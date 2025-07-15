@@ -98,41 +98,19 @@ export const HeroSection = () => {
 
           {/* Right Column - Illustration */}
           <div className="relative">
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl p-8 flex items-center justify-center min-h-[400px] overflow-hidden">
-              <div className="text-center space-y-6 relative z-10">
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl p-8 flex items-center justify-center min-h-[400px]">
+              <div className="text-center space-y-6">
                 <div className="relative">
-                  {/* Main hero image */}
                   <img 
                     src="/lovable-uploads/baefcc3d-696b-4676-a726-7234c1b77f2e.png"
                     alt="3D figure climbing business success stairs"
-                    className="w-64 h-64 object-contain mx-auto animate-float"
+                    className="w-64 h-64 object-contain mx-auto"
                   />
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold text-foreground">Votre entreprise</h3>
                   <p className="text-muted-foreground">créée en quelques clics</p>
                 </div>
-              </div>
-              
-              {/* Background decorative images */}
-              <div className="absolute inset-0 pointer-events-none">
-                <img 
-                  src="/lovable-uploads/8ccf8709-45bb-4bb5-bc25-14595b39de8d.png"
-                  alt="Success visualization"
-                  className="absolute -top-4 -right-4 w-20 h-20 object-contain opacity-20 animate-pulse"
-                />
-                <img 
-                  src="/lovable-uploads/7e7f74c1-8f7c-4800-b9f0-be37d9e343e9.png"
-                  alt="Problem solving visualization"
-                  className="absolute -bottom-4 -left-4 w-20 h-20 object-contain opacity-20 animate-pulse"
-                  style={{ animationDelay: '1s' }}
-                />
-                <img 
-                  src="/lovable-uploads/5e2630a9-1361-4451-a9dd-3bc0834d859e.png"
-                  alt="Growth visualization"
-                  className="absolute top-1/2 -right-8 w-16 h-16 object-contain opacity-15 animate-pulse"
-                  style={{ animationDelay: '2s' }}
-                />
               </div>
             </div>
           </div>
