@@ -131,12 +131,8 @@ const Index = () => {
         <div className="container-administrative">
           <div className="flex h-20 items-center justify-between py-4">
             {/* StartLégal Logo */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center">
               <img src={startLegalLogoMedium} alt="StartLégal" className="h-12 w-auto object-contain" />
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-foreground">StartLégal</span>
-                <span className="text-sm text-muted-foreground font-medium">RCS officiel en ligne</span>
-              </div>
             </div>
 
             {/* Desktop Navigation with Phone */}
