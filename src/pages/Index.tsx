@@ -8,6 +8,10 @@ import { useState, useEffect } from "react";
 import modernLogo from "@/assets/modern-logo.png";
 import heroImage from "@/assets/hero-image.jpg";
 
+// Use the larger logo for header prominence
+const headerLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28yLnBuZyIsImlhdCI6MTc1MjU5NTY4MywiZXhwIjoxNzg0MTMxNjgzfQ.dmGClEzrVqLQwktcym2Ou2ABfVfzZY2rJrmDlq_-XNc";
+const footerLogo = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo05.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28wNS5wbmciLCJpYXQiOjE3NTI1OTU2NDMsImV4cCI6MTc4NDEzMTY0M30.aT2aDtPFlIdcgmbhTQHruBK8G41wgDU0amEB36hkpXY";
+
 const Index = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -161,7 +165,7 @@ const Index = () => {
             {/* Enhanced Logo with Real Image */}
             <div className="flex items-center space-x-4">
               <img 
-                src={modernLogo} 
+                src={headerLogo} 
                 alt="RCS Express" 
                 className="w-16 h-16 rounded-2xl shadow-soft hover:shadow-medium transition-shadow duration-300"
               />
