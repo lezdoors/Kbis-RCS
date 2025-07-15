@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { trackEvent, ANALYTICS_EVENTS } from "@/lib/analytics";
 
 export const FAQSection = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -31,6 +32,15 @@ export const FAQSection = () => {
   ];
 
   const toggleFAQ = (index: number) => {
+    const questionId = ['legalplace_comparison', '24h_guarantee', 'modern_platform', 'tracking_system', 'transparent_pricing', 'rejection_guarantee'][index];
+    
+    if (openFAQ !== index) {
+      trackEvent({ 
+        event_type: ANALYTICS_EVENTS.FAQ_OPENED, 
+        question_id: questionId 
+      });
+    }
+    
     setOpenFAQ(openFAQ === index ? null : index);
   };
 

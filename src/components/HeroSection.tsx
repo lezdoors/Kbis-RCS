@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { GuaranteeSection } from "@/components/GuaranteeBadges";
 import { SocialProofTestimonials } from "@/components/SocialProofTestimonials";
+import { trackEvent, ANALYTICS_EVENTS } from "@/lib/analytics";
 
 interface HeroSectionProps {
   title?: string;
@@ -24,7 +25,7 @@ interface HeroSectionProps {
 }
 
 export const HeroSection = ({
-  title = "Créez votre entreprise en 24h - Garanti ⚡",
+  title = "Créez votre entreprise en 24h - Garanti",
   subtitle = "La plateforme la plus rapide de France. Technology 2025, résultats immédiats.",
   showBulletPoints = true,
   showActivityGrid = true, // Backward compatibility
@@ -136,7 +137,10 @@ export const HeroSection = ({
               <div className="flex flex-col sm:flex-row gap-3 items-center lg:items-start animate-slide-in-left [animation-delay:0.6s]">
                 <div className="w-full sm:w-auto">
                   <Button 
-                    onClick={finalPrimaryCTA.action}
+                    onClick={() => {
+                      trackEvent({ event_type: ANALYTICS_EVENTS.HERO_CTA_CLICK });
+                      finalPrimaryCTA.action();
+                    }}
                     className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-200 hover:scale-105 shadow-lg w-full sm:w-auto min-h-[44px]"
                   >
                     {finalPrimaryCTA.text}

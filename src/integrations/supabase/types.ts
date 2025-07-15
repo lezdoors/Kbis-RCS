@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      analytics: {
+        Row: {
+          created_at: string
+          entity_type: string | null
+          event_type: string
+          id: string
+          metadata: Json | null
+          page_url: string | null
+          question_id: string | null
+          session_id: string | null
+          timestamp: string
+          user_agent: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          entity_type?: string | null
+          event_type: string
+          id?: string
+          metadata?: Json | null
+          page_url?: string | null
+          question_id?: string | null
+          session_id?: string | null
+          timestamp?: string
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          entity_type?: string | null
+          event_type?: string
+          id?: string
+          metadata?: Json | null
+          page_url?: string | null
+          question_id?: string | null
+          session_id?: string | null
+          timestamp?: string
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       associes: {
         Row: {
           adresse: string | null

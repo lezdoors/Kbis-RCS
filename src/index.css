@@ -741,6 +741,51 @@
 
 .hover-image-zoom {
   @apply transition-transform duration-300 hover:scale-110;
+/* Performance Optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-scroll {
+  will-change: scroll-position;
+}
+
+/* Image Performance */
+.optimized-image {
+  @apply transition-transform duration-300;
+  content-visibility: auto;
+  contain-intrinsic-size: 300px 200px;
+}
+
+.optimized-image:hover {
+  @apply scale-105;
+}
+
+/* Button Microinteractions */
+.btn-enhanced {
+  @apply transition-all duration-200 hover:scale-105 hover:shadow-lg;
+  transform-origin: center;
+}
+
+/* Card Animations */
+.card-enhanced {
+  @apply transition-shadow duration-300 hover:shadow-lg;
+}
+
+/* Loading States */
+.loading-fade {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .hover-shadow-lift {

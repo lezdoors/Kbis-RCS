@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { GuaranteeBadge } from "@/components/GuaranteeBadges";
+import { trackEvent, ANALYTICS_EVENTS } from "@/lib/analytics";
 
 export const ProcessSection = () => {
   const navigate = useNavigate();
@@ -64,6 +65,7 @@ export const ProcessSection = () => {
                     <img 
                       src={step.image}
                       alt={step.altText}
+                      loading={index === 0 ? "eager" : "lazy"}
                       className="w-full h-40 object-contain mx-auto rounded-lg transition-transform duration-300 hover:scale-110"
                     />
                   </div>
@@ -126,16 +128,16 @@ export const ProcessSection = () => {
             {/* Urgency Messages */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
               <div className="text-sm text-gray-600 flex items-center gap-1">
-                📊 <span>47 entreprises créées cette semaine</span>
+                <span>📊</span> <span>47 entreprises créées cette semaine</span>
               </div>
               <div className="text-sm text-gray-600 flex items-center gap-1">
-                🔥 <span>Offre limitée</span>
+                <span>🔥</span> <span>Offre limitée</span>
               </div>
             </div>
           </div>
           
           <p className="mt-4 text-sm text-muted-foreground">
-            ⚡ Plus rapide que LegalPlace et tous nos concurrents
+            Plus rapide que LegalPlace et tous nos concurrents
           </p>
 
           {/* Guarantee Badge */}

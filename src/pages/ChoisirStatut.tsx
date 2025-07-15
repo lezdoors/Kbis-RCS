@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Building2, ArrowLeft, CheckCircle, Info, Users, FileText, Lightbulb, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { trackEvent, ANALYTICS_EVENTS } from "@/lib/analytics";
 
 const ChoisirStatut = () => {
   const navigate = useNavigate();
@@ -209,6 +210,10 @@ const ChoisirStatut = () => {
                 key={structure.name}
                 className="relative bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-orange-300 hover:shadow-lg hover:scale-102 transition-all cursor-pointer h-full"
                 onClick={() => {
+                  trackEvent({ 
+                    event_type: ANALYTICS_EVENTS.ENTITY_SELECTED, 
+                    entity_type: structure.name 
+                  });
                   localStorage.setItem('selectedStructure', JSON.stringify(structure));
                   navigate(structure.route);
                 }}
