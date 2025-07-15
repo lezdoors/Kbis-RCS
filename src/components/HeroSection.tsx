@@ -1,38 +1,58 @@
 import { Button } from "@/components/ui/button";
 import { Building2, Star, ArrowRight, Briefcase, Car, ShoppingCart, Bike, Utensils, Home, MoreHorizontal, UserCheck, Wrench, HandHeart, TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
 export const HeroSection = () => {
   const navigate = useNavigate();
-  
-  // Activity types for the hero section
-  const activityTypes = [
-    { name: "Consultants & freelance", icon: Briefcase },
-    { name: "Construction & travaux", icon: Wrench },
-    { name: "Automobile & transport", icon: Car },
-    { name: "Vente en ligne", icon: ShoppingCart },
-    { name: "Commerce", icon: Building2 },
-    { name: "Coursier à vélo", icon: Bike },
-    { name: "Achat & revente", icon: TrendingUp },
-    { name: "Services aux entreprises", icon: UserCheck },
-    { name: "Services à la personne", icon: HandHeart },
-    { name: "Restauration", icon: Utensils },
-    { name: "SCI", icon: Home },
-    { name: "Autres", icon: MoreHorizontal }
-  ];
 
-  return (
-    <section className="bg-gradient-to-br from-background via-primary-light/30 to-background py-12 sm:py-16 lg:py-20">
+  // Activity types for the hero section
+  const activityTypes = [{
+    name: "Consultants & freelance",
+    icon: Briefcase
+  }, {
+    name: "Construction & travaux",
+    icon: Wrench
+  }, {
+    name: "Automobile & transport",
+    icon: Car
+  }, {
+    name: "Vente en ligne",
+    icon: ShoppingCart
+  }, {
+    name: "Commerce",
+    icon: Building2
+  }, {
+    name: "Coursier à vélo",
+    icon: Bike
+  }, {
+    name: "Achat & revente",
+    icon: TrendingUp
+  }, {
+    name: "Services aux entreprises",
+    icon: UserCheck
+  }, {
+    name: "Services à la personne",
+    icon: HandHeart
+  }, {
+    name: "Restauration",
+    icon: Utensils
+  }, {
+    name: "SCI",
+    icon: Home
+  }, {
+    name: "Autres",
+    icon: MoreHorizontal
+  }];
+  return <section className="bg-gradient-to-br from-background via-primary-light/30 to-background py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
           {/* Left Column - Content */}
           <div className="space-y-8 lg:space-y-10">
             <div className="space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] tracking-tight mx-0 text-center">
                 Créez votre <span className="text-primary">entreprise</span> ultra rapidement dès 0€ !
               </h1>
-              <p className="text-xl sm:text-2xl text-muted-foreground/90 font-medium leading-relaxed max-w-2xl">
+              <p className="text-xl sm:text-2xl text-muted-foreground/90 font-medium leading-relaxed max-w-2xl text-center">
                 Accompagnement personnalisé par un juriste dédié jusqu'à l'obtention du Kbis.
               </p>
             </div>
@@ -45,13 +65,8 @@ export const HeroSection = () => {
               
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {activityTypes.slice(0, 8).map((activity, index) => {
-                  const IconComponent = activity.icon;
-                  return (
-                    <div 
-                      key={activity.name}
-                      className="group bg-card border border-border rounded-xl p-5 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-1"
-                      onClick={() => navigate('/choisir-statut')}
-                    >
+                const IconComponent = activity.icon;
+                return <div key={activity.name} className="group bg-card border border-border rounded-xl p-5 hover:border-primary hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-1" onClick={() => navigate('/choisir-statut')}>
                       <div className="flex flex-col items-center space-y-3">
                         <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                           <IconComponent className="w-6 h-6 text-primary" />
@@ -60,31 +75,23 @@ export const HeroSection = () => {
                           {activity.name}
                         </span>
                       </div>
-                    </div>
-                  );
-                })}
+                    </div>;
+              })}
               </div>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 items-start">
-              <Button 
-                onClick={() => navigate('/choisir-statut')} 
-                size="lg" 
-                className="btn-administrative text-lg px-10 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 min-h-[56px] w-full sm:w-auto"
-              >
+              <Button onClick={() => navigate('/choisir-statut')} size="lg" className="btn-administrative text-lg px-10 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 min-h-[56px] w-full sm:w-auto">
                 Commencer mon inscription RCS
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button 
-                variant="outline"
-                size="lg"
-                className="btn-administrative-outline text-lg px-8 py-6 min-h-[56px] w-full sm:w-auto"
-                onClick={() => {
-                  const processSection = document.querySelector('#process');
-                  processSection?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
+              <Button variant="outline" size="lg" className="btn-administrative-outline text-lg px-8 py-6 min-h-[56px] w-full sm:w-auto" onClick={() => {
+              const processSection = document.querySelector('#process');
+              processSection?.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }}>
                 Comment ça marche ?
               </Button>
             </div>
@@ -94,9 +101,7 @@ export const HeroSection = () => {
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-8">
                 <div className="flex items-center space-x-3">
                   <div className="flex">
-                    {[1, 2, 3, 4, 5].map(star => (
-                      <Star key={star} className="h-5 w-5 text-yellow-500 fill-current" />
-                    ))}
+                    {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-5 w-5 text-yellow-500 fill-current" />)}
                   </div>
                   <span className="text-base font-bold text-foreground">4.5/5</span>
                 </div>
@@ -118,11 +123,7 @@ export const HeroSection = () => {
                 <div className="text-center space-y-8">
                   <div className="relative animate-float">
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>
-                    <img 
-                      src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/too-blk-stairs.jpg.png"
-                      alt="Deux personnages en escalade symbolisant l'accompagnement vers la création d'entreprise"
-                      className="w-full h-80 object-contain mx-auto rounded-2xl shadow-lg relative z-10 transition-transform duration-700 hover:scale-105"
-                    />
+                    <img src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/too-blk-stairs.jpg.png" alt="Deux personnages en escalade symbolisant l'accompagnement vers la création d'entreprise" className="w-full h-80 object-contain mx-auto rounded-2xl shadow-lg relative z-10 transition-transform duration-700 hover:scale-105" />
                   </div>
                   <div className="space-y-3">
                     <h3 className="text-2xl lg:text-3xl font-bold text-foreground">Votre entreprise</h3>
@@ -138,6 +139,5 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
