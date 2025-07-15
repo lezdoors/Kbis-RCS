@@ -5,10 +5,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Building2, FileText, CheckCircle, Shield, Clock, Users, Star, ArrowRight, Phone, Mail, Menu, X, Info, MapPin, Award, MessageCircle, Briefcase, Car, ShoppingCart, Bike, Utensils, Home, MoreHorizontal, UserCheck, Wrench, HandHeart, Zap, TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import logoHero from "@/assets/logo-hero.png";
-import logoFav from "@/assets/logo-fav.png";
-import logoCentre from "@/assets/logo-centre.png";
+import modernLogo from "@/assets/modern-logo.png";
 import heroImage from "@/assets/hero-image.jpg";
+
+// StartLégal logos - different sizes for different use cases
+const startLegalLogoLarge = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28yLnBuZyIsImlhdCI6MTc1MjU5NTY4MywiZXhwIjoxNzg0MTMxNjgzfQ.dmGClEzrVqLQwktcym2Ou2ABfVfzZY2rJrmDlq_-XNc";
+const startLegalLogoMedium = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo1.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28xLnBuZyIsImlhdCI6MTc1MjU5NTY3MSwiZXhwIjoxNzg0MTMxNjcxfQ.8IxQw_PaWvTQXL1RK9LHcB7hJo2TUQkVrzI7QWSzCjA";
+const startLegalLogoSmall = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/Logo05.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL0xvZ28wNS5wbmciLCJpYXQiOjE3NTI1OTU2NDMsImV4cCI6MTc4NDEzMTY0M30.aT2aDtPFlIdcgmbhTQHruBK8G41wgDU0amEB36hkpXY";
 const Index = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -123,39 +126,45 @@ const Index = () => {
     category: "Suivi"
   }];
   return <div className="min-h-screen bg-background">
-      {/* Clean Premium Header - Apple/McKinsey Style */}
-      <header className="relative bg-white border-b border-border/30 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            {/* Logo */}
+      {/* Premium Administrative Header */}
+      <header className="header-administrative shadow-medium">
+        <div className="container-administrative">
+          <div className="flex h-20 items-center justify-between py-4">
+            {/* StartLégal Logo */}
             <div className="flex items-center">
-              <img 
-                src={logoFav} 
-                alt="Inscription RCS" 
-                className="h-8 w-auto object-contain md:hidden" 
-              />
-              <img 
-                src={logoHero} 
-                alt="Inscription RCS" 
-                className="h-8 w-auto object-contain hidden md:block" 
-              />
+              <img src={startLegalLogoMedium} alt="StartLégal" className="h-12 w-auto object-contain" />
             </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#accueil" className="text-foreground hover:text-primary transition-colors font-poppins font-medium text-sm">
-                Accueil
+            {/* Desktop Navigation with Phone */}
+            <nav className="hidden lg:flex items-center space-x-8">
+              <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium">
+                Services
               </a>
-              <a href="#comment-ca-marche" className="text-foreground hover:text-primary transition-colors font-poppins font-medium text-sm">
-                Comment ça marche
+              <a href="#tarifs" className="text-foreground hover:text-primary transition-colors font-medium">
+                Tarifs officiels
               </a>
-              <a href="#statuts-juridiques" className="text-foreground hover:text-primary transition-colors font-poppins font-medium text-sm">
-                Statuts juridiques
+              <a href="#faq" className="text-foreground hover:text-primary transition-colors font-medium">
+                Questions fréquentes
               </a>
-              <Button variant="ghost" onClick={() => navigate('/login')} className="font-poppins font-medium">
-                Connexion
-              </Button>
+              <div className="flex items-center space-x-2 text-primary font-semibold">
+                <Phone className="w-4 h-4" />
+                <span className="text-sm">01 XX XX XX XX</span>
+              </div>
             </nav>
+
+            {/* Desktop CTA with Trust Elements */}
+            <div className="hidden md:flex items-center space-x-3">
+              <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+                <Shield className="w-4 h-4 text-success" />
+                <span>Sécurisé SSL</span>
+              </div>
+              <Button variant="outline" onClick={() => navigate('/login')} className="btn-administrative-outline btn-touch">
+                Se connecter
+              </Button>
+              <Button onClick={() => navigate('/choisir-statut')} className="btn-administrative btn-touch">
+                Commencer ma démarche
+              </Button>
+            </div>
 
             {/* Mobile Menu Button */}
             <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
@@ -163,72 +172,190 @@ const Index = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu */}
-          {isMobileMenuOpen && (
-            <div className="md:hidden border-t border-border/30 bg-white">
-              <div className="py-4 space-y-2">
-                <a href="#accueil" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 font-poppins font-medium py-3 px-4 rounded-lg">
-                  Accueil
-                </a>
-                <a href="#comment-ca-marche" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 font-poppins font-medium py-3 px-4 rounded-lg">
-                  Comment ça marche
-                </a>
-                <a href="#statuts-juridiques" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 font-poppins font-medium py-3 px-4 rounded-lg">
-                  Statuts juridiques
-                </a>
-                <Button variant="ghost" onClick={() => {
-                  navigate('/login');
-                  setIsMobileMenuOpen(false);
-                }} className="font-poppins font-medium w-full justify-start px-4">
-                  Connexion
-                </Button>
+          {/* Enhanced Mobile Menu */}
+          {isMobileMenuOpen && <div className="md:hidden border-t border-border bg-background shadow-medium">
+              <div className="py-6 space-y-6">
+                <nav className="space-y-1">
+                  <a href="#services" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
+                    Services
+                  </a>
+                  <a href="#tarifs" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
+                    Tarifs officiels
+                  </a>
+                  <a href="#faq" className="block text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 text-base font-medium py-3 px-4 rounded-lg">
+                    Questions fréquentes
+                  </a>
+                </nav>
+                
+                {/* Mobile Contact */}
+                <div className="px-4 py-3 bg-primary/5 rounded-lg">
+                  <div className="flex items-center space-x-3">
+                    <Phone className="w-5 h-5 text-primary" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Besoin d'aide ?</p>
+                      <p className="text-sm text-primary font-semibold">01 XX XX XX XX</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile Trust Elements */}
+                <div className="px-4 space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <Shield className="w-4 h-4 text-success" />
+                    <span className="text-sm text-muted-foreground">Sécurisé SSL</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Star className="w-4 h-4 text-yellow-500" />
+                    <span className="text-sm text-muted-foreground">4.9/5 sur Google</span>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <Button variant="outline" onClick={() => {
+                navigate('/login');
+                setIsMobileMenuOpen(false);
+              }} className="btn-administrative-outline w-full btn-touch-lg">
+                    Se connecter
+                  </Button>
+                  <Button onClick={() => {
+                navigate('/choisir-statut');
+                setIsMobileMenuOpen(false);
+              }} className="btn-administrative w-full btn-touch-lg">
+                    Commencer ma démarche
+                  </Button>
+                </div>
               </div>
-            </div>
-          )}
+            </div>}
         </div>
       </header>
 
-      {/* Premium Hero Section - Apple Style */}
-      <section className="bg-background py-16 md:py-24 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8">
+      {/* Premium StartLégal Hero Section */}
+      <section className="bg-background py-16 sm:py-20 lg:py-24 overflow-hidden">
+        <div className="container-administrative">
           <div className="max-w-4xl mx-auto text-center space-y-12">
             
-            {/* Hero Logo */}
-            <div className="flex justify-center animate-fade-in">
-              <img 
-                src={logoHero} 
-                alt="Inscription RCS" 
-                className="h-24 w-auto object-contain md:h-32 lg:h-40" 
-              />
-            </div>
-
-            {/* Slogan */}
+            {/* Main Headlines */}
             <div className="space-y-6 animate-fade-in">
-              <h1 className="text-primary font-poppins font-semibold text-2xl md:text-4xl lg:text-5xl tracking-tight">
-                Créez • Protégez • Lancez
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight">
+                Créez votre entreprise<br />
+                <span className="text-transparent bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
+                  facilement dès 0€
+                </span>
               </h1>
-              <p className="text-muted-foreground font-poppins text-lg md:text-xl lg:text-2xl leading-relaxed max-w-3xl mx-auto">
-                Votre assistant d'immatriculation RCS en France
+              <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                Accompagnement personnalisé jusqu'à l'obtention de votre Kbis
               </p>
             </div>
 
-            {/* Call to Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 animate-fade-in">
+            {/* Activity Types Grid */}
+            <div className="space-y-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+                Quel sera votre domaine d'activité ?
+              </h2>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+                {activityTypes.map((activity, index) => {
+                  const IconComponent = activity.icon;
+                  return (
+                    <div 
+                      key={activity.name}
+                      className="group relative bg-white border border-border rounded-2xl p-6 hover:border-primary hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105"
+                      onClick={() => navigate('/choisir-statut')}
+                      style={{ 
+                        animationDelay: `${index * 0.1}s` 
+                      }}
+                    >
+                      {/* Subtle French flag accent */}
+                      <div className="absolute top-2 right-2 w-1 h-6 bg-gradient-to-b from-blue-600 via-white to-red-500 rounded-full opacity-40 group-hover:opacity-60 transition-opacity"></div>
+                      
+                      <div className="flex flex-col items-center space-y-3">
+                        <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                          <IconComponent className="w-6 h-6 text-primary" />
+                        </div>
+                        <span className="text-sm font-medium text-foreground text-center group-hover:text-primary transition-colors">
+                          {activity.name}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="bg-gray-50 rounded-3xl p-8 space-y-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8">
+                {/* Google Rating */}
+                <div className="flex items-center space-x-3">
+                  <div className="flex">
+                    {[1, 2, 3, 4, 5].map(star => (
+                      <Star key={star} className="h-5 w-5 text-yellow-500 fill-current" />
+                    ))}
+                    <Star className="h-5 w-5 text-yellow-500 fill-current opacity-50" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-lg font-bold text-foreground">4.5/5</div>
+                    <div className="text-sm text-muted-foreground">Google</div>
+                  </div>
+                </div>
+
+                {/* Trustpilot Rating */}
+                <div className="flex items-center space-x-3">
+                  <div className="flex">
+                    {[1, 2, 3, 4].map(star => (
+                      <Star key={star} className="h-5 w-5 text-green-500 fill-current" />
+                    ))}
+                    <Star className="h-5 w-5 text-green-500 fill-current opacity-50" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-lg font-bold text-foreground">4.4/5</div>
+                    <div className="text-sm text-muted-foreground">Trustpilot</div>
+                  </div>
+                </div>
+
+                {/* Companies Created */}
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                    <Building2 className="w-6 h-6 text-primary" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-lg font-bold text-foreground">+300,000</div>
+                    <div className="text-sm text-muted-foreground">sociétés accompagnées</div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Additional Trust Elements */}
+              <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-6 text-sm text-muted-foreground">
+                <div className="flex items-center space-x-2">
+                  <Shield className="h-4 w-4 text-success" />
+                  <span>Service agréé et sécurisé</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Clock className="h-4 w-4 text-primary" />
+                  <span>Kbis sous 48h garanti</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Users className="h-4 w-4 text-primary" />
+                  <span>Accompagnement par juriste</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="space-y-6">
               <Button 
                 onClick={() => navigate('/choisir-statut')} 
                 size="lg" 
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-poppins font-medium px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                className="btn-administrative btn-touch-lg text-xl px-12 py-6 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
               >
-                Commencer maintenant
+                Commencer mon inscription RCS
+                <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
               
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-primary text-primary hover:bg-primary/10 font-poppins font-medium px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              >
-                En savoir plus
-              </Button>
+              <p className="text-sm text-muted-foreground">
+                🔒 Paiement sécurisé • ✅ Traitement immédiat • 📞 Support 7j/7
+              </p>
             </div>
           </div>
         </div>
@@ -601,8 +728,8 @@ const Index = () => {
             {/* Brand Section */}
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
-                <img src={logoFav} alt="Inscription RCS" className="h-8 w-auto object-contain" />
-                <span className="text-xl font-semibold text-background font-poppins">Inscription RCS</span>
+                <img src={startLegalLogoSmall} alt="StartLégal" className="h-8 w-auto object-contain" />
+                <span className="text-xl font-semibold text-background">StartLégal</span>
               </div>
               <p className="text-sm text-background/70 leading-relaxed">
                 Service officiel d'immatriculation au Registre du Commerce et des Sociétés.
@@ -672,7 +799,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
               <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
                 <p className="text-sm text-background/70">
-                  © 2024 Inscription RCS - Service agréé pour l'immatriculation d'entreprises
+                  © 2024 StartLégal - Service agréé pour l'immatriculation d'entreprises
                 </p>
                 <div className="flex items-center space-x-4">
                   <a href="#" className="text-xs text-background/50 hover:text-background/70 transition-colors">

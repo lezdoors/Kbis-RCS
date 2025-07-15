@@ -9,10 +9,10 @@
 @layer base {
   :root {
     /* Premium French Government Colors */
-    --primary: 231 72% 30%; /* #1F2B7B - French Blue */
+    --primary: 218 100% 28%; /* #000091 - Official Marianne Blue */
     --primary-foreground: 0 0% 100%;
-    --primary-light: 231 72% 95%; /* Light blue background */
-    --primary-glow: 231 72% 50%; /* Slightly lighter for glow effects */
+    --primary-light: 240 14% 97%; /* #F5F5FE - Light blue background */
+    --primary-glow: 218 100% 35%; /* Slightly lighter for glow effects */
     
     /* French Flag Colors - Subtle Use */
     --french-blue: 218 100% 32%; /* #0055A4 - French Blue */
