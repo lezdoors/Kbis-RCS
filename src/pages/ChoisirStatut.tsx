@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { HeroSection } from "@/components/HeroSection";
 import { Building2, ArrowLeft, CheckCircle, Info, Users, FileText } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -151,28 +152,28 @@ const ChoisirStatut = () => {
         </div>
       </div>
 
+      {/* Hero Section */}
+      <HeroSection 
+        title="Sélection du statut juridique"
+        subtitle="Choisissez la forme juridique la plus adaptée à votre projet entrepreneurial"
+        showActivityGrid={false}
+        showTrustIndicators={false}
+        primaryCTA={{
+          text: "Besoin d'aide pour choisir ?",
+          action: () => {
+            const helpSection = document.querySelector('#help-section');
+            helpSection?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+        secondaryCTA={{
+          text: "Retour à l'accueil",
+          action: () => navigate('/')
+        }}
+      />
+
       {/* Main Content */}
       <section className="section-administrative">
         <div className="container-administrative">
-          <div className="mb-8">
-            <Button 
-              variant="ghost" 
-              onClick={() => navigate('/')}
-              className="mb-6 text-primary hover:text-primary/80"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Retour
-            </Button>
-            
-            <div className="text-center space-y-4 mb-12">
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-                Sélection du statut juridique
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Choisissez la forme juridique la plus adaptée à votre projet entrepreneurial
-              </p>
-            </div>
-          </div>
 
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {legalStructures.map((structure) => (
@@ -277,7 +278,7 @@ const ChoisirStatut = () => {
           </div>
 
           {/* Official Help Section */}
-          <div className="mt-16 text-center">
+          <div id="help-section" className="mt-16 text-center">
             <Card className="form-administrative max-w-2xl mx-auto">
               <CardHeader>
                 <CardTitle className="flex items-center justify-center text-lg">

@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { HeroSection } from '@/components/HeroSection';
 import { useRcsForm } from '@/hooks/useRcsForm';
 import { ArrowRight, Building2 } from 'lucide-react';
 
@@ -50,25 +51,36 @@ const Commencer = () => {
   const isFormValid = localData.type_entreprise && localData.activite && localData.ville;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-8">
-          <Building2 className="mx-auto h-12 w-12 text-blue-600 mb-4" />
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Inscription RCS
-          </h1>
-          <p className="text-gray-600">
-            Étape 1 sur 6 - Informations générales
-          </p>
-        </div>
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <HeroSection 
+        title="Inscription RCS - Étape 1 sur 6"
+        subtitle="Commencez votre inscription au Registre du Commerce et des Sociétés"
+        showActivityGrid={false}
+        showTrustIndicators={false}
+        primaryCTA={{
+          text: "Retour au choix du statut",
+          action: () => navigate('/choisir-statut')
+        }}
+        secondaryCTA={{
+          text: "Aide & Support",
+          action: () => {
+            const supportSection = document.querySelector('#support');
+            supportSection?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+      />
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Commencer votre inscription</CardTitle>
-            <CardDescription>
-              Renseignez les informations de base de votre entreprise
-            </CardDescription>
-          </CardHeader>
+      <section className="section-administrative">
+        <div className="max-w-2xl mx-auto px-4">
+
+          <Card className="card-premium">
+            <CardHeader>
+              <CardTitle>Informations générales</CardTitle>
+              <CardDescription>
+                Renseignez les informations de base de votre entreprise
+              </CardDescription>
+            </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="type_entreprise">Type d'entreprise *</Label>
@@ -122,22 +134,24 @@ const Commencer = () => {
             <div className="flex justify-between pt-6">
               <Button
                 variant="outline"
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/choisir-statut')}
+                className="btn-administrative-outline"
               >
                 Retour
               </Button>
               <Button
                 onClick={handleNext}
                 disabled={!isFormValid || loading}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 btn-administrative"
               >
                 Suivant
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
           </CardContent>
-        </Card>
-      </div>
+          </Card>
+        </div>
+      </section>
     </div>
   );
 };

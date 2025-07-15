@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { HeroSection } from "@/components/HeroSection";
 import { Building2, LogOut, User, CheckCircle, Clock, FileText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -100,18 +101,28 @@ const Dashboard = () => {
         </div>
       </header>
 
+      {/* Hero Section */}
+      <HeroSection 
+        title="Tableau de bord"
+        subtitle="Bienvenue dans votre espace personnel RCS Express"
+        showActivityGrid={false}
+        showTrustIndicators={false}
+        primaryCTA={{
+          text: "Nouvelle inscription",
+          action: () => navigate('/choisir-statut')
+        }}
+        secondaryCTA={{
+          text: "Support client",
+          action: () => {
+            const supportSection = document.querySelector('#support');
+            supportSection?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+      />
+
       {/* Main Content */}
       <section className="section-administrative">
         <div className="container-administrative">
-          {/* Hero Section */}
-          <div className="mb-12 text-center space-y-4">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
-              Tableau de bord
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Bienvenue dans votre espace personnel RCS Express
-            </p>
-          </div>
 
           {/* Welcome Status */}
           <div className="mb-12">
