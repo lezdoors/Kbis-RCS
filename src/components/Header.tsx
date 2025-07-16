@@ -14,15 +14,15 @@ export const Header = () => {
   return (
     <>
       <header className="bg-white border-b border-border shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex h-24 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img src={logoUrl} alt="RCS Express" className="h-8 w-auto md:h-10 object-contain" />
+            <img src={logoUrl} alt="RCS Express" className="h-12 w-auto md:h-16 object-contain" />
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-12">
             <a href="#comment-ca-marche" className="text-foreground hover:text-primary font-medium">
               Comment ça marche ?
             </a>
@@ -39,7 +39,7 @@ export const Header = () => {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-6">
             <Button 
               onClick={() => navigate('/login')} 
               className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg min-h-[44px]"

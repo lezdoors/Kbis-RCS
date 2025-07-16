@@ -53,7 +53,7 @@ export const HeroSection = ({
 
       {/* Main content container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-20 lg:gap-32">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 sm:gap-16 lg:gap-32">
           
           {/* Left Column - 3D Illustration */}
           <div className="flex-1 relative max-w-2xl">
@@ -68,16 +68,21 @@ export const HeroSection = ({
           </div>
 
           {/* Right Column - Content */}
-          <div className="flex-1 space-y-16 text-center lg:text-left max-w-xl">
-            {/* Refined subtitle */}
-            <div className="space-y-6">
+          <div className="flex-1 space-y-12 lg:space-y-16 text-center lg:text-left max-w-xl">
+            {/* Competitive positioning */}
+            <div className="space-y-8">
+              <p className="text-lg lg:text-xl text-slate-600 font-light leading-relaxed tracking-wide">
+                3x plus rapide que LegalPlace et LegalStart
+              </p>
+              
+              {/* Refined subtitle */}
               <p className="text-2xl lg:text-3xl text-slate-700 font-light leading-relaxed tracking-wide">
                 {subtitle}
               </p>
             </div>
 
-            {/* CTA Button */}
-            <div className="pt-8">
+            {/* CTA Section */}
+            <div className="pt-4 lg:pt-8 space-y-4">
               <Button 
                 onClick={() => {
                   trackEvent({
@@ -87,9 +92,14 @@ export const HeroSection = ({
                 }} 
                 className="bg-slate-900 hover:bg-slate-800 text-white font-medium py-6 px-12 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] min-h-[64px] tracking-wide"
               >
-                {finalPrimaryCTA.text}
+                Commencer maintenant - 2 minutes
                 <ArrowRight className="ml-3 w-5 h-5" />
               </Button>
+              
+              {/* Process guarantee */}
+              <p className="text-sm text-slate-500 font-light tracking-wide">
+                Traitement immédiat - Garantie 24h
+              </p>
             </div>
           </div>
         </div>
