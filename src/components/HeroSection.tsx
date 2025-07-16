@@ -222,18 +222,18 @@ export const HeroSection = ({
                     <img 
                       src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/too-blk-stairs.jpg.png" 
                       alt="Croissance d'entreprise - Illustration 3D représentant le succès entrepreneurial" 
-                      className="w-full max-w-[500px] h-auto object-contain transform group-hover:scale-105 transition-all duration-700 ease-out filter drop-shadow-2xl animate-float" 
+                      className="w-full max-w-[500px] h-auto object-contain transform group-hover:scale-105 transition-all duration-700 ease-out filter drop-shadow-2xl" 
                       loading="lazy"
                     />
                     
-                    {/* Animated growth indicators */}
-                    <div className="absolute top-1/4 -right-4 animate-bounce" style={{animationDelay: '1s'}}>
+                    {/* Static growth indicators */}
+                    <div className="absolute top-1/4 -right-4 animate-fade-in" style={{animationDelay: '1s'}}>
                       <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
                         +300%
                       </div>
                     </div>
                     
-                    <div className="absolute bottom-1/3 -left-4 animate-bounce" style={{animationDelay: '1.5s'}}>
+                    <div className="absolute bottom-1/3 -left-4 animate-fade-in" style={{animationDelay: '1.5s'}}>
                       <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
                         24h
                       </div>

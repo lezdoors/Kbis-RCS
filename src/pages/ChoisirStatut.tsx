@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { Building2, ArrowLeft, CheckCircle, Info, Users, FileText, Lightbulb, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -113,16 +114,19 @@ const ChoisirStatut = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Progress Indicator */}
-      <div className="bg-secondary border-b border-border">
+      {/* Progress Indicator - Enhanced */}
+      <div className="bg-gradient-to-r from-secondary to-secondary/80 border-b border-border shadow-sm">
         <div className="container-administrative">
-          <div className="py-3">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium">Étape 1 sur 6</span>
-              <span className="text-sm text-muted-foreground">Choix du statut juridique</span>
+          <div className="py-4">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-sm font-semibold text-primary">Étape 1 sur 6</span>
+              <span className="text-sm text-muted-foreground font-medium">Choix du statut juridique</span>
             </div>
             <div className="progress-administrative">
-              <div className="progress-bar-administrative" style={{ width: '16.66%' }}></div>
+              <div className="progress-bar-administrative animate-pulse" style={{ width: '16.66%' }}></div>
+            </div>
+            <div className="text-xs text-muted-foreground mt-2">
+              Progression : 16% complété
             </div>
           </div>
         </div>
@@ -160,21 +164,23 @@ const ChoisirStatut = () => {
             </div>
           </div>
 
-          {/* Smart Recommendation Box */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8 max-w-4xl mx-auto">
-            <div className="flex items-start space-x-3">
-              <Lightbulb className="w-6 h-6 text-blue-600 mt-1" />
+          {/* Smart Recommendation Box - Enhanced */}
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100 border-2 border-blue-200 rounded-2xl p-6 mb-8 max-w-4xl mx-auto shadow-lg animate-fade-in">
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                <Lightbulb className="w-6 h-6 text-white" />
+              </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-blue-900 mb-2">RECOMMANDATION IA:</h3>
-                <p className="text-blue-800 mb-4">
-                  Basé sur votre activité SERVICE, nous recommandons une {recommendedStructure} pour ses avantages fiscaux et sa flexibilité.
+                <h3 className="font-bold text-blue-900 mb-2 text-lg">🚀 RECOMMANDATION IA PERSONNALISÉE</h3>
+                <p className="text-blue-800 mb-4 text-base">
+                  Basé sur votre activité SERVICE, nous recommandons une <span className="font-semibold">{recommendedStructure}</span> pour ses avantages fiscaux et sa flexibilité optimale.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Button variant="outline" className="bg-white hover:bg-blue-50 text-blue-600 border-blue-300">
+                  <Button variant="outline" className="bg-white hover:bg-blue-50 text-blue-600 border-blue-300 font-semibold">
                     Voir pourquoi
                   </Button>
-                  <Button className="bg-orange-600 hover:bg-orange-700 text-white">
-                    Choisir {recommendedStructure}
+                  <Button className="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-semibold shadow-lg">
+                    Choisir {recommendedStructure} →
                   </Button>
                 </div>
               </div>
@@ -191,7 +197,7 @@ const ChoisirStatut = () => {
             {legalStructures.map((structure) => (
               <div 
                 key={structure.name}
-                className="relative bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-orange-300 hover:shadow-lg hover:scale-102 transition-all cursor-pointer h-full"
+                className="relative bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-primary hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer h-full group"
                 onClick={() => {
                   trackEvent({ 
                     event_type: ANALYTICS_EVENTS.ENTITY_SELECTED, 
@@ -203,13 +209,13 @@ const ChoisirStatut = () => {
               >
                 {/* POPULAIRE Badge for SASU */}
                 {structure.name === "SASU" && (
-                  <div className="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded text-xs font-bold">
+                  <div className="absolute top-3 right-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-pulse">
                     POPULAIRE
                   </div>
                 )}
 
                 {/* Speed Indicator */}
-                <div className="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold flex items-center gap-1">
+                <div className="absolute top-3 left-3 bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
                   <Zap className="w-3 h-3" />
                   24h
                 </div>
@@ -217,8 +223,8 @@ const ChoisirStatut = () => {
                 <div className="space-y-6">
                   {/* Header */}
                   <div className="text-center space-y-4 pt-4">
-                    <div className="w-16 h-16 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <Building2 className="h-8 w-8 text-primary" />
+                    <div className="w-16 h-16 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                      <Building2 className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <div className="space-y-2">
                       <h3 className="text-2xl font-bold text-foreground">{structure.name}</h3>
@@ -338,6 +344,7 @@ const ChoisirStatut = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

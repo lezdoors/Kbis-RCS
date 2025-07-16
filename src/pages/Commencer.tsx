@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { HeroSection } from '@/components/HeroSection';
+import { Footer } from '@/components/Footer';
 import { useRcsForm } from '@/hooks/useRcsForm';
 import { ArrowRight, Building2 } from 'lucide-react';
 
@@ -152,6 +153,7 @@ const Commencer = () => {
           </Card>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

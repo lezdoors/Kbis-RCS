@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LeadCaptureProvider } from "@/components/LeadCapture/LeadCaptureProvider";
 import Index from "./pages/Index";
 import ChoisirStatut from "./pages/ChoisirStatut";
 import Login from "./pages/Login";
@@ -78,7 +79,8 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <LeadCaptureProvider>
+            <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/choisir-statut" element={<ChoisirStatut />} />
@@ -96,7 +98,8 @@ function App() {
               <Route path="/cookies" element={<Cookies />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
+            </BrowserRouter>
+          </LeadCaptureProvider>
         </TooltipProvider>
       </QueryClientProvider>
     </ErrorBoundary>

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { Building2, ArrowLeft } from "lucide-react";
 import MagicLinkLogin from "@/components/MagicLinkLogin";
 import { supabase } from "@/integrations/supabase/client";
@@ -69,14 +70,7 @@ const Login = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-muted/50">
-        <div className="container-administrative py-6">
-          <div className="text-center text-sm text-muted-foreground">
-            <p>Service sécurisé et conforme aux standards de l'administration française</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
