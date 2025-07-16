@@ -14,6 +14,11 @@
     --primary-light: 240 14% 97%; /* #F5F5FE - Light blue background */
     --primary-glow: 218 100% 35%; /* Slightly lighter for glow effects */
     
+    /* Sophisticated Hero Colors */
+    --hero-navy: 212 47% 23%; /* #1E293B - Deep navy for text */
+    --hero-blue: 217 91% 60%; /* #3B82F6 - Soft blue for accents */
+    --hero-gray: 215 16% 47%; /* #64748B - Elegant gray for subheading */
+    
     /* French Flag Colors - Subtle Use */
     --french-blue: 218 100% 32%; /* #0055A4 - French Blue */
     --french-red: 8 83% 54%; /* #EF4135 - French Red */
