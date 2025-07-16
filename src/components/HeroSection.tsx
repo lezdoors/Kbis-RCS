@@ -201,31 +201,39 @@ export const HeroSection = ({
               </div>
             </div>
 
-            {/* Right Column - Enhanced Illustration */}
+            {/* Right Column - Organic Image Integration */}
             <div className="relative lg:order-2 order-1">
-              <div className="bg-gradient-to-br from-primary/15 via-primary-light/40 to-primary/5 rounded-3xl overflow-hidden shadow-xl backdrop-blur-sm max-w-[420px] mx-auto">
-                <div className="p-6">
-                  <div className="text-center space-y-6">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>
-                      <img 
-                        src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/too-blk-stairs.jpg.png" 
-                        alt="Deux personnages en escalade symbolisant l'accompagnement vers la création d'entreprise" 
-                        className="w-full h-64 sm:h-72 lg:h-80 object-contain mx-auto rounded-2xl shadow-lg relative z-10" 
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="space-y-2">
+              {/* Background gradient that flows naturally */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary-light/20 to-primary/5 rounded-full blur-3xl transform scale-110 opacity-60"></div>
+              
+              {/* Image container with natural flow */}
+              <div className="relative z-10 flex items-center justify-center">
+                <div className="relative">
+                  {/* Subtle overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-primary/5 rounded-3xl"></div>
+                  
+                  {/* Main image flowing naturally */}
+                  <img 
+                    src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/too-blk-stairs.jpg.png" 
+                    alt="Croissance d'entreprise - Illustration 3D représentant le succès entrepreneurial" 
+                    className="w-full max-w-[450px] h-auto object-contain transform hover:scale-105 transition-transform duration-700 ease-out filter drop-shadow-2xl" 
+                    loading="lazy"
+                  />
+                  
+                  {/* Floating text elements */}
+                  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-3 shadow-lg border border-white/20">
                       <h3 className="text-xl lg:text-2xl font-bold text-foreground">Votre entreprise</h3>
-                      <p className="text-base lg:text-lg text-muted-foreground font-medium">créée en 24h</p>
+                      <p className="text-base lg:text-lg text-primary font-semibold">créée en 24h</p>
                     </div>
                   </div>
                 </div>
               </div>
               
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-glow/10 rounded-full blur-2xl"></div>
+              {/* Organic floating elements */}
+              <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-primary/20 to-primary-glow/30 rounded-full blur-xl opacity-70 animate-pulse"></div>
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr from-primary-light/20 to-primary/20 rounded-full blur-2xl opacity-50 animate-pulse" style={{animationDelay: '1s'}}></div>
+              <div className="absolute top-1/2 -right-6 w-20 h-20 bg-gradient-to-br from-primary-glow/30 to-primary/20 rounded-full blur-xl opacity-60 animate-pulse" style={{animationDelay: '2s'}}></div>
             </div>
           </div>
         </div>

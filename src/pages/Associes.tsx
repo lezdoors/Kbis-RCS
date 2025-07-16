@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Header } from '@/components/Header';
 import { useRcsForm, Associe } from '@/hooks/useRcsForm';
 import { ArrowLeft, ArrowRight, Plus, Trash2, Users } from 'lucide-react';
 
@@ -55,8 +56,9 @@ const Associes = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen bg-background">
+      <Header />
+      <div className="max-w-2xl mx-auto p-4">
         <div className="text-center mb-8">
           <Users className="mx-auto h-12 w-12 text-blue-600 mb-4" />
           <h1 className="text-3xl font-bold text-gray-900 mb-2">

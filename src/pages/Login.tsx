@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Header } from "@/components/Header";
 import { Building2, ArrowLeft } from "lucide-react";
 import MagicLinkLogin from "@/components/MagicLinkLogin";
 import { supabase } from "@/integrations/supabase/client";
@@ -33,30 +34,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="header-administrative">
-        <div className="container-administrative">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-sm bg-primary flex items-center justify-center">
-                <Building2 className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-base font-semibold text-foreground">RCS Express</span>
-                <span className="text-xs text-muted-foreground">Service agréé</span>
-              </div>
-            </div>
-            <Button 
-              variant="outline" 
-              onClick={() => navigate('/')} 
-              className="btn-administrative-outline"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Retour à l'accueil
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <section className="section-administrative">

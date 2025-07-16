@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Header } from '@/components/Header';
 import { useRcsForm } from '@/hooks/useRcsForm';
 import { ArrowLeft, CreditCard, CheckCircle2, Building2, User, Users, DollarSign } from 'lucide-react';
 
@@ -33,8 +34,9 @@ const Paiement = () => {
   const totalPrice = servicePrice + tvAmount;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-background">
+      <Header />
+      <div className="max-w-4xl mx-auto p-4">
         <div className="text-center mb-8">
           <CreditCard className="mx-auto h-12 w-12 text-blue-600 mb-4" />
           <h1 className="text-3xl font-bold text-gray-900 mb-2">

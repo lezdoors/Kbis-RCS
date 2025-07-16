@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Header } from '@/components/Header';
 import { useRcsForm } from '@/hooks/useRcsForm';
 import { ArrowLeft, ArrowRight, User } from 'lucide-react';
 
@@ -48,8 +49,9 @@ const Coordonnees = () => {
   const isFormValid = localData.nom && localData.prenom && localData.email && localData.telephone && localData.adresse;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen bg-background">
+      <Header />
+      <div className="max-w-2xl mx-auto p-4">
         <div className="text-center mb-8">
           <User className="mx-auto h-12 w-12 text-blue-600 mb-4" />
           <h1 className="text-3xl font-bold text-gray-900 mb-2">

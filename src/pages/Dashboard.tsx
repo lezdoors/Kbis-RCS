@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { Building2, LogOut, User, CheckCircle, Clock, FileText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -69,37 +70,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Premium Header */}
-      <header className="header-administrative">
-        <div className="container-administrative">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 rounded-2xl bg-primary flex items-center justify-center shadow-soft">
-                <Building2 className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-semibold text-foreground">RCS Express</span>
-                <span className="text-xs text-muted-foreground font-medium">Espace personnel</span>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="hidden sm:flex items-center space-x-2 text-sm">
-                <div className="w-2 h-2 bg-success rounded-full"></div>
-                <span className="text-muted-foreground font-medium">{user?.email}</span>
-              </div>
-              <Button 
-                variant="outline" 
-                onClick={handleLogout}
-                className="btn-administrative-outline btn-touch"
-              >
-                <LogOut className="h-4 w-4 mr-2" />
-                <span className="hidden sm:inline">Se déconnecter</span>
-                <span className="sm:hidden">Sortir</span>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <HeroSection 
@@ -107,6 +78,7 @@ const Dashboard = () => {
         subtitle="Bienvenue dans votre espace personnel RCS Express"
         showActivityGrid={false}
         showTrustIndicators={false}
+        showUrgencyBanner={false}
         primaryCTA={{
           text: "Nouvelle inscription",
           action: () => navigate('/choisir-statut')

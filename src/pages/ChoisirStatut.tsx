@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Header } from "@/components/Header";
 import { Building2, ArrowLeft, CheckCircle, Info, Users, FileText, Lightbulb, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -110,26 +111,8 @@ const ChoisirStatut = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Official Administrative Header */}
-      <header className="header-administrative">
-        <div className="container-administrative">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-sm bg-primary flex items-center justify-center">
-                <Building2 className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-base font-semibold text-foreground">RCS Express</span>
-                <span className="text-xs text-muted-foreground">Service agréé</span>
-              </div>
-            </div>
-            <Button variant="outline" onClick={() => navigate('/')} className="btn-administrative-outline">
-              Retour à l'accueil
-            </Button>
-          </div>
-        </div>
-      </header>
-
+      <Header />
+      
       {/* Progress Indicator */}
       <div className="bg-secondary border-b border-border">
         <div className="container-administrative">

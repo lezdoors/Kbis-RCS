@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Header } from '@/components/Header';
 import { useRcsForm } from '@/hooks/useRcsForm';
 import { ArrowLeft, ArrowRight, DollarSign } from 'lucide-react';
 
@@ -40,8 +41,9 @@ const Capital = () => {
   const isFormValid = localData.capital_total > 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen bg-background">
+      <Header />
+      <div className="max-w-2xl mx-auto p-4">
         <div className="text-center mb-8">
           <DollarSign className="mx-auto h-12 w-12 text-blue-600 mb-4" />
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
