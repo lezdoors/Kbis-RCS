@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import ChoisirStatut from "./pages/ChoisirStatut";
 import Login from "./pages/Login";
@@ -17,7 +17,7 @@ import Cookies from "./pages/Cookies";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/choisir-statut" element={<ChoisirStatut />} />
@@ -35,7 +35,7 @@ function App() {
         <Route path="/cookies" element={<Cookies />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
