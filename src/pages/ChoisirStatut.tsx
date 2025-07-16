@@ -158,7 +158,7 @@ const ChoisirStatut = () => {
             <p className="text-xl text-gray-600 text-center mb-2">
               Notre IA recommande la meilleure option pour votre projet
             </p>
-            <div className="bg-orange-100 text-orange-800 p-2 rounded-lg text-center font-medium mb-8 inline-block">
+            <div className="bg-primary-light text-primary p-2 rounded-lg text-center font-medium mb-8 inline-block">
               <Zap className="inline w-4 h-4 mr-1" />
               Toutes structures créées en 24h maximum
             </div>
@@ -179,7 +179,7 @@ const ChoisirStatut = () => {
                   <Button variant="outline" className="bg-white hover:bg-blue-50 text-blue-600 border-blue-300 font-semibold">
                     Voir pourquoi
                   </Button>
-                  <Button className="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-semibold shadow-lg">
+                  <Button variant="institutional" className="font-semibold shadow-lg">
                     Choisir {recommendedStructure} →
                   </Button>
                 </div>
@@ -209,7 +209,7 @@ const ChoisirStatut = () => {
               >
                 {/* POPULAIRE Badge for SASU */}
                 {structure.name === "SASU" && (
-                  <div className="absolute top-3 right-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-pulse">
+                  <div className="absolute top-3 right-3 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-pulse">
                     POPULAIRE
                   </div>
                 )}

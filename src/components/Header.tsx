@@ -48,7 +48,9 @@ export const Header = () => {
             </Button>
             <Button 
               onClick={() => navigate('/choisir-statut')} 
-              className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg min-h-[44px] transition-all duration-200 hover:scale-105"
+              variant="institutional"
+              size="touch"
+              className="min-h-[44px]"
             >
               Commencer
             </Button>

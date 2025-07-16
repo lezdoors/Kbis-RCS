@@ -18,7 +18,7 @@ export const TrustBar = () => {
             <span className="font-medium">Certifié RGPD</span>
           </div>
           <div className="flex items-center gap-2">
-            <Clock className="w-5 h-5 text-orange-600" />
+            <Clock className="w-5 h-5 text-primary" />
             <span className="font-medium">Livraison 24h</span>
           </div>
         </div>

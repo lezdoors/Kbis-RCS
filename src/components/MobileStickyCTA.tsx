@@ -5,7 +5,7 @@ export const MobileStickyCTA = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-orange-600 text-white p-4 shadow-lg">
+    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-primary text-white p-4 shadow-lg">
       <div className="safe-area-padding-bottom">
         <Button 
           onClick={() => navigate('/choisir-statut')}

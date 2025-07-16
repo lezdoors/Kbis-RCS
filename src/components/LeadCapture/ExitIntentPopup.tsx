@@ -53,7 +53,7 @@ export const ExitIntentPopup = ({ isOpen, onClose, onSubmit }: ExitIntentPopupPr
             <X className="h-4 w-4" />
           </button>
           <div className="text-center">
-            <Gift className="h-12 w-12 text-orange-500 mx-auto mb-4" />
+            <Gift className="h-12 w-12 text-primary mx-auto mb-4" />
             <CardTitle className="text-2xl text-center">Attendez !</CardTitle>
             <CardDescription className="text-center">
               Obtenez notre guide gratuit avant de partir
@@ -85,8 +85,9 @@ export const ExitIntentPopup = ({ isOpen, onClose, onSubmit }: ExitIntentPopupPr
             </div>
             
             <Button 
-              type="submit" 
-              className="w-full bg-orange-600 hover:bg-orange-700"
+              type="submit"
+              variant="institutional"
+              className="w-full"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Envoi...' : 'Télécharger gratuitement'}

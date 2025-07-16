@@ -51,7 +51,7 @@ export const ProcessSection = () => {
         <div className="relative">
           {/* Progress Line - Hidden on mobile */}
           <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gray-200 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-500 to-orange-500 w-full"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary w-full"></div>
           </div>
 
           {/* Steps Grid */}
@@ -74,7 +74,7 @@ export const ProcessSection = () => {
                   <div className="p-6 pt-2 space-y-4">
                     {/* Step Number */}
                     <div className="flex justify-center">
-                      <div className="w-16 h-16 bg-[#EA580C] text-white rounded-full flex items-center justify-center text-xl font-bold">
+                      <div className="w-16 h-16 bg-secondary text-secondary-foreground rounded-full flex items-center justify-center text-xl font-bold shadow-lg">
                         {step.number}
                       </div>
                     </div>
@@ -107,7 +107,7 @@ export const ProcessSection = () => {
 
                 {/* Mobile connector line */}
                 {index < processSteps.length - 1 && (
-                  <div className="md:hidden w-0.5 h-8 bg-orange-500 my-4"></div>
+                  <div className="md:hidden w-0.5 h-8 bg-primary my-4"></div>
                 )}
               </div>
             ))}
@@ -118,8 +118,10 @@ export const ProcessSection = () => {
         <div className="text-center mt-16">
           <div className="space-y-4">
             <Button 
-              onClick={() => navigate('/choisir-statut')} 
-              className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg shadow-lg min-h-[44px]"
+              onClick={() => navigate('/choisir-statut')}
+              variant="institutional"
+              size="touch"
+              className="py-3 px-6 md:py-4 md:px-8 text-base md:text-lg min-h-[44px]"
             >
               Créer mon entreprise maintenant
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -131,7 +133,7 @@ export const ProcessSection = () => {
                 <span className="w-3 h-3 bg-blue-500 rounded-full"></span> <span>47 entreprises créées cette semaine</span>
               </div>
               <div className="text-sm text-gray-600 flex items-center gap-1">
-                <span className="w-3 h-3 bg-orange-500 rounded-full"></span> <span>Offre limitée</span>
+                <span className="w-3 h-3 bg-primary rounded-full"></span> <span>Offre limitée</span>
               </div>
             </div>
           </div>

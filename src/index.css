@@ -8,27 +8,28 @@
 
 @layer base {
   :root {
-    /* Premium French Government Colors */
-    --primary: 218 100% 28%; /* #000091 - Official Marianne Blue */
+    /* Institutional Color Palette */
+    --primary: 0 72% 55%; /* #DC2626 - Institutional Red */
     --primary-foreground: 0 0% 100%;
-    --primary-light: 240 14% 97%; /* #F5F5FE - Light blue background */
-    --primary-glow: 218 100% 35%; /* Slightly lighter for glow effects */
+    --primary-light: 0 72% 97%; /* Light red for backgrounds */
+    --primary-glow: 0 72% 60%; /* Slightly lighter for glow effects */
+    
+    /* Sophisticated Secondary Colors */
+    --secondary: 218 91% 58%; /* #1E40AF - Navy Blue */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 218 91% 97%; /* Light navy for backgrounds */
     
     /* Sophisticated Hero Colors */
-    --hero-navy: 212 47% 23%; /* #1E293B - Deep navy for text */
-    --hero-blue: 217 91% 60%; /* #3B82F6 - Soft blue for accents */
+    --hero-navy: 212 47% 23%; /* #1F2937 - Deep navy for text */
+    --hero-blue: 218 91% 58%; /* #1E40AF - Navy blue for accents */
     --hero-gray: 215 16% 47%; /* #64748B - Elegant gray for subheading */
     
-    /* French Flag Colors - Subtle Use */
-    --french-blue: 218 100% 32%; /* #0055A4 - French Blue */
-    --french-red: 8 83% 54%; /* #EF4135 - French Red */
-    --french-red-light: 8 83% 96%; /* Light red for backgrounds */
-    
-    --secondary: 240 14% 97%; /* #F5F5FE - Light administrative background */
-    --secondary-foreground: 218 100% 28%;
+    /* Neutral Sophisticated Colors */
+    --neutral-dark: 212 47% 23%; /* #1F2937 - Sophisticated dark text */
+    --neutral-light: 210 40% 98%; /* #F8FAFC - Light background */
     
     /* Premium Status Colors */
-    --success: 118 60% 28%; /* #18753C - Official green */
+    --success: 161 94% 30%; /* #059669 - Elegant green */
     --success-foreground: 0 0% 100%;
     --warning: 21 100% 35%; /* #B34000 - Administrative orange */
     --warning-foreground: 0 0% 100%;
@@ -725,8 +726,17 @@
 }
 
 /* Enhanced Button Styles */
+/* Institutional Button Styles */
 .btn-primary-optimized {
-  @apply bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-200 hover:scale-105 shadow-lg min-h-[44px];
+  @apply bg-primary hover:bg-primary-glow text-primary-foreground font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl min-h-[44px];
+}
+
+.btn-institutional {
+  @apply bg-primary text-primary-foreground hover:bg-primary-glow font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[44px];
+}
+
+.btn-navy {
+  @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[44px];
 }
 
 .btn-secondary-optimized {
