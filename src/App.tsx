@@ -1,4 +1,9 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { Component, ReactNode } from "react";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import ChoisirStatut from "./pages/ChoisirStatut";
 import Login from "./pages/Login";
@@ -15,27 +20,86 @@ import CGV from "./pages/CGV";
 import PolitiqueRGPD from "./pages/PolitiqueRGPD";
 import Cookies from "./pages/Cookies";
 
+// Create QueryClient instance outside of component to avoid HMR issues
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      retry: 1,
+    },
+  },
+});
+
+// Error boundary to catch HMR-related errors
+class ErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(): { hasError: boolean } {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: any) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+              Something went wrong
+            </h1>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Reload Page
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
 function App() {
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/choisir-statut" element={<ChoisirStatut />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/commencer" element={<Commencer />} />
-        <Route path="/coordonnees" element={<Coordonnees />} />
-        <Route path="/associes" element={<Associes />} />
-        <Route path="/capital" element={<Capital />} />
-        <Route path="/documents" element={<Documents />} />
-        <Route path="/paiement" element={<Paiement />} />
-        <Route path="/mentions-legales" element={<MentionsLegales />} />
-        <Route path="/cgv" element={<CGV />} />
-        <Route path="/politique-rgpd" element={<PolitiqueRGPD />} />
-        <Route path="/cookies" element={<Cookies />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </HashRouter>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/choisir-statut" element={<ChoisirStatut />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/commencer" element={<Commencer />} />
+              <Route path="/coordonnees" element={<Coordonnees />} />
+              <Route path="/associes" element={<Associes />} />
+              <Route path="/capital" element={<Capital />} />
+              <Route path="/documents" element={<Documents />} />
+              <Route path="/paiement" element={<Paiement />} />
+              <Route path="/mentions-legales" element={<MentionsLegales />} />
+              <Route path="/cgv" element={<CGV />} />
+              <Route path="/politique-rgpd" element={<PolitiqueRGPD />} />
+              <Route path="/cookies" element={<Cookies />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 
