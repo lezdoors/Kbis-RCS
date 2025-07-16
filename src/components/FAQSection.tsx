@@ -66,39 +66,40 @@ export const FAQSection = () => {
     let highlightedText = text;
     competitiveTerms.forEach(term => {
       const regex = new RegExp(`(${term})`, 'gi');
-      highlightedText = highlightedText.replace(regex, '<span class="font-semibold text-green-700">$1</span>');
+      highlightedText = highlightedText.replace(regex, '<span class="font-semibold text-institutional">$1</span>');
     });
 
     return highlightedText;
   };
 
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24" id="faq">
+    <section className="bg-background py-20 lg:py-24" id="faq">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-6 mb-16">
-          <h2 className="text-3xl font-bold text-center mb-4">
+        <div className="text-center space-y-4 mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
             Questions fréquentes sur notre service
           </h2>
-          <p className="text-xl text-gray-600 text-center mb-12">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Découvrez pourquoi nous surpassons nos concurrents
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {faqs.map((faq, index) => (
-            <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
+            <div key={index} className="bg-card border border-border rounded-xl overflow-hidden shadow-sm">
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full text-left p-4 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 font-medium text-gray-900 flex justify-between items-center"
+                className="w-full text-left p-6 bg-card hover:bg-muted/20 font-semibold text-foreground flex justify-between items-center"
               >
-                <span>{faq.question}</span>
-                <span className="text-gray-500 text-xl">
+                <span className="text-base">{faq.question}</span>
+                <span className="text-navy text-2xl font-light ml-4">
                   {openFAQ === index ? '−' : '+'}
                 </span>
               </button>
               {openFAQ === index && (
-                <div className="p-4 bg-gray-50 text-gray-700 border-l-4 border-green-400">
+                <div className="px-6 pb-6 text-muted-foreground border-l-4 border-institutional bg-institutional/5">
                   <div
+                    className="leading-relaxed"
                     dangerouslySetInnerHTML={{
                       __html: highlightCompetitiveAdvantages(faq.answer)
                     }}

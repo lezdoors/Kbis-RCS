@@ -42,66 +42,60 @@ export const BenefitsSection = () => {
   ];
 
   return (
-    <section className="bg-background py-16 sm:py-20 lg:py-24" id="pourquoi-nous">
+    <section className="bg-background py-20 lg:py-24" id="pourquoi-nous">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollFade>
-          <div className="text-center space-y-6 mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
-              Pourquoi RCS Express bat tous les concurrents
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Comparaison objective avec LegalPlace et autres plateformes
-            </p>
-          </div>
-        </ScrollFade>
+        <div className="text-center space-y-4 mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
+            Pourquoi RCS Express bat tous les concurrents
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Comparaison objective avec LegalPlace et autres plateformes
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {comparisons.map((comparison, index) => {
             const IconComponent = comparison.icon;
             return (
-              <ScrollFade key={index} delay={index * 100}>
-                <div className="bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div key={index} className="bg-card border border-border rounded-xl p-8 shadow-sm">
+                <div className="space-y-5">
+                  {/* Icon and Title */}
                   <div className="space-y-4">
-                    {/* Icon and Title */}
-                    <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                        <IconComponent className="w-6 h-6 text-primary" />
-                      </div>
-                      <h3 className="font-bold text-foreground text-lg">
-                        {comparison.title}
-                      </h3>
+                    <div className="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center">
+                      <IconComponent className="w-7 h-7 text-navy" />
                     </div>
+                    <h3 className="font-bold text-foreground text-xl">
+                      {comparison.title}
+                    </h3>
+                  </div>
 
-                    {/* Advantage with checkmark */}
-                    <div className="space-y-3">
-                      <div className="flex items-start space-x-2">
-                        <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <p className="text-sm font-semibold text-foreground">
-                          {comparison.advantage}
-                        </p>
-                      </div>
-                      
-                      <p className="text-sm text-muted-foreground pl-7">
-                        {comparison.description}
+                  {/* Advantage with checkmark */}
+                  <div className="space-y-3">
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-institutional mt-0.5 flex-shrink-0" />
+                      <p className="text-sm font-semibold text-foreground leading-relaxed">
+                        {comparison.advantage}
                       </p>
                     </div>
+                    
+                    <p className="text-sm text-muted-foreground pl-8 leading-relaxed">
+                      {comparison.description}
+                    </p>
                   </div>
                 </div>
-              </ScrollFade>
+              </div>
             );
           })}
         </div>
 
-        <ScrollFade delay={400}>
-          <div className="text-center mt-12">
-            <div className="inline-flex items-center space-x-2 bg-green-50 border border-green-200 rounded-xl px-6 py-3">
-              <CheckCircle className="w-5 h-5 text-green-600" />
-              <span className="text-green-800 font-semibold">
-                Rejoignez les 300,000+ entrepreneurs qui nous font confiance
-              </span>
-            </div>
+        <div className="text-center mt-16">
+          <div className="inline-flex items-center space-x-3 bg-institutional/5 border border-institutional/20 rounded-xl px-8 py-4">
+            <CheckCircle className="w-5 h-5 text-institutional" />
+            <span className="text-institutional font-semibold">
+              Rejoignez les 300,000+ entrepreneurs qui nous font confiance
+            </span>
           </div>
-        </ScrollFade>
+        </div>
       </div>
     </section>
   );
