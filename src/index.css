@@ -397,8 +397,7 @@
     height: 200%;
   }
 
-  /* Premium Animation Classes - DISABLED for professional appearance */
-  /*
+  /* Premium Animation Classes */
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out;
   }
@@ -428,7 +427,6 @@
   .animate-success-bounce {
     animation: successBounce 1s ease-out;
   }
-  */
 
   /* Mobile Responsive */
   @media (max-width: 768px) {
@@ -590,8 +588,7 @@
   }
 }
 
-/* Premium Keyframes - DISABLED for professional appearance */
-/*
+/* Premium Keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -679,7 +676,6 @@
     opacity: 0;
   }
 }
-*/
 
 /* Dark Mode */
 .dark {
