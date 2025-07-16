@@ -42,7 +42,9 @@ export const Header = () => {
           <div className="hidden md:flex items-center space-x-6">
             <Button 
               onClick={() => navigate('/login')} 
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg min-h-[44px] transition-all duration-200 hover:scale-105"
+              variant="navy"
+              size="touch"
+              className="min-h-[44px]"
             >
               Se connecter
             </Button>
@@ -87,8 +89,10 @@ export const Header = () => {
                   onClick={() => {
                     navigate('/login');
                     setIsMobileMenuOpen(false);
-                  }} 
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg w-full min-h-[44px] transition-all duration-200"
+                  }}
+                  variant="navy"
+                  size="touch"
+                  className="w-full min-h-[44px]"
                 >
                   Se connecter
                 </Button>
@@ -96,8 +100,10 @@ export const Header = () => {
                   onClick={() => {
                     navigate('/choisir-statut');
                     setIsMobileMenuOpen(false);
-                  }} 
-                  className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg w-full min-h-[44px] transition-all duration-200"
+                  }}
+                  variant="institutional"
+                  size="touch"
+                  className="w-full min-h-[44px]"
                 >
                   Commencer
                 </Button>
