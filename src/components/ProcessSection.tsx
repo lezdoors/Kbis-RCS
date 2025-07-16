@@ -22,8 +22,8 @@ export const ProcessSection = () => {
       title: "Traitement Express",
       description: "Nos experts traitent votre dossier en temps record. Suivi en direct via votre tableau de bord.",
       competitiveNote: "VS attente aveugle ailleurs",
-      image: "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/Team-red-stairs.jpg.png",
-      altText: "Traitement expert rapide",
+      image: "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/toon-pik-stairs.jpg.png",
+      altText: "Traitement expert rapide avec progression par étapes",
       timeline: "1-12 heures"
     },
     {
