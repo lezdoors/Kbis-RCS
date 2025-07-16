@@ -54,7 +54,23 @@ const Commencer = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection 
+        title="Inscription RCS - Étape 1 sur 6"
+        subtitle="Commencez votre inscription au Registre du Commerce et des Sociétés"
+        showActivityGrid={false}
+        showTrustIndicators={false}
+        primaryCTA={{
+          text: "Retour au choix du statut",
+          action: () => navigate('/choisir-statut')
+        }}
+        secondaryCTA={{
+          text: "Aide & Support",
+          action: () => {
+            const supportSection = document.querySelector('#support');
+            supportSection?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+      />
 
       <section className="section-administrative">
         <div className="max-w-2xl mx-auto px-4">

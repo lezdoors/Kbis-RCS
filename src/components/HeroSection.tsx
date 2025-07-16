@@ -1,253 +1,249 @@
 import { Button } from "@/components/ui/button";
-import { Star, ArrowRight, TrendingUp, Award, Shield, Clock, Users, CheckCircle2 } from "lucide-react";
+import { Star, ArrowRight, Zap, Trophy, Lock, Smartphone, CheckCircle, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { GuaranteeSection } from "@/components/GuaranteeBadges";
+import { SocialProofTestimonials } from "@/components/SocialProofTestimonials";
 import { trackEvent, ANALYTICS_EVENTS } from "@/lib/analytics";
-
 interface HeroSectionProps {
+  title?: string;
+  subtitle?: string;
+  showBulletPoints?: boolean;
+  showActivityGrid?: boolean; // Backward compatibility - maps to showBulletPoints
+  showTrustIndicators?: boolean;
+  showUrgencyBanner?: boolean;
+  primaryCTA?: {
+    text: string;
+    action: () => void;
+  };
+  secondaryCTA?: {
+    text: string;
+    action: () => void;
+  };
   className?: string;
 }
-
-export const HeroSection = ({ className = "" }: HeroSectionProps) => {
+export const HeroSection = ({
+  title = "Créez votre entreprise en 24h - Garanti",
+  subtitle = "La plateforme la plus rapide de France. Technology 2025, résultats immédiats.",
+  showBulletPoints = true,
+  showActivityGrid = true,
+  // Backward compatibility
+  showTrustIndicators = true,
+  showUrgencyBanner = true,
+  primaryCTA,
+  secondaryCTA,
+  className = ""
+}: HeroSectionProps) => {
   const navigate = useNavigate();
+  const [bannerDismissed, setBannerDismissed] = useState(false);
 
-  const handleCTAClick = () => {
-    trackEvent({
-      event_type: ANALYTICS_EVENTS.HERO_CTA_CLICK
-    });
-    navigate('/choisir-statut');
+  // Bullet points for competitive advantages
+  const bulletPoints = [{
+    icon: Zap,
+    text: "Traitement express en 24h maximum"
+  }, {
+    icon: Trophy,
+    text: "Plus rapide que LegalPlace et les autres"
+  }, {
+    icon: Lock,
+    text: "Plateforme ultra-moderne et sécurisée"
+  }, {
+    icon: Smartphone,
+    text: "Suivi temps réel de votre dossier"
+  }, {
+    icon: CheckCircle,
+    text: "300,000+ entrepreneurs nous font confiance"
+  }];
+  const defaultPrimaryCTA = {
+    text: "Créer mon entreprise maintenant",
+    action: () => navigate('/choisir-statut')
   };
+  const defaultSecondaryCTA = {
+    text: "Comment ça marche ?",
+    action: () => {
+      const processSection = document.querySelector('#process');
+      processSection?.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  };
+  const finalPrimaryCTA = primaryCTA || defaultPrimaryCTA;
+  const finalSecondaryCTA = secondaryCTA || defaultSecondaryCTA;
+  return <>
+      {/* Urgency Banner */}
+      {showUrgencyBanner && !bannerDismissed && <div className="bg-[#EA580C] text-white py-3 px-4 text-center relative">
+          <div className="flex items-center justify-center gap-2 text-sm font-medium">
+            <span className="w-4 h-4 bg-white/20 rounded-full flex items-center justify-center">
+              <span className="w-2 h-2 bg-white rounded-full"></span>
+            </span>
+            <span>Offre de lancement : Accompagnement expert gratuit (valeur 150€)</span>
+          </div>
+          <button onClick={() => setBannerDismissed(true)} className="absolute right-4 top-1/2 -translate-y-1/2 hover:opacity-80" aria-label="Fermer la bannière">
+            <X className="h-4 w-4" />
+          </button>
+        </div>}
 
-  return (
-    <section className={`min-h-screen flex items-center py-8 md:py-16 ${className}`} style={{ background: 'var(--gradient-subtle)' }}>
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          
-          {/* Left Column - Content */}
-          <div className="space-y-6 md:space-y-8 text-center lg:text-left order-2 lg:order-1">
+      {/* Hero Section */}
+      <section className={`bg-gradient-to-br from-background via-primary-light/30 to-background py-12 sm:py-16 lg:py-20 ${className}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[72px] font-black leading-[0.9] text-foreground animate-fade-in">
-              <span style={{ background: 'var(--gradient-primary)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Créez votre entreprise en 24h
-              </span>
-              <br />
-              <span className="text-accent font-black">
-                Garanti ou remboursé
-              </span>
-            </h1>
+            {/* Left Column - Content (7 columns) */}
+            <div className="lg:col-span-7 space-y-8 lg:space-y-10 lg:order-1 order-2">
+              {/* Main Headlines */}
+              <div className="space-y-6 text-center lg:text-left">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] tracking-tight animate-fade-in">
+                  <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+                    {title}
+                  </span>
+                </h1>
+                <p className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground/90 font-medium leading-relaxed max-w-3xl mx-auto lg:mx-0 animate-fade-in" style={{
+                animationDelay: '0.2s'
+              }}>
+                  {subtitle}
+                </p>
+              </div>
 
-            {/* Subheading */}
-            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-semibold max-w-2xl mx-auto lg:mx-0 animate-slide-down" style={{ animationDelay: '0.1s' }}>
-              3x plus rapide que LegalPlace et LegalStart.
-              <br className="hidden sm:block" />
-              <span className="text-primary font-bold">Technologie 2025, résultats garantis.</span>
-            </p>
-
-            {/* Trust Indicators */}
-            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 sm:gap-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <div className="flex items-center gap-2">
-                <div className="flex">
-                  {[1, 2, 3, 4, 5].map(star => (
-                    <Star key={star} className="h-5 w-5 text-yellow-500 fill-current" />
-                  ))}
+              {/* CTA Buttons - More Prominent */}
+              <div className="flex flex-col sm:flex-row gap-4 items-center lg:items-start animate-fade-in" style={{
+              animationDelay: '0.4s'
+            }}>
+                <div className="w-full sm:w-auto">
+                  <Button onClick={() => {
+                  trackEvent({
+                    event_type: ANALYTICS_EVENTS.HERO_CTA_CLICK
+                  });
+                  finalPrimaryCTA.action();
+                }} className="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-bold py-4 px-8 md:py-5 md:px-10 rounded-xl text-lg md:text-xl shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 transition-all duration-300 w-full sm:w-auto min-h-[56px] relative overflow-hidden">
+                    <span className="relative z-10 flex items-center justify-center">
+                      {finalPrimaryCTA.text}
+                      <ArrowRight className="ml-3 w-5 h-5 sm:w-6 sm:h-6" />
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-600 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                  </Button>
+                  {/* Urgency Message */}
+                  <div className="text-sm text-gray-600 mt-3 flex items-center justify-center sm:justify-start gap-2">
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    <span className="font-medium">Commandez avant 16h = traitement aujourd'hui</span>
+                  </div>
                 </div>
-                <span className="font-bold text-lg">4.9/5 étoiles</span>
+                
+                {secondaryCTA && <div className="w-full sm:w-auto">
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 w-full sm:w-auto min-h-[56px]" onClick={finalSecondaryCTA.action}>
+                      {finalSecondaryCTA.text}
+                    </Button>
+                  </div>}
               </div>
-              
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Users className="h-5 w-5" />
-                <span className="font-semibold">Plus de 10,000 entreprises créées</span>
+
+              {/* Trust Indicators - Better Positioned */}
+              {showTrustIndicators && <div className="space-y-4 animate-fade-in" style={{
+              animationDelay: '0.6s'
+            }}>
+                  <div className="flex flex-col sm:flex-row items-center lg:items-start space-y-3 sm:space-y-0 sm:space-x-8">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex">
+                        {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-500 fill-current" />)}
+                      </div>
+                      <span className="text-base sm:text-lg font-bold text-foreground">4.5/5</span>
+                    </div>
+                    <div className="text-base sm:text-lg text-muted-foreground text-center lg:text-left">
+                      <span className="font-bold text-foreground">Excellent</span> 4.4 sur 5 | Trustpilot
+                    </div>
+                  </div>
+
+                  <div className="text-base sm:text-lg text-muted-foreground text-center lg:text-left">
+                    <span className="font-bold text-foreground text-lg sm:text-xl">+300 000</span> sociétés accompagnées par RCS Express
+                  </div>
+                </div>}
+
+              {/* Bullet Points */}
+              {showBulletPoints && <div className="space-y-5 animate-fade-in" style={{
+              animationDelay: '0.8s'
+            }}>
+                  {bulletPoints.map((point, index) => {
+                const IconComponent = point.icon;
+                return <div key={index} className="flex items-center gap-4 text-center lg:text-left justify-center lg:justify-start group">
+                        <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                          <IconComponent className="w-5 h-5 text-primary" />
+                        </div>
+                        <span className="text-lg sm:text-xl font-semibold text-foreground">
+                          {point.text}
+                        </span>
+                      </div>;
+              })}
+                </div>}
+
+              {/* Guarantee Badges */}
+              <div className="animate-fade-in" style={{
+              animationDelay: '1.0s'
+            }}>
+                <GuaranteeSection />
               </div>
-              
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Shield className="h-5 w-5 text-success" />
-                <span className="font-semibold">Certifié greffes tribunaux</span>
+
+              {/* Social Proof Testimonials */}
+              <div className="animate-fade-in" style={{
+              animationDelay: '1.2s'
+            }}>
+                <SocialProofTestimonials />
               </div>
             </div>
 
-            {/* Primary CTA */}
-            <div className="animate-scale-in" style={{ animationDelay: '0.3s' }}>
-              <Button
-                onClick={handleCTAClick}
-                className="text-white font-bold py-4 px-8 md:py-6 md:px-12 rounded-2xl text-lg md:text-xl w-full sm:w-auto min-h-[56px] md:min-h-[64px] relative overflow-hidden transition-smooth hover-shadow-lift animate-shimmer group"
-                style={{ 
-                  background: 'linear-gradient(to right, #EA580C, #DC2626)',
-                  boxShadow: 'var(--shadow-xl)',
-                  animation: 'pulse 2s infinite'
-                }}
-              >
-                <span className="relative z-10 flex items-center justify-center gap-3">
-                  Commencer maintenant - 2 min
-                  <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-fast" />
-                </span>
-              </Button>
+            {/* Right Column - Animated Image (5 columns) */}
+            <div className="lg:col-span-5 relative lg:order-2 order-1">
+              {/* Background gradient that flows naturally */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary-light/20 to-primary/5 rounded-full blur-3xl transform scale-110 opacity-60 animate-pulse"></div>
               
-              {/* Urgency indicator */}
-              <div className="flex items-center justify-center lg:justify-start gap-2 mt-3 text-sm font-medium text-muted-foreground">
-                <motion.div 
-                  className="w-3 h-3 bg-success rounded-full"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                />
-                <span>Traitement immédiat - Garantie 24h</span>
+              {/* Image container with natural flow */}
+              <div className="relative z-10 flex items-center justify-center">
+                <div className="relative animate-fade-in" style={{
+                animationDelay: '0.3s'
+              }}>
+                  {/* Subtle overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-primary/5 rounded-3xl"></div>
+                  
+                  {/* Main image with enhanced animations */}
+                  <div className="relative group">
+                    <img src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/too-blk-stairs.jpg.png" alt="Croissance d'entreprise - Illustration 3D représentant le succès entrepreneurial" className="w-full max-w-[500px] h-auto object-contain transform group-hover:scale-105 transition-all duration-500 ease-out filter drop-shadow-2xl" loading="lazy" style={{
+                    imageRendering: 'auto',
+                    maxWidth: '100%',
+                    height: 'auto',
+                    aspectRatio: 'auto'
+                  }} />
+                    
+                    {/* Static growth indicators */}
+                    <div className="absolute top-1/4 -right-4 animate-fade-in" style={{
+                    animationDelay: '1s'
+                  }}>
+                      
+                    </div>
+                    
+                    <div className="absolute bottom-1/3 -left-4 animate-fade-in" style={{
+                    animationDelay: '1.5s'
+                  }}>
+                      
+                    </div>
+                  </div>
+                  
+                  {/* Floating text elements */}
+                  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center animate-fade-in" style={{
+                  animationDelay: '1.4s'
+                }}>
+                    
+                  </div>
+                </div>
               </div>
-            </div>
-
-            {/* Additional trust elements */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <div className="flex items-center gap-2 justify-center lg:justify-start">
-                <Clock className="h-5 w-5 text-primary" />
-                <span className="text-sm font-semibold">Express 24h</span>
-              </div>
-              <div className="flex items-center gap-2 justify-center lg:justify-start">
-                <Award className="h-5 w-5 text-warning" />
-                <span className="text-sm font-semibold">Qualité premium</span>
-              </div>
-              <div className="flex items-center gap-2 justify-center lg:justify-start">
-                <CheckCircle2 className="h-5 w-5 text-success" />
-                <span className="text-sm font-semibold">100% légal</span>
-              </div>
+              
+              {/* Organic floating elements with professional animations */}
+              <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-primary/10 to-primary-glow/20 rounded-full blur-xl opacity-50 animate-pulse"></div>
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr from-primary-light/15 to-primary/15 rounded-full blur-2xl opacity-40 animate-pulse" style={{
+              animationDelay: '1s'
+            }}></div>
+              <div className="absolute top-1/2 -right-6 w-20 h-20 bg-gradient-to-br from-primary-glow/20 to-primary/15 rounded-full blur-xl opacity-50 animate-pulse" style={{
+              animationDelay: '2s'
+            }}></div>
             </div>
           </div>
-
-          {/* Right Column - 3D Animation */}
-          <motion.div 
-            className="relative order-1 lg:order-2"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* Background effects */}
-            <div className="absolute inset-0 rounded-full blur-3xl opacity-60" style={{ background: 'var(--gradient-primary)' }} />
-            
-            {/* Main 3D Scene Container */}
-            <div className="relative z-10 aspect-square max-w-lg mx-auto">
-              
-              {/* 3D Businessman climbing stairs */}
-              <motion.div
-                className="relative w-full h-full flex items-center justify-center"
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              >
-                {/* Blue stairs - stepped animation */}
-                <div className="absolute inset-0 flex items-end justify-center">
-                  {[1, 2, 3, 4, 5].map((step, index) => (
-                    <motion.div
-                      key={step}
-                      className="rounded-t-lg shadow-lg"
-                      style={{
-                        width: '60px',
-                        height: `${(step) * 40}px`,
-                        marginRight: index === 4 ? '0' : '4px',
-                        background: 'linear-gradient(to top, hsl(var(--primary)), hsl(var(--primary-glow)))'
-                      }}
-                      initial={{ scaleY: 0 }}
-                      animate={{ scaleY: 1 }}
-                      transition={{ delay: index * 0.2, duration: 0.6, ease: "easeOut" }}
-                    />
-                  ))}
-                </div>
-
-                {/* Businessman figure */}
-                <motion.div
-                  className="absolute top-1/4 right-1/4 w-16 h-20 bg-gradient-to-b from-gray-700 to-gray-900 rounded-full"
-                  animate={{ 
-                    x: [0, 20, 40, 60, 80],
-                    y: [40, 30, 20, 10, 0]
-                  }}
-                  transition={{ 
-                    duration: 3, 
-                    repeat: Infinity, 
-                    ease: "easeInOut",
-                    repeatDelay: 1
-                  }}
-                />
-              </motion.div>
-
-              {/* Floating success elements */}
-              <motion.div
-                className="absolute top-8 right-8 rounded-full p-3 shadow-lg"
-                style={{ background: 'linear-gradient(to right, hsl(var(--success)), hsl(var(--success-foreground))' }}
-                animate={{ 
-                  y: [-5, 5, -5],
-                  rotate: [0, 5, -5, 0]
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <TrendingUp className="w-6 h-6 text-white" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute top-16 left-8 rounded-full p-3 shadow-lg"
-                style={{ background: 'linear-gradient(to right, hsl(var(--warning)), #f59e0b)' }}
-                animate={{ 
-                  y: [5, -5, 5],
-                  rotate: [0, -5, 5, 0]
-                }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              >
-                <Award className="w-6 h-6 text-white" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute bottom-16 left-12 rounded-full p-2 shadow-lg"
-                style={{ background: 'linear-gradient(to right, #a855f7, #9333ea)' }}
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                  y: [-3, 3, -3]
-                }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              >
-                <Star className="w-5 h-5 text-white fill-current" />
-              </motion.div>
-
-              {/* Floating text badges */}
-              <motion.div
-                className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-card/90 backdrop-blur-sm rounded-full px-4 py-2"
-                style={{ boxShadow: 'var(--shadow-soft)' }}
-                animate={{ y: [-8, 8, -8] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <span className="text-sm font-bold text-primary">24h garanties</span>
-              </motion.div>
-              
-              <motion.div
-                className="absolute bottom-8 right-4 bg-card/90 backdrop-blur-sm rounded-full px-3 py-1"
-                style={{ boxShadow: 'var(--shadow-soft)' }}
-                animate={{ 
-                  y: [6, -6, 6],
-                  x: [-2, 2, -2]
-                }}
-                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-              >
-                <span className="text-xs font-semibold text-success">Succès ✓</span>
-              </motion.div>
-            </div>
-            
-            {/* Additional floating orbs */}
-            <motion.div
-              className="absolute -top-4 -left-4 w-24 h-24 rounded-full blur-xl"
-              style={{ background: 'linear-gradient(to bottom right, rgba(59, 130, 246, 0.3), rgba(168, 85, 247, 0.3))' }}
-              animate={{ 
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.6, 0.3]
-              }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
-            
-            <motion.div
-              className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full blur-xl"
-              style={{ background: 'linear-gradient(to top right, rgba(251, 146, 60, 0.3), rgba(239, 68, 68, 0.3))' }}
-              animate={{ 
-                scale: [1.2, 1, 1.2],
-                opacity: [0.4, 0.2, 0.4]
-              }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            />
-          </motion.div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    </>;
 };

@@ -235,63 +235,6 @@ export type Database = {
           },
         ]
       }
-      form_analytics: {
-        Row: {
-          created_at: string | null
-          device_type: string | null
-          id: string
-          session_id: string | null
-          step_reached: number | null
-          time_spent: number | null
-        }
-        Insert: {
-          created_at?: string | null
-          device_type?: string | null
-          id?: string
-          session_id?: string | null
-          step_reached?: number | null
-          time_spent?: number | null
-        }
-        Update: {
-          created_at?: string | null
-          device_type?: string | null
-          id?: string
-          session_id?: string | null
-          step_reached?: number | null
-          time_spent?: number | null
-        }
-        Relationships: []
-      }
-      leads: {
-        Row: {
-          company_name: string | null
-          company_type: string | null
-          created_at: string | null
-          email: string
-          id: string
-          phone: string | null
-          utm_source: string | null
-        }
-        Insert: {
-          company_name?: string | null
-          company_type?: string | null
-          created_at?: string | null
-          email: string
-          id?: string
-          phone?: string | null
-          utm_source?: string | null
-        }
-        Update: {
-          company_name?: string | null
-          company_type?: string | null
-          created_at?: string | null
-          email?: string
-          id?: string
-          phone?: string | null
-          utm_source?: string | null
-        }
-        Relationships: []
-      }
       orders: {
         Row: {
           amount: number
