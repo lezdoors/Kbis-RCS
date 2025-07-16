@@ -741,6 +741,8 @@
 
 .hover-image-zoom {
   @apply transition-transform duration-300 hover:scale-110;
+}
+
 /* Performance Optimizations */
 .will-change-transform {
   will-change: transform;
