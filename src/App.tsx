@@ -14,6 +14,10 @@ import Associes from "./pages/Associes";
 import Capital from "./pages/Capital";
 import Documents from "./pages/Documents";
 import Paiement from "./pages/Paiement";
+import MentionsLegales from "./pages/MentionsLegales";
+import CGV from "./pages/CGV";
+import PolitiqueRGPD from "./pages/PolitiqueRGPD";
+import Cookies from "./pages/Cookies";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +38,10 @@ const App = () => (
           <Route path="/capital" element={<Capital />} />
           <Route path="/documents" element={<Documents />} />
           <Route path="/paiement" element={<Paiement />} />
+          <Route path="/mentions-legales" element={<MentionsLegales />} />
+          <Route path="/cgv" element={<CGV />} />
+          <Route path="/politique-rgpd" element={<PolitiqueRGPD />} />
+          <Route path="/cookies" element={<Cookies />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

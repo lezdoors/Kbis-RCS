@@ -1,4 +1,5 @@
 import { SecurityBadges } from "@/components/SecurityBadges";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -32,10 +33,26 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold">Services</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Création SASU</li>
-              <li>Création SARL</li>
-              <li>Création SCI</li>
-              <li>Auto-entrepreneur</li>
+              <li>
+                <Link to="/choisir-statut" className="hover:text-white transition-colors">
+                  Création SASU
+                </Link>
+              </li>
+              <li>
+                <Link to="/choisir-statut" className="hover:text-white transition-colors">
+                  Création SARL
+                </Link>
+              </li>
+              <li>
+                <Link to="/choisir-statut" className="hover:text-white transition-colors">
+                  Création SCI
+                </Link>
+              </li>
+              <li>
+                <Link to="/choisir-statut" className="hover:text-white transition-colors">
+                  Auto-entrepreneur
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -43,10 +60,26 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold">Support</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Centre d'aide</li>
-              <li>Contact</li>
-              <li>Chat en direct</li>
-              <li>FAQ</li>
+              <li>
+                <Link to="/dashboard" className="hover:text-white transition-colors">
+                  Centre d'aide
+                </Link>
+              </li>
+              <li>
+                <Link to="/commencer" className="hover:text-white transition-colors">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard" className="hover:text-white transition-colors">
+                  Chat en direct
+                </Link>
+              </li>
+              <li>
+                <Link to="/#faq" className="hover:text-white transition-colors">
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -54,10 +87,26 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold">Légal</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Mentions légales</li>
-              <li>CGV</li>
-              <li>Politique RGPD</li>
-              <li>Cookies</li>
+              <li>
+                <Link to="/mentions-legales" className="hover:text-white transition-colors">
+                  Mentions légales
+                </Link>
+              </li>
+              <li>
+                <Link to="/cgv" className="hover:text-white transition-colors">
+                  CGV
+                </Link>
+              </li>
+              <li>
+                <Link to="/politique-rgpd" className="hover:text-white transition-colors">
+                  Politique RGPD
+                </Link>
+              </li>
+              <li>
+                <Link to="/cookies" className="hover:text-white transition-colors">
+                  Cookies
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
