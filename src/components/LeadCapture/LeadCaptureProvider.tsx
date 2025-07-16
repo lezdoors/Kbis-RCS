@@ -55,14 +55,15 @@ export const LeadCaptureProvider = ({ children }: LeadCaptureProviderProps) => {
   const submitLead = async (email: string, type: string) => {
     try {
       // Send email via edge function
-      const response = await fetch('/api/send-contact-email', {
+      const response = await fetch('https://qjktghkheyompsxuwzqo.supabase.co/functions/v1/send-contact-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqa3RnaGtoZXlvbXBzeHV3enFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI1ODE4MDMsImV4cCI6MjA2ODE1NzgwM30.GVzkRLgWrL3G7JGqE9hUHB1cH_6et5WOhvDzKA2tc20`,
         },
         body: JSON.stringify({
           email,
-          type: 'exit_intent'
+          type
         })
       });
 
