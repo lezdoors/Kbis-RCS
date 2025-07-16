@@ -22,8 +22,8 @@ interface HeroSectionProps {
   };
 }
 export const HeroSection = ({
-  title = "Créez votre entreprise en 24h",
-  subtitle = "3x plus rapide que LegalPlace et LegalStart",
+  title = "OBTENIR KBIS", 
+  subtitle = "Votre partenaire pour créer votre entreprise en 24h",
   className = "",
   primaryCTA,
   secondaryCTA,
@@ -43,24 +43,41 @@ export const HeroSection = ({
   const finalPrimaryCTA = primaryCTA || defaultPrimaryCTA;
 
   return (
-    <section className={`bg-white py-24 lg:py-32 ${className}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <section className={`relative bg-white min-h-screen flex items-center justify-center overflow-hidden ${className}`}>
+      {/* Large-scale background typography */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <h1 className="font-elegant font-extralight text-[12rem] sm:text-[16rem] md:text-[20rem] lg:text-[24rem] xl:text-[28rem] text-gray-100/40 leading-none tracking-wider select-none">
+          {title}
+        </h1>
+      </div>
+
+      {/* Main content container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-20 lg:gap-32">
           
-          {/* Left Column - Content */}
-          <div className="space-y-12">
-            {/* Main Headlines */}
-            <div className="space-y-8">
-              <h1 className="text-hero-navy font-semibold leading-tight" style={{ fontSize: '48px' }}>
-                {title}
-              </h1>
-              <p className="text-hero-gray text-xl leading-relaxed font-medium">
+          {/* Left Column - 3D Illustration */}
+          <div className="flex-1 relative max-w-2xl">
+            <div className="relative">
+              <img 
+                src="/lovable-uploads/0a951d9f-bbd3-4723-b5db-128557ca2925.png"
+                alt="Deux figures 3D blanches s'entraident pour gravir des marches grises - illustration de partenariat et progression professionnelle"
+                className="w-full h-auto object-contain filter drop-shadow-2xl"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          {/* Right Column - Content */}
+          <div className="flex-1 space-y-16 text-center lg:text-left max-w-xl">
+            {/* Refined subtitle */}
+            <div className="space-y-6">
+              <p className="text-2xl lg:text-3xl text-slate-700 font-light leading-relaxed tracking-wide">
                 {subtitle}
               </p>
             </div>
 
             {/* CTA Button */}
-            <div>
+            <div className="pt-8">
               <Button 
                 onClick={() => {
                   trackEvent({
@@ -68,31 +85,19 @@ export const HeroSection = ({
                   });
                   finalPrimaryCTA.action();
                 }} 
-                className="bg-hero-blue hover:bg-hero-blue/90 text-white font-semibold py-6 px-10 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-h-[64px]"
+                className="bg-slate-900 hover:bg-slate-800 text-white font-medium py-6 px-12 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] min-h-[64px] tracking-wide"
               >
                 {finalPrimaryCTA.text}
                 <ArrowRight className="ml-3 w-5 h-5" />
               </Button>
             </div>
           </div>
-
-          {/* Right Column - Image */}
-          <div className="relative">
-            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden">
-              <img 
-                src={heroBusinessmanImage} 
-                alt="Businessman professionnel gravissant des marches vers le succès"
-                className="w-full h-auto object-cover"
-                loading="lazy"
-              />
-            </div>
-            
-            {/* Subtle background elements */}
-            <div className="absolute -top-8 -right-8 w-32 h-32 bg-hero-blue/5 rounded-full blur-2xl"></div>
-            <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-hero-navy/5 rounded-full blur-3xl"></div>
-          </div>
         </div>
       </div>
+
+      {/* Subtle ambient elements */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-slate-50 rounded-full blur-3xl opacity-30"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-slate-100 rounded-full blur-3xl opacity-20"></div>
     </section>
   );
 };
