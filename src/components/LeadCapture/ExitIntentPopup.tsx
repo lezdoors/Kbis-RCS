@@ -77,7 +77,7 @@ export const ExitIntentPopup = ({ isOpen, onClose, onSubmit }: ExitIntentPopupPr
               <Input
                 id="exit-email"
                 type="email"
-                placeholder="votre@email.com"
+                placeholder="contact@obtenirkbis.fr"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

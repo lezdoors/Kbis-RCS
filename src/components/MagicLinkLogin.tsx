@@ -62,7 +62,7 @@ const MagicLinkLogin = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="votre@email.com"
+              placeholder="contact@obtenirkbis.fr"
               required
               disabled={isLoading}
               className="input-enhanced"

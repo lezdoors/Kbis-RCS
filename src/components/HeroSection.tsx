@@ -222,8 +222,14 @@ export const HeroSection = ({
                     <img 
                       src="https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/too-blk-stairs.jpg.png" 
                       alt="Croissance d'entreprise - Illustration 3D représentant le succès entrepreneurial" 
-                      className="w-full max-w-[500px] h-auto object-contain transform group-hover:scale-105 transition-all duration-700 ease-out filter drop-shadow-2xl" 
+                      className="w-full max-w-[500px] h-auto object-contain transform group-hover:scale-105 transition-all duration-500 ease-out filter drop-shadow-2xl" 
                       loading="lazy"
+                      style={{
+                        imageRendering: 'auto',
+                        maxWidth: '100%',
+                        height: 'auto',
+                        aspectRatio: 'auto'
+                      }}
                     />
                     
                     {/* Static growth indicators */}
@@ -250,10 +256,10 @@ export const HeroSection = ({
                 </div>
               </div>
               
-              {/* Organic floating elements with animations */}
-              <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-primary/20 to-primary-glow/30 rounded-full blur-xl opacity-70 animate-pulse"></div>
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr from-primary-light/20 to-primary/20 rounded-full blur-2xl opacity-50 animate-pulse" style={{animationDelay: '1s'}}></div>
-              <div className="absolute top-1/2 -right-6 w-20 h-20 bg-gradient-to-br from-primary-glow/30 to-primary/20 rounded-full blur-xl opacity-60 animate-pulse" style={{animationDelay: '2s'}}></div>
+              {/* Organic floating elements with professional animations */}
+              <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-primary/10 to-primary-glow/20 rounded-full blur-xl opacity-50 animate-pulse"></div>
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr from-primary-light/15 to-primary/15 rounded-full blur-2xl opacity-40 animate-pulse" style={{animationDelay: '1s'}}></div>
+              <div className="absolute top-1/2 -right-6 w-20 h-20 bg-gradient-to-br from-primary-glow/20 to-primary/15 rounded-full blur-xl opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
             </div>
           </div>
         </div>

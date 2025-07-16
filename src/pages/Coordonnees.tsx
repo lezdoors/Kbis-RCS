@@ -96,7 +96,7 @@ const Coordonnees = () => {
               <Input
                 id="email"
                 type="email"
-                placeholder="votre@email.com"
+                placeholder="contact@obtenirkbis.fr"
                 value={localData.email}
                 onChange={(e) => setLocalData({...localData, email: e.target.value})}
               />

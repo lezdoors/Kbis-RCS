@@ -32,8 +32,22 @@ export const DocumentDownloadGate = ({
     setIsSubmitting(true);
     
     try {
-      // Simulate API call and document download
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Send email via edge function
+      const response = await fetch('/api/send-contact-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          type: 'document',
+          documentTitle
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
       
       toast({
         title: "Téléchargement démarré !",
@@ -95,7 +109,7 @@ export const DocumentDownloadGate = ({
             <Input
               id="download-email"
               type="email"
-              placeholder="votre@email.com"
+              placeholder="contact@obtenirkbis.fr"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
               required

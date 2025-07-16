@@ -54,13 +54,23 @@ export const LeadCaptureProvider = ({ children }: LeadCaptureProviderProps) => {
 
   const submitLead = async (email: string, type: string) => {
     try {
-      // Simulate API call to save lead
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send email via edge function
+      const response = await fetch('/api/send-contact-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          type: 'exit_intent'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
       
-      // Here you would typically send the lead to your backend
-      console.log('Lead submitted:', { email, type, timestamp: new Date().toISOString() });
-      
-      // You can also track this event in your analytics
+      // Track this event in analytics
       if (typeof window !== 'undefined' && (window as any).gtag) {
         (window as any).gtag('event', 'lead_generated', {
           event_category: 'Lead Generation',

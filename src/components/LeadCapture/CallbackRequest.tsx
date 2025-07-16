@@ -29,8 +29,21 @@ export const CallbackRequest = ({ onClose }: CallbackRequestProps) => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send email via edge function
+      const response = await fetch('/api/send-contact-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          type: 'callback'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
       
       toast({
         title: "Demande envoyée !",
@@ -92,7 +105,7 @@ export const CallbackRequest = ({ onClose }: CallbackRequestProps) => {
             <Input
               id="callback-email"
               type="email"
-              placeholder="votre@email.com"
+              placeholder="contact@obtenirkbis.fr"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
               required

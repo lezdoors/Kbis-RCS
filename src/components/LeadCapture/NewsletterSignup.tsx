@@ -31,8 +31,24 @@ export const NewsletterSignup = ({ variant = 'default', onClose }: NewsletterSig
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send email via edge function
+      const response = await fetch('/api/send-contact-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          type: 'newsletter',
+          interests: Object.entries(formData.interests)
+            .filter(([_, value]) => value)
+            .map(([key, _]) => key)
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
       
       toast({
         title: "Inscription confirmée !",
@@ -66,7 +82,7 @@ export const NewsletterSignup = ({ variant = 'default', onClose }: NewsletterSig
           <Input
             id="newsletter-email"
             type="email"
-            placeholder="votre@email.com"
+            placeholder="contact@obtenirkbis.fr"
             value={formData.email}
             onChange={(e) => setFormData({...formData, email: e.target.value})}
             required
