@@ -69,11 +69,11 @@
     --shadow-primary: 0 10px 25px -5px rgba(0, 0, 145, 0.1);
     --shadow-floating: 0 32px 64px -12px rgba(0, 0, 0, 0.14);
 
-    /* Premium Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-micro: all 0.1s ease;
+    /* Professional Transitions - Subtle and purposeful */
+    --transition-smooth: all 0.2s ease-in-out;
+    --transition-fast: all 0.15s ease-in-out;
+    --transition-subtle: all 0.1s ease-in-out;
+    --transition-micro: all 0.05s ease;
     
     /* Apple-style Spacing System */
     --spacing-section: clamp(4rem, 10vw, 8rem);
@@ -201,18 +201,19 @@
   }
 
   .progress-bar-administrative {
-    @apply h-full rounded-full transition-all duration-500 ease-out;
+    @apply h-full rounded-full;
     background: var(--gradient-primary);
     box-shadow: var(--shadow-soft);
+    transition: width 0.3s ease-out;
   }
 
+  /* Professional hover effects - subtle elevation only */
   .hover-administrative {
-    @apply transition-all duration-300;
+    transition: box-shadow 0.2s ease-out;
   }
 
   .hover-administrative:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-large);
+    box-shadow: var(--shadow-medium);
   }
 
   /* Premium Hero Section */
@@ -274,28 +275,28 @@
     @apply font-semibold tracking-wide;
   }
 
-  /* Premium Card Styles */
+  /* Professional Card Styles - minimal hover effects */
   .card-premium {
-    @apply bg-white border border-gray-200 rounded-2xl p-8 transition-all duration-300;
-    box-shadow: var(--shadow-large);
+    @apply bg-white border border-gray-200 rounded-2xl p-8;
+    box-shadow: var(--shadow-soft);
     backdrop-filter: blur(10px);
+    transition: box-shadow 0.2s ease-out;
   }
 
   .card-premium:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-premium);
+    box-shadow: var(--shadow-medium);
   }
 
-  /* Enhanced Input Styles */
+  /* Professional Input Styles - subtle focus states */
   .input-enhanced {
-    @apply bg-card border border-border rounded-xl px-6 py-4 text-base focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300;
+    @apply bg-card border border-border rounded-xl px-6 py-4 text-base focus:border-primary focus:ring-2 focus:ring-primary/20;
     box-shadow: var(--shadow-soft);
     min-height: var(--touch-target);
+    transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out;
   }
 
   .input-enhanced:focus {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-medium);
+    box-shadow: var(--shadow-soft), 0 0 0 3px rgba(0, 0, 145, 0.1);
   }
 
   /* Loading States */
