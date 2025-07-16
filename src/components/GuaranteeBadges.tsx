@@ -3,10 +3,12 @@ interface GuaranteeBadgeProps {
   className?: string;
 }
 
+import { CheckCircle } from "lucide-react";
+
 export const GuaranteeBadge = ({ text, className = "" }: GuaranteeBadgeProps) => {
   return (
     <div className={`inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-800 px-3 py-1 rounded-full text-sm font-medium ${className}`}>
-      <span className="text-green-600">✓</span>
+      <CheckCircle className="w-4 h-4 text-green-600" />
       <span>{text}</span>
     </div>
   );

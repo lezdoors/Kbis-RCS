@@ -23,13 +23,13 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <a href="#comment-ca-marche" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="#comment-ca-marche" className="text-foreground hover:text-primary font-medium">
               Comment ça marche ?
             </a>
-            <a href="#pourquoi-nous" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="#pourquoi-nous" className="text-foreground hover:text-primary font-medium">
               Pourquoi nous ?
             </a>
-            <a href="#faq" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="#faq" className="text-foreground hover:text-primary font-medium">
               Questions fréquentes
             </a>
             <div className="flex items-center space-x-2 text-primary font-semibold">
@@ -42,13 +42,13 @@ export const Header = () => {
           <div className="hidden md:flex items-center space-x-3">
             <Button 
               onClick={() => navigate('/login')} 
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 hover:scale-105 min-h-[44px]"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg min-h-[44px]"
             >
               Se connecter
             </Button>
             <Button 
               onClick={() => navigate('/choisir-statut')} 
-              className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 hover:scale-105 shadow-lg min-h-[44px]"
+              className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg min-h-[44px]"
             >
               Commencer
             </Button>
@@ -82,7 +82,7 @@ export const Header = () => {
                     navigate('/login');
                     setIsMobileMenuOpen(false);
                   }} 
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 w-full min-h-[44px]"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg w-full min-h-[44px]"
                 >
                   Se connecter
                 </Button>
@@ -91,7 +91,7 @@ export const Header = () => {
                     navigate('/choisir-statut');
                     setIsMobileMenuOpen(false);
                   }} 
-                  className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg w-full min-h-[44px]"
+                  className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg w-full min-h-[44px]"
                 >
                   Commencer
                 </Button>

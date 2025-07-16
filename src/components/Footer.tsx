@@ -23,7 +23,7 @@ export const Footer = () => {
               La plateforme la plus rapide pour créer votre entreprise en France.
             </p>
             <div className="flex items-center gap-2 text-sm text-gray-400">
-              <span>⚡</span>
+              <span className="w-4 h-4 bg-current rounded-full inline-block"></span>
               <span>24h garanties</span>
             </div>
           </div>

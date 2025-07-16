@@ -3,37 +3,37 @@ import { Rocket, Wrench, Euro, Shield, Phone, Zap, CheckCircle } from "lucide-re
 export const BenefitsSection = () => {
   const comparisons = [
     {
-      title: "🚀 VITESSE INÉGALÉE",
+      title: "VITESSE INÉGALÉE",
       advantage: "24h garanties vs 3-5 jours chez nos concurrents",
       description: "Traitement le plus rapide du marché",
       icon: Rocket
     },
     {
-      title: "🔧 TECHNOLOGIE 2025",
+      title: "TECHNOLOGIE 2025",
       advantage: "Plateforme moderne vs solutions obsolètes",
       description: "Architecture cloud nouvelle génération",
       icon: Wrench
     },
     {
-      title: "💰 PRIX TRANSPARENT",
+      title: "PRIX TRANSPARENT",
       advantage: "129€ tout inclus vs frais cachés ailleurs",
       description: "Aucune surprise, aucun supplément",
       icon: Euro
     },
     {
-      title: "🛡️ SÉCURITÉ MAXIMALE",
+      title: "SÉCURITÉ MAXIMALE",
       advantage: "Données cryptées et conformité RGPD totale",
       description: "Protection et confidentialité garanties",
       icon: Shield
     },
     {
-      title: "📞 SUPPORT EXPERT",
+      title: "SUPPORT EXPERT",
       advantage: "Accompagnement humain à chaque étape",
       description: "Conseillers juridiques disponibles",
       icon: Phone
     },
     {
-      title: "⚡ SUIVI TEMPS RÉEL",
+      title: "SUIVI TEMPS RÉEL",
       advantage: "Notifications instantanées vs emails sporadiques",
       description: "Vous savez toujours où en est votre dossier",
       icon: Zap
@@ -58,15 +58,15 @@ export const BenefitsSection = () => {
             return (
               <div 
                 key={index} 
-                className="group bg-card border border-border rounded-2xl p-6 hover:border-primary hover:shadow-lg transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105"
+                className="bg-card border border-border rounded-2xl p-6 shadow-sm"
               >
                 <div className="space-y-4">
                   {/* Icon and Title */}
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                       <IconComponent className="w-6 h-6 text-primary" />
                     </div>
-                    <h3 className="font-bold text-foreground text-lg group-hover:text-primary transition-colors">
+                    <h3 className="font-bold text-foreground text-lg">
                       {comparison.title}
                     </h3>
                   </div>
