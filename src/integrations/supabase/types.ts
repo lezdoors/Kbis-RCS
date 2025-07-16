@@ -94,6 +94,42 @@ export type Database = {
           },
         ]
       }
+      billing_info: {
+        Row: {
+          billing_address: string | null
+          company_name: string | null
+          created_at: string
+          id: string
+          is_company: boolean | null
+          payment_method: string | null
+          updated_at: string
+          user_id: string
+          vat_number: string | null
+        }
+        Insert: {
+          billing_address?: string | null
+          company_name?: string | null
+          created_at?: string
+          id?: string
+          is_company?: boolean | null
+          payment_method?: string | null
+          updated_at?: string
+          user_id: string
+          vat_number?: string | null
+        }
+        Update: {
+          billing_address?: string | null
+          company_name?: string | null
+          created_at?: string
+          id?: string
+          is_company?: boolean | null
+          payment_method?: string | null
+          updated_at?: string
+          user_id?: string
+          vat_number?: string | null
+        }
+        Relationships: []
+      }
       demandes_rcs: {
         Row: {
           activite: string | null
@@ -199,6 +235,99 @@ export type Database = {
           },
         ]
       }
+      orders: {
+        Row: {
+          amount: number
+          completed_at: string | null
+          created_at: string
+          currency: string | null
+          demande_id: string | null
+          id: string
+          invoice_url: string | null
+          order_number: string
+          payment_status: string | null
+          service_type: string
+          status: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          completed_at?: string | null
+          created_at?: string
+          currency?: string | null
+          demande_id?: string | null
+          id?: string
+          invoice_url?: string | null
+          order_number: string
+          payment_status?: string | null
+          service_type: string
+          status?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          completed_at?: string | null
+          created_at?: string
+          currency?: string | null
+          demande_id?: string | null
+          id?: string
+          invoice_url?: string | null
+          order_number?: string
+          payment_status?: string | null
+          service_type?: string
+          status?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          company_name: string | null
+          created_at: string
+          first_name: string | null
+          id: string
+          job_title: string | null
+          last_name: string | null
+          marketing_emails: boolean | null
+          notifications_enabled: boolean | null
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          company_name?: string | null
+          created_at?: string
+          first_name?: string | null
+          id?: string
+          job_title?: string | null
+          last_name?: string | null
+          marketing_emails?: boolean | null
+          notifications_enabled?: boolean | null
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          company_name?: string | null
+          created_at?: string
+          first_name?: string | null
+          id?: string
+          job_title?: string | null
+          last_name?: string | null
+          marketing_emails?: boolean | null
+          notifications_enabled?: boolean | null
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       rcs_forms: {
         Row: {
           activity: string | null
@@ -242,6 +371,45 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      support_tickets: {
+        Row: {
+          category: string | null
+          created_at: string
+          description: string
+          id: string
+          priority: string | null
+          resolved_at: string | null
+          status: string | null
+          subject: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          description: string
+          id?: string
+          priority?: string | null
+          resolved_at?: string | null
+          status?: string | null
+          subject: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          priority?: string | null
+          resolved_at?: string | null
+          status?: string | null
+          subject?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       users: {
         Row: {
