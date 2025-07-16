@@ -214,17 +214,13 @@ export const HeroSection = ({
                     <div className="absolute top-1/4 -right-4 animate-fade-in" style={{
                     animationDelay: '1s'
                   }}>
-                      <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-                        +300%
-                      </div>
+                      
                     </div>
                     
                     <div className="absolute bottom-1/3 -left-4 animate-fade-in" style={{
                     animationDelay: '1.5s'
                   }}>
-                      <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-                        24h
-                      </div>
+                      
                     </div>
                   </div>
                   
