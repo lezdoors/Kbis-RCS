@@ -13,8 +13,8 @@ export const ProcessSection = () => {
       title: "Configuration Ultra-Rapide",
       description: "Questionnaire intelligent en 2 minutes. Notre IA pré-remplit tout automatiquement.",
       competitiveNote: "VS 15 minutes chez LegalPlace",
-      image: "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/too-blk-stairs.jpg.png",
-      altText: "Processus rapide de configuration",
+      image: "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/Toon-blk-tie.jpg.png",
+      altText: "Processus rapide de configuration avec accord professionnel",
       timeline: "2 minutes"
     },
     {
@@ -31,8 +31,8 @@ export const ProcessSection = () => {
       title: "Livraison Garantie",
       description: "KBIS reçu en 24h maximum ou remboursé. Plus rapide que tous nos concurrents.",
       competitiveNote: "VS 3-5 jours minimum ailleurs",
-      image: "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/Team-green-pie.jpg.png",
-      altText: "Livraison garantie rapide",
+      image: "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/public/toons/Toon-green-pie.jpg.png",
+      altText: "Livraison garantie rapide avec résultats finalisés",
       timeline: "24h max"
     }
   ];
@@ -59,14 +59,14 @@ export const ProcessSection = () => {
             {processSteps.map((step, index) => (
               <div key={step.number} className="flex flex-col items-center text-center">
                 {/* Step Card */}
-                <div className="bg-card border border-border rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden w-full max-w-sm hover:scale-105">
+                <div className="bg-card border border-border rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-200 overflow-hidden w-full max-w-sm">
                   {/* Image */}
                   <div className="relative p-6 pb-4">
                     <img 
                       src={step.image}
                       alt={step.altText}
                       loading={index === 0 ? "eager" : "lazy"}
-                      className="w-full h-40 object-contain mx-auto rounded-lg transition-transform duration-300 hover:scale-110"
+                      className="w-full h-40 object-contain mx-auto rounded-lg"
                     />
                   </div>
 
@@ -119,7 +119,7 @@ export const ProcessSection = () => {
           <div className="space-y-4">
             <Button 
               onClick={() => navigate('/choisir-statut')} 
-              className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-200 hover:scale-105 shadow-lg min-h-[44px]"
+              className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg shadow-lg min-h-[44px]"
             >
               Créer mon entreprise maintenant
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -128,10 +128,10 @@ export const ProcessSection = () => {
             {/* Urgency Messages */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
               <div className="text-sm text-gray-600 flex items-center gap-1">
-                <span>📊</span> <span>47 entreprises créées cette semaine</span>
+                <span className="w-3 h-3 bg-blue-500 rounded-full"></span> <span>47 entreprises créées cette semaine</span>
               </div>
               <div className="text-sm text-gray-600 flex items-center gap-1">
-                <span>🔥</span> <span>Offre limitée</span>
+                <span className="w-3 h-3 bg-orange-500 rounded-full"></span> <span>Offre limitée</span>
               </div>
             </div>
           </div>
