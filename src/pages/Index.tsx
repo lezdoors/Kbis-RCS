@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { ProcessSection } from "@/components/ProcessSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
 import { LegalStructuresSection } from "@/components/LegalStructuresSection";
+import { SocialProofTestimonials } from "@/components/SocialProofTestimonials";
 import { FAQSection } from "@/components/FAQSection";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { Footer } from "@/components/Footer";
@@ -15,6 +16,7 @@ const Index = () => {
       <ProcessSection />
       <BenefitsSection />
       <LegalStructuresSection />
+      <SocialProofTestimonials />
       <FAQSection />
       <Footer />
       <MobileStickyCTA />
