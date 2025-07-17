@@ -1,4 +1,5 @@
 import { Check, X, Clock, Shield, Phone, Zap, Star, Trophy } from "lucide-react";
+import { PricingCarousel } from "./PricingCarousel";
 
 export const PricingComparison = () => {
   const competitors = [
@@ -69,8 +70,11 @@ export const PricingComparison = () => {
           </p>
         </div>
 
-        {/* Elegant Comparison Table */}
-        <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
+        {/* Mobile Carousel */}
+        <PricingCarousel competitors={competitors} />
+
+        {/* Desktop Comparison Table */}
+        <div className="hidden lg:block bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
           {/* Table Header */}
           <div className="grid grid-cols-4 bg-gradient-to-r from-navy via-navy/95 to-navy text-white">
             <div className="p-6 lg:p-8">

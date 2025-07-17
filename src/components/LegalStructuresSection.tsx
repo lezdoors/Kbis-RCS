@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Building2, Users, FileText, CheckCircle, TrendingUp, Shield, Zap, Star } from "lucide-react";
+import { LegalStructuresCarousel } from "./LegalStructuresCarousel";
 
 export const LegalStructuresSection = () => {
   const legalStructures = [
@@ -78,8 +79,11 @@ export const LegalStructuresSection = () => {
           </p>
         </div>
 
-        {/* Premium Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {/* Mobile Carousel */}
+        <LegalStructuresCarousel structures={legalStructures} />
+
+        {/* Desktop Cards Grid */}
+        <div className="hidden lg:grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {legalStructures.map((structure, index) => {
             const IconComponent = structure.icon;
             return (

@@ -970,3 +970,48 @@
 .hover-shadow-lift {
   @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
 }
+
+/* Mobile Carousel Styles */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+/* Smooth momentum scrolling for iOS */
+.carousel-container {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Touch manipulation for better mobile interaction */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* 3D Card Effects */
+.illustration-3d-compact {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.illustration-3d-compact:hover {
+  transform: rotateY(5deg) rotateX(5deg);
+}
+
+.gallery-signature {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  font-size: 6px;
+  color: var(--muted-foreground);
+  opacity: 0.4;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transform: rotate(-90deg);
+  transform-origin: bottom right;
+  pointer-events: none;
+}
