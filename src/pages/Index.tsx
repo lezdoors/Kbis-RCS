@@ -7,6 +7,7 @@ import { LegalStructuresSection } from "@/components/LegalStructuresSection";
 import { SocialProofTestimonials } from "@/components/SocialProofTestimonials";
 import { FAQSection } from "@/components/FAQSection";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
+import { ChatbotWidget } from "@/components/ChatbotWidget";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
@@ -22,6 +23,7 @@ const Index = () => {
       <FAQSection />
       <Footer />
       <MobileStickyCTA />
+      <ChatbotWidget />
     </div>
   );
 };
