@@ -98,16 +98,18 @@ export const LegalStructuresSection = () => {
                   </div>
                 )}
 
-                {/* Gallery-style 3D illustration */}
+                {/* Unified Gallery-style 3D illustration */}
                 <div className="relative mb-8">
                   <div className="w-16 h-16 mx-auto mb-6 relative">
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-navy/5 to-navy/15 group-hover:from-navy/10 group-hover:to-navy/25 transition-all duration-500"></div>
-                    <div className="relative w-full h-full rounded-2xl overflow-hidden flex items-center justify-center bg-white/70 backdrop-blur-sm">
+                    <div className="illustration-3d-compact absolute inset-0">
                       <img 
                         src={structure.illustration}
                         alt={`Illustration 3D pour ${structure.name}`}
-                        className="w-10 h-10 object-contain filter drop-shadow-lg group-hover:scale-110 transition-transform duration-500"
+                        className="w-full h-full object-contain"
                       />
+                      <div className="gallery-signature">
+                        RCS COLLECTION
+                      </div>
                     </div>
                   </div>
                   

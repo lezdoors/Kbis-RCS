@@ -70,19 +70,25 @@ export const BenefitsSection = () => {
                 {/* Gallery-style 3D illustration background */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-gray-50 via-white to-gray-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                {/* 3D Illustration as elegant icon */}
+                {/* Unified 3D Illustration Treatment */}
                 <div className="relative mb-8">
                   <div className="w-20 h-20 mx-auto mb-6 relative">
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-navy/5 to-navy/10 group-hover:from-navy/10 group-hover:to-navy/20 transition-all duration-500"></div>
-                    <div className="relative w-full h-full rounded-2xl overflow-hidden flex items-center justify-center bg-white/60 backdrop-blur-sm">
+                    <div className="illustration-3d-compact absolute inset-0">
                       {comparison.illustration ? (
-                        <img 
-                          src={comparison.illustration}
-                          alt={`3D illustration for ${comparison.title}`}
-                          className="w-12 h-12 object-contain filter drop-shadow-lg group-hover:scale-110 transition-transform duration-500"
-                        />
+                        <>
+                          <img 
+                            src={comparison.illustration}
+                            alt={`3D illustration for ${comparison.title}`}
+                            className="w-full h-full object-contain"
+                          />
+                          <div className="gallery-signature">
+                            RCS COLLECTION
+                          </div>
+                        </>
                       ) : (
-                        <IconComponent className="w-12 h-12 text-navy group-hover:scale-110 transition-transform duration-500" />
+                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-navy/5 to-navy/15">
+                          <IconComponent className="w-12 h-12 text-navy" />
+                        </div>
                       )}
                     </div>
                   </div>

@@ -81,14 +81,17 @@ export const SocialProofTestimonials = () => {
                   </div>
                 </div>
 
-                {/* 3D Illustration */}
+                {/* Unified 3D Illustration Treatment */}
                 <div className="relative">
-                  <div className="w-16 h-16 bg-white rounded-2xl shadow-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="illustration-3d-compact w-16 h-16 group-hover:scale-110 transition-transform duration-300">
                     <img 
                       src={testimonial.image}
                       alt={`Illustration pour ${testimonial.company}`}
-                      className="w-10 h-10 object-contain filter drop-shadow-lg"
+                      className="w-full h-full object-contain"
                     />
+                    <div className="gallery-signature">
+                      RCS
+                    </div>
                   </div>
                 </div>
               </div>
@@ -131,15 +134,18 @@ export const SocialProofTestimonials = () => {
         {/* Premium CTA Section */}
         <div className="bg-gradient-to-r from-navy via-navy/95 to-navy rounded-3xl p-8 lg:p-12 text-center shadow-2xl">
           <div className="max-w-4xl mx-auto space-y-8">
-            {/* 3D Couple Illustration */}
+            {/* Unified 3D Couple Illustration */}
             <div className="relative inline-block">
               <div className="absolute inset-0 bg-white/10 rounded-3xl blur-2xl"></div>
-              <div className="relative bg-white/20 rounded-3xl p-6 backdrop-blur-sm">
+              <div className="illustration-3d-consistent relative bg-white/20 rounded-3xl p-6 backdrop-blur-sm">
                 <img 
                   src="/lovable-uploads/8ccf8709-45bb-4bb5-bc25-14595b39de8d.png"
                   alt="Couple d'entrepreneurs - Illustration 3D de réussite"
-                  className="w-20 h-20 mx-auto object-contain filter drop-shadow-xl"
+                  className="w-20 h-20 mx-auto object-contain"
                 />
+                <div className="gallery-signature text-white/60">
+                  RCS COLLECTION
+                </div>
               </div>
             </div>
 
