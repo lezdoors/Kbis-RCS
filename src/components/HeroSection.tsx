@@ -55,15 +55,34 @@ export const HeroSection = ({
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 sm:gap-16 lg:gap-32">
           
-          {/* Left Column - 3D Illustration */}
+          {/* Left Column - 3D Illustration with Gallery Treatment */}
           <div className="flex-1 relative max-w-2xl">
             <div className="relative">
-              <img 
-                src="/lovable-uploads/0a951d9f-bbd3-4723-b5db-128557ca2925.png"
-                alt="Deux figures 3D blanches s'entraident pour gravir des marches grises - illustration de partenariat et progression professionnelle"
-                className="w-full h-auto object-contain filter drop-shadow-2xl"
-                loading="eager"
-              />
+              {/* Gallery-style frame */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100/30 rounded-3xl transform rotate-1 shadow-lg"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50/80 to-white rounded-3xl transform -rotate-1 shadow-md"></div>
+              
+              {/* Main gallery container */}
+              <div className="relative bg-white rounded-3xl p-8 lg:p-12 shadow-xl border border-gray-100/50">
+                {/* Subtle ambient lighting effect */}
+                <div className="absolute top-4 left-4 w-24 h-24 bg-gradient-to-br from-blue-50 to-transparent rounded-full blur-xl opacity-60"></div>
+                <div className="absolute bottom-4 right-4 w-32 h-32 bg-gradient-to-tl from-gray-50 to-transparent rounded-full blur-2xl opacity-40"></div>
+                
+                <img 
+                  src="/lovable-uploads/0a951d9f-bbd3-4723-b5db-128557ca2925.png"
+                  alt="Deux figures 3D blanches s'entraident pour gravir des marches grises - illustration de partenariat et progression professionnelle"
+                  className="relative w-full h-auto object-contain filter drop-shadow-2xl"
+                  loading="eager"
+                  style={{
+                    filter: 'brightness(1.05) contrast(1.1) drop-shadow(0 20px 40px rgba(0,0,0,0.08))'
+                  }}
+                />
+                
+                {/* Gallery signature */}
+                <div className="absolute bottom-4 left-4 text-xs text-gray-400 font-light tracking-wider">
+                  RCS EXPRESS COLLECTION
+                </div>
+              </div>
             </div>
           </div>
 

@@ -38,6 +38,14 @@ export default {
 					blue: 'hsl(var(--hero-blue))',
 					gray: 'hsl(var(--hero-gray))'
 				},
+				navy: {
+					DEFAULT: 'hsl(var(--navy))',
+					foreground: 'hsl(var(--navy-foreground))'
+				},
+				institutional: {
+					DEFAULT: 'hsl(var(--institutional))',
+					foreground: 'hsl(var(--institutional-foreground))'
+				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
