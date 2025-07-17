@@ -8,42 +8,42 @@ export const BenefitsSection = () => {
       advantage: "24h garanties vs 3-5 jours chez nos concurrents",
       description: "Traitement le plus rapide du marché",
       icon: Rocket,
-      illustration: "/lovable-uploads/0a951d9f-bbd3-4723-b5db-128557ca2925.png"
+      illustration: "/lovable-uploads/02f38eff-0bf3-4875-88a2-5fce416ad9e4.png" // Running figure
     },
     {
       title: "TECHNOLOGIE 2025",
       advantage: "Plateforme moderne vs solutions obsolètes",
       description: "Architecture cloud nouvelle génération",
       icon: Wrench,
-      illustration: "/lovable-uploads/44d3fbcd-ea82-40a6-81b1-53e0f643dd45.png"
+      illustration: null // Keep institutional logo icon only
     },
     {
       title: "PRIX TRANSPARENT",
       advantage: "129€ tout inclus vs frais cachés ailleurs",
       description: "Aucune surprise, aucun supplément",
       icon: Euro,
-      illustration: "/lovable-uploads/baefcc3d-696b-4676-a726-7234c1b77f2e.png"
+      illustration: "/lovable-uploads/0bd61b06-875b-4bde-82a0-31d5601427ff.png" // Celebration figures
     },
     {
       title: "SÉCURITÉ MAXIMALE",
       advantage: "Données cryptées et conformité RGPD totale",
       description: "Protection et confidentialité garanties",
       icon: Shield,
-      illustration: "/lovable-uploads/7e7f74c1-8f7c-4800-b9f0-be37d9e343e9.png"
+      illustration: null // Keep shield/security icon only
     },
     {
       title: "SUPPORT EXPERT",
       advantage: "Accompagnement humain à chaque étape",
       description: "Conseillers juridiques disponibles",
       icon: Users,
-      illustration: "/lovable-uploads/8ccf8709-45bb-4bb5-bc25-14595b39de8d.png"
+      illustration: "/lovable-uploads/8ccf8709-45bb-4bb5-bc25-14595b39de8d.png" // Couple illustration
     },
     {
       title: "SUIVI TEMPS RÉEL",
       advantage: "Notifications instantanées vs emails sporadiques",
       description: "Vous savez toujours où en est votre dossier",
       icon: Zap,
-      illustration: "/lovable-uploads/5e2630a9-1361-4451-a9dd-3bc0834d859e.png"
+      illustration: "/lovable-uploads/7e7f74c1-8f7c-4800-b9f0-be37d9e343e9.png" // Different chart/analytics illustration
     }
   ];
 
@@ -75,11 +75,15 @@ export const BenefitsSection = () => {
                   <div className="w-20 h-20 mx-auto mb-6 relative">
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-navy/5 to-navy/10 group-hover:from-navy/10 group-hover:to-navy/20 transition-all duration-500"></div>
                     <div className="relative w-full h-full rounded-2xl overflow-hidden flex items-center justify-center bg-white/60 backdrop-blur-sm">
-                      <img 
-                        src={comparison.illustration}
-                        alt={`3D illustration for ${comparison.title}`}
-                        className="w-12 h-12 object-contain filter drop-shadow-lg group-hover:scale-110 transition-transform duration-500"
-                      />
+                      {comparison.illustration ? (
+                        <img 
+                          src={comparison.illustration}
+                          alt={`3D illustration for ${comparison.title}`}
+                          className="w-12 h-12 object-contain filter drop-shadow-lg group-hover:scale-110 transition-transform duration-500"
+                        />
+                      ) : (
+                        <IconComponent className="w-12 h-12 text-navy group-hover:scale-110 transition-transform duration-500" />
+                      )}
                     </div>
                   </div>
                   
