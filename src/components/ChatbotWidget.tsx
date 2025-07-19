@@ -3,7 +3,6 @@ import { MessageCircle, Send, X, Headphones, User, Bot, Phone, Mail } from 'luci
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
 interface ChatMessage {
@@ -70,29 +69,31 @@ export const ChatbotWidget = () => {
     setIsLoading(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('chatbot-ai', {
-        body: {
-          message: inputValue,
-          session_id: sessionId.current,
-          user_agent: navigator.userAgent,
-          page_url: window.location.href
-        }
-      });
-
-      if (error) throw error;
+      // Mock AI response for offline development
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const responses = [
+        "Pour créer votre entreprise, nous proposons plusieurs structures juridiques : SASU, SARL, SAS, etc. Nos tarifs débutent à 129€ tout inclus avec un délai garanti de 24h. Voulez-vous que je vous détaille les avantages de chaque structure ?",
+        "Nos délais sont garantis sous 24h pour toutes les démarches RCS. Le tarif est de 129€ tout inclus (frais de greffe inclus). Souhaitez-vous commencer votre démarche maintenant ?",
+        "Les documents nécessaires varient selon votre structure. Pour une SASU/SARL, il vous faut : pièce d'identité, justificatif de domicile, attestation de domiciliation. Nous nous occupons de tous les autres documents ! Voulez-vous plus de détails ?",
+        "Je peux vous aider ! Toutefois, pour une réponse personnalisée selon votre situation, je recommande qu'un de nos experts juridiques vous contacte directement."
+      ];
+      
+      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+      const needsHelp = Math.random() > 0.7; // 30% chance to suggest human help
 
       const botMessage: ChatMessage = {
         id: crypto.randomUUID(),
-        content: data.response,
+        content: randomResponse,
         isBot: true,
         timestamp: new Date(),
-        needsHumanHelp: data.needsHumanHelp
+        needsHumanHelp: needsHelp
       };
 
       setMessages(prev => [...prev, botMessage]);
 
       // Show lead capture for complex questions
-      if (data.needsHumanHelp) {
+      if (needsHelp) {
         setTimeout(() => setShowLeadCapture(true), 1000);
       }
 
@@ -123,14 +124,20 @@ export const ChatbotWidget = () => {
 
   const submitLeadCapture = async () => {
     try {
-      const { error } = await supabase.from('leads').insert({
+      // Store lead locally for offline development
+      const leadData = {
         email: leadForm.email,
         phone: leadForm.phone,
         company_name: leadForm.message,
-        utm_source: 'chatbot_widget'
-      });
-
-      if (error) throw error;
+        utm_source: 'chatbot_widget',
+        timestamp: new Date().toISOString()
+      };
+      
+      const existingLeads = JSON.parse(localStorage.getItem('leads') || '[]');
+      existingLeads.push(leadData);
+      localStorage.setItem('leads', JSON.stringify(existingLeads));
+      
+      console.log('Lead captured locally:', leadData);
 
       toast({
         title: "Merci !",

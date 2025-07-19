@@ -1,5 +1,4 @@
-import { supabase } from "@/integrations/supabase/client";
-
+// Mock analytics for offline development
 interface AnalyticsEvent {
   event_type: string;
   entity_type?: string;
@@ -21,13 +20,12 @@ export const trackEvent = async (event: AnalyticsEvent) => {
       timestamp: new Date().toISOString()
     };
 
-    const { error } = await supabase
-      .from('analytics')
-      .insert(eventData);
-
-    if (error) {
-      console.warn('Analytics tracking error:', error);
-    }
+    // Store analytics locally for offline development
+    const existingEvents = JSON.parse(localStorage.getItem('analytics') || '[]');
+    existingEvents.push(eventData);
+    localStorage.setItem('analytics', JSON.stringify(existingEvents));
+    
+    console.log('Analytics event tracked locally:', eventData);
   } catch (error) {
     console.warn('Analytics tracking failed:', error);
   }

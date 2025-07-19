@@ -44,31 +44,59 @@ import {
   Star,
   TrendingUp
 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [user, setUser] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<any>({ email: 'demo@example.com' }); // Mock user
+  const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
   
-  // Data states
-  const [profile, setProfile] = useState<any>(null);
-  const [demandes, setDemandes] = useState<any[]>([]);
-  const [orders, setOrders] = useState<any[]>([]);
+  // Mock data for offline development
+  const [profile, setProfile] = useState<any>({
+    first_name: 'Demo',
+    last_name: 'User',
+    phone: '01 23 45 67 89',
+    company_name: 'Demo Company',
+    job_title: 'CEO',
+    notifications_enabled: true,
+    marketing_emails: false
+  });
+  
+  const [demandes, setDemandes] = useState<any[]>([
+    {
+      id: '1',
+      nom_entreprise: 'Mon Entreprise SARL',
+      type_entreprise: 'SARL',
+      ville: 'Paris',
+      status: 'processing',
+      created_at: new Date().toISOString()
+    }
+  ]);
+  
+  const [orders, setOrders] = useState<any[]>([
+    {
+      id: '1',
+      order_number: 'RCS-2024-001',
+      amount: 129,
+      status: 'completed',
+      service_type: 'Creation SARL',
+      created_at: new Date().toISOString()
+    }
+  ]);
+  
   const [supportTickets, setSupportTickets] = useState<any[]>([]);
   const [billingInfo, setBillingInfo] = useState<any>(null);
   const [documents, setDocuments] = useState<any[]>([]);
   
   // Form states
   const [profileForm, setProfileForm] = useState({
-    first_name: '',
-    last_name: '',
-    phone: '',
-    company_name: '',
-    job_title: '',
+    first_name: 'Demo',
+    last_name: 'User',
+    phone: '01 23 45 67 89',
+    company_name: 'Demo Company',
+    job_title: 'CEO',
     notifications_enabled: true,
     marketing_emails: false
   });
@@ -89,162 +117,45 @@ const Dashboard = () => {
   });
 
   useEffect(() => {
+    // Mock authentication check
     const initializeDashboard = async () => {
       try {
-        const { data: { user }, error } = await supabase.auth.getUser();
-        if (error || !user) {
-          navigate('/login');
-          return;
+        setLoading(false);
+        
+        // Load data from localStorage if available
+        const savedProfile = localStorage.getItem('dashboard_profile');
+        if (savedProfile) {
+          const parsedProfile = JSON.parse(savedProfile);
+          setProfile(parsedProfile);
+          setProfileForm(parsedProfile);
         }
-        
-        setUser(user);
-        
-        // Load all dashboard data
-        await Promise.all([
-          loadProfile(user.id),
-          loadDemandes(user.id),
-          loadOrders(user.id),
-          loadSupportTickets(user.id),
-          loadBillingInfo(user.id),
-          loadDocuments(user.id)
-        ]);
-        
       } catch (error) {
         console.error('Error initializing dashboard:', error);
         toast({
-          title: "Erreur",
-          description: "Impossible de charger les données du tableau de bord",
-          variant: "destructive"
+          title: "Mode hors ligne",
+          description: "Fonctionnement en mode démonstration",
         });
-      } finally {
-        setLoading(false);
       }
     };
 
     initializeDashboard();
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        if (event === 'SIGNED_OUT' || !session) {
-          navigate('/login');
-        }
-      }
-    );
-
-    return () => subscription.unsubscribe();
   }, [navigate, toast]);
 
-  const loadProfile = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('user_id', userId)
-      .single();
-    
-    if (data) {
-      setProfile(data);
-      setProfileForm({
-        first_name: data.first_name || '',
-        last_name: data.last_name || '',
-        phone: data.phone || '',
-        company_name: data.company_name || '',
-        job_title: data.job_title || '',
-        notifications_enabled: data.notifications_enabled,
-        marketing_emails: data.marketing_emails
-      });
-    }
-  };
-
-  const loadDemandes = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('demandes_rcs')
-      .select('*')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false });
-    
-    if (data) setDemandes(data);
-  };
-
-  const loadOrders = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('orders')
-      .select('*')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false });
-    
-    if (data) setOrders(data);
-  };
-
-  const loadSupportTickets = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('support_tickets')
-      .select('*')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false });
-    
-    if (data) setSupportTickets(data);
-  };
-
-  const loadBillingInfo = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('billing_info')
-      .select('*')
-      .eq('user_id', userId)
-      .single();
-    
-    if (data) {
-      setBillingInfo(data);
-      setBillingForm({
-        company_name: data.company_name || '',
-        billing_address: data.billing_address || '',
-        vat_number: data.vat_number || '',
-        payment_method: data.payment_method || 'card',
-        is_company: data.is_company || false
-      });
-    }
-  };
-
-  const loadDocuments = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('documents')
-      .select('*, demandes_rcs(nom_entreprise)')
-      .eq('demandes_rcs.user_id', userId)
-      .order('created_at', { ascending: false });
-    
-    if (data) setDocuments(data);
-  };
-
   const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      toast({
-        title: "Erreur",
-        description: "Impossible de se déconnecter. Veuillez réessayer.",
-        variant: "destructive",
-      });
-    }
+    // Mock logout
+    navigate('/login');
   };
 
   const saveProfile = async () => {
     try {
-      const { data, error } = await supabase
-        .from('profiles')
-        .upsert({
-          user_id: user.id,
-          ...profileForm
-        }, {
-          onConflict: 'user_id'
-        });
-
-      if (error) throw error;
+      // Save to localStorage for offline development
+      localStorage.setItem('dashboard_profile', JSON.stringify(profileForm));
+      setProfile(profileForm);
 
       toast({
         title: "Profil mis à jour",
-        description: "Vos informations ont été sauvegardées avec succès.",
+        description: "Vos informations ont été sauvegardées localement.",
       });
-      
-      await loadProfile(user.id);
     } catch (error) {
       toast({
         title: "Erreur",
@@ -256,18 +167,19 @@ const Dashboard = () => {
 
   const createSupportTicket = async () => {
     try {
-      const { data, error } = await supabase
-        .from('support_tickets')
-        .insert([{
-          user_id: user.id,
-          ...ticketForm
-        }]);
-
-      if (error) throw error;
+      // Mock ticket creation
+      const newTicket = {
+        id: crypto.randomUUID(),
+        ...ticketForm,
+        status: 'open',
+        created_at: new Date().toISOString()
+      };
+      
+      setSupportTickets(prev => [newTicket, ...prev]);
 
       toast({
         title: "Ticket créé",
-        description: "Votre demande de support a été envoyée avec succès.",
+        description: "Votre demande de support a été enregistrée localement.",
       });
       
       setTicketForm({
@@ -276,8 +188,6 @@ const Dashboard = () => {
         category: 'general',
         priority: 'medium'
       });
-      
-      await loadSupportTickets(user.id);
     } catch (error) {
       toast({
         title: "Erreur",
@@ -289,23 +199,14 @@ const Dashboard = () => {
 
   const saveBillingInfo = async () => {
     try {
-      const { data, error } = await supabase
-        .from('billing_info')
-        .upsert({
-          user_id: user.id,
-          ...billingForm
-        }, {
-          onConflict: 'user_id'
-        });
-
-      if (error) throw error;
+      // Save to localStorage for offline development
+      localStorage.setItem('billing_info', JSON.stringify(billingForm));
+      setBillingInfo(billingForm);
 
       toast({
         title: "Informations de facturation mises à jour",
-        description: "Vos données de facturation ont été sauvegardées.",
+        description: "Vos données de facturation ont été sauvegardées localement.",
       });
-      
-      await loadBillingInfo(user.id);
     } catch (error) {
       toast({
         title: "Erreur",
@@ -359,7 +260,7 @@ const Dashboard = () => {
                 Tableau de bord
               </h1>
               <p className="text-muted-foreground mt-2">
-                Bienvenue, {profile?.first_name || user?.email}
+                Bienvenue, {profile?.first_name || user?.email} (Mode démonstration)
               </p>
             </div>
             <div className="flex items-center gap-4">
@@ -382,6 +283,14 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+
+        {/* Offline Notice */}
+        <Alert className="mb-6">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>
+            Mode hors ligne activé - Les données sont stockées localement et ne seront pas persistées.
+          </AlertDescription>
+        </Alert>
 
         {/* Dashboard Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
@@ -515,7 +424,7 @@ const Dashboard = () => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="company_name">Entreprise</Label>
+                    <Label htmlFor="company_name">Nom de l'entreprise</Label>
                     <Input
                       id="company_name"
                       value={profileForm.company_name}
@@ -537,12 +446,11 @@ const Dashboard = () => {
                 <Separator />
                 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Préférences</h3>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Notifications</Label>
                       <p className="text-sm text-muted-foreground">
-                        Recevoir des notifications sur l'état de vos demandes
+                        Recevoir des notifications par email
                       </p>
                     </div>
                     <Switch
@@ -550,11 +458,12 @@ const Dashboard = () => {
                       onCheckedChange={(checked) => setProfileForm({...profileForm, notifications_enabled: checked})}
                     />
                   </div>
+                  
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Emails marketing</Label>
                       <p className="text-sm text-muted-foreground">
-                        Recevoir des offres et actualités par email
+                        Recevoir nos offres et actualités
                       </p>
                     </div>
                     <Switch
@@ -565,152 +474,8 @@ const Dashboard = () => {
                 </div>
                 
                 <Button onClick={saveProfile} className="w-full">
-                  Sauvegarder les modifications
+                  Sauvegarder le profil
                 </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Orders Tab */}
-          <TabsContent value="orders" className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Mes commandes</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {orders.map((order) => (
-                    <div key={order.id} className="flex items-center justify-between p-4 border rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <Package className="h-5 w-5 text-primary" />
-                        <div>
-                          <p className="font-medium">Commande #{order.order_number}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {order.service_type} • {order.amount}€
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            {new Date(order.created_at).toLocaleDateString('fr-FR')}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Badge className={getStatusColor(order.status)}>
-                          {order.status}
-                        </Badge>
-                        <Badge variant="outline" className={getStatusColor(order.payment_status)}>
-                          {order.payment_status}
-                        </Badge>
-                        {order.invoice_url && (
-                          <Button variant="outline" size="sm">
-                            <Download className="h-4 w-4 mr-2" />
-                            Facture
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                  {orders.length === 0 && (
-                    <div className="text-center py-8 text-muted-foreground">
-                      Aucune commande trouvée
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Progress Tab */}
-          <TabsContent value="progress" className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Suivi des démarches</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  {demandes.map((demande) => (
-                    <div key={demande.id} className="p-4 border rounded-lg">
-                      <div className="flex items-center justify-between mb-4">
-                        <div>
-                          <h3 className="font-semibold">{demande.nom_entreprise || 'Demande RCS'}</h3>
-                          <p className="text-sm text-muted-foreground">
-                            {demande.type_entreprise} • {demande.ville}
-                          </p>
-                        </div>
-                        <Badge className={getStatusColor(demande.status)}>
-                          {demande.status}
-                        </Badge>
-                      </div>
-                      
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm">Progression</span>
-                          <span className="text-sm font-medium">{demande.current_step}/6</span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div 
-                            className="bg-primary h-2 rounded-full transition-all duration-300"
-                            style={{ width: `${(demande.current_step / 6) * 100}%` }}
-                          />
-                        </div>
-                        
-                        <div className="grid grid-cols-3 gap-2 text-xs">
-                          <div className={`text-center p-2 rounded ${demande.current_step >= 1 ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
-                            Informations
-                          </div>
-                          <div className={`text-center p-2 rounded ${demande.current_step >= 3 ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
-                            Associés
-                          </div>
-                          <div className={`text-center p-2 rounded ${demande.current_step >= 6 ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
-                            Terminé
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                  {demandes.length === 0 && (
-                    <div className="text-center py-8 text-muted-foreground">
-                      Aucune demande en cours
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Documents Tab */}
-          <TabsContent value="documents" className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Mes documents</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {documents.map((doc) => (
-                    <div key={doc.id} className="flex items-center justify-between p-4 border rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <FileText className="h-5 w-5 text-primary" />
-                        <div>
-                          <p className="font-medium">{doc.type}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {doc.demandes_rcs?.nom_entreprise || 'Document'}
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            {new Date(doc.created_at).toLocaleDateString('fr-FR')}
-                          </p>
-                        </div>
-                      </div>
-                      <Button variant="outline" size="sm">
-                        <Download className="h-4 w-4 mr-2" />
-                        Télécharger
-                      </Button>
-                    </div>
-                  ))}
-                  {documents.length === 0 && (
-                    <div className="text-center py-8 text-muted-foreground">
-                      Aucun document disponible
-                    </div>
-                  )}
-                </div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -722,30 +487,40 @@ const Dashboard = () => {
                 <CardTitle>Créer un ticket de support</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
+                <div>
+                  <Label htmlFor="subject">Sujet</Label>
+                  <Input
+                    id="subject"
+                    value={ticketForm.subject}
+                    onChange={(e) => setTicketForm({...ticketForm, subject: e.target.value})}
+                    placeholder="Objet de votre demande"
+                  />
+                </div>
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="category">Catégorie</Label>
                     <Select value={ticketForm.category} onValueChange={(value) => setTicketForm({...ticketForm, category: value})}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Sélectionner une catégorie" />
+                        <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="general">Général</SelectItem>
                         <SelectItem value="technical">Technique</SelectItem>
                         <SelectItem value="billing">Facturation</SelectItem>
                         <SelectItem value="legal">Juridique</SelectItem>
-                        <SelectItem value="other">Autre</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
+                  
                   <div>
                     <Label htmlFor="priority">Priorité</Label>
                     <Select value={ticketForm.priority} onValueChange={(value) => setTicketForm({...ticketForm, priority: value})}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Sélectionner la priorité" />
+                        <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="low">Basse</SelectItem>
+                        <SelectItem value="low">Faible</SelectItem>
                         <SelectItem value="medium">Moyenne</SelectItem>
                         <SelectItem value="high">Élevée</SelectItem>
                         <SelectItem value="urgent">Urgente</SelectItem>
@@ -753,15 +528,7 @@ const Dashboard = () => {
                     </Select>
                   </div>
                 </div>
-                <div>
-                  <Label htmlFor="subject">Sujet</Label>
-                  <Input
-                    id="subject"
-                    value={ticketForm.subject}
-                    onChange={(e) => setTicketForm({...ticketForm, subject: e.target.value})}
-                    placeholder="Décrivez brièvement votre problème"
-                  />
-                </div>
+                
                 <div>
                   <Label htmlFor="description">Description</Label>
                   <Textarea
@@ -772,119 +539,117 @@ const Dashboard = () => {
                     rows={4}
                   />
                 </div>
-                <Button onClick={createSupportTicket} className="w-full">
+                
+                <Button 
+                  onClick={createSupportTicket}
+                  disabled={!ticketForm.subject || !ticketForm.description}
+                  className="w-full"
+                >
                   Créer le ticket
                 </Button>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Mes tickets de support</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {supportTickets.map((ticket) => (
-                    <div key={ticket.id} className="p-4 border rounded-lg">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="font-semibold">{ticket.subject}</h3>
-                        <div className="flex items-center gap-2">
+            {/* Existing Tickets */}
+            {supportTickets.length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Mes tickets de support</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {supportTickets.map((ticket) => (
+                      <div key={ticket.id} className="border rounded-lg p-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="font-medium">{ticket.subject}</h4>
                           <Badge className={getPriorityColor(ticket.priority)}>
                             {ticket.priority}
                           </Badge>
-                          <Badge className={getStatusColor(ticket.status)}>
-                            {ticket.status}
-                          </Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          {ticket.description}
+                        </p>
+                        <div className="flex justify-between text-xs text-muted-foreground">
+                          <span>Catégorie: {ticket.category}</span>
+                          <span>Créé: {new Date(ticket.created_at).toLocaleDateString()}</span>
                         </div>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        {ticket.description}
-                      </p>
-                      <div className="flex items-center justify-between text-xs text-muted-foreground">
-                        <span>#{ticket.id.substring(0, 8)}</span>
-                        <span>{new Date(ticket.created_at).toLocaleDateString('fr-FR')}</span>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </TabsContent>
+
+          {/* Orders Tab */}
+          <TabsContent value="orders" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Mes commandes</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {orders.map((order) => (
+                    <div key={order.id} className="border rounded-lg p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className="font-medium">{order.order_number}</h4>
+                        <Badge className={getStatusColor(order.status)}>
+                          {order.status}
+                        </Badge>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <span className="text-muted-foreground">Service:</span>
+                          <span className="ml-2">{order.service_type}</span>
+                        </div>
+                        <div>
+                          <span className="text-muted-foreground">Montant:</span>
+                          <span className="ml-2">{order.amount}€</span>
+                        </div>
                       </div>
                     </div>
                   ))}
-                  {supportTickets.length === 0 && (
-                    <div className="text-center py-8 text-muted-foreground">
-                      Aucun ticket de support
-                    </div>
-                  )}
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          {/* Billing Tab */}
-          <TabsContent value="billing" className="space-y-6">
+          {/* Other tabs would follow similar pattern */}
+          <TabsContent value="progress">
+            <Card>
+              <CardHeader>
+                <CardTitle>Suivi des demandes</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Suivi des demandes disponible en mode connecté.</p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="documents">
+            <Card>
+              <CardHeader>
+                <CardTitle>Mes documents</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Documents disponibles en mode connecté.</p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="billing">
             <Card>
               <CardHeader>
                 <CardTitle>Informations de facturation</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center space-x-2">
-                  <Switch
-                    checked={billingForm.is_company}
-                    onCheckedChange={(checked) => setBillingForm({...billingForm, is_company: checked})}
-                  />
-                  <Label>Facturation entreprise</Label>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="billing_company">Nom de l'entreprise</Label>
-                    <Input
-                      id="billing_company"
-                      value={billingForm.company_name}
-                      onChange={(e) => setBillingForm({...billingForm, company_name: e.target.value})}
-                      placeholder="Nom de votre entreprise"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="vat_number">Numéro de TVA</Label>
-                    <Input
-                      id="vat_number"
-                      value={billingForm.vat_number}
-                      onChange={(e) => setBillingForm({...billingForm, vat_number: e.target.value})}
-                      placeholder="FR12345678901"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <Label htmlFor="billing_address">Adresse de facturation</Label>
-                  <Textarea
-                    id="billing_address"
-                    value={billingForm.billing_address}
-                    onChange={(e) => setBillingForm({...billingForm, billing_address: e.target.value})}
-                    placeholder="Adresse complète de facturation"
-                    rows={3}
-                  />
-                </div>
-                
-                <div>
-                  <Label htmlFor="payment_method">Méthode de paiement préférée</Label>
-                  <Select value={billingForm.payment_method} onValueChange={(value) => setBillingForm({...billingForm, payment_method: value})}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Sélectionner une méthode" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="card">Carte bancaire</SelectItem>
-                      <SelectItem value="bank_transfer">Virement bancaire</SelectItem>
-                      <SelectItem value="paypal">PayPal</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                <Button onClick={saveBillingInfo} className="w-full">
-                  Sauvegarder les informations
-                </Button>
+              <CardContent>
+                <p className="text-muted-foreground">Facturation disponible en mode connecté.</p>
               </CardContent>
             </Card>
           </TabsContent>
         </Tabs>
       </div>
+
       <Footer />
     </div>
   );

@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { supabase } from "@/integrations/supabase/client";
 import { Mail, Loader2, CheckCircle } from "lucide-react";
 
 const MagicLinkLogin = () => {
@@ -12,6 +12,7 @@ const MagicLinkLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,20 +20,14 @@ const MagicLinkLogin = () => {
     setMessage("");
 
     try {
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: `${window.location.origin}/dashboard`,
-        },
-      });
-
-      if (error) {
-        setMessage(error.message);
-        setIsSuccess(false);
-      } else {
-        setMessage("Un lien de connexion a été envoyé à votre adresse email.");
-        setIsSuccess(true);
-      }
+      // Mock authentication for offline development
+      console.log('Mock login attempt for:', email);
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // For development, redirect directly to dashboard
+      navigate('/dashboard');
     } catch (error) {
       setMessage("Une erreur est survenue. Veuillez réessayer.");
       setIsSuccess(false);
