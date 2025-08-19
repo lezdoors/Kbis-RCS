@@ -121,11 +121,36 @@ export const ServiceSelection = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const getServicePrice = (serviceType: string): number => {
+    switch (serviceType) {
+      case 'express': return 59;
+      case 'postal': return 44;
+      default: return 39;
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      // Proceed to payment
-      console.log('Form valid, proceeding to payment...', { selectedService, formData });
+      // Save order data to localStorage for the payment page
+      const orderData = {
+        companyName: company.company_name,
+        siren: company.siren,
+        serviceType: selectedService,
+        servicePrice: getServicePrice(selectedService),
+        customerEmail: formData.email,
+        customerPhone: formData.phone,
+        deliveryAddress: selectedService === 'postal' ? {
+          name: formData.fullName!,
+          street: formData.deliveryAddress!,
+          postalCode: formData.deliveryPostalCode!,
+          city: formData.deliveryCity!,
+          company: formData.deliveryCompany
+        } : undefined
+      };
+      
+      localStorage.setItem('orderData', JSON.stringify(orderData));
+      navigate('/payment');
     }
   };
 

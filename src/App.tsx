@@ -18,6 +18,8 @@ import Associes from "./pages/Associes";
 import Capital from "./pages/Capital";
 import Documents from "./pages/Documents";
 import Paiement from "./pages/Paiement";
+import Payment from "./pages/Payment";
+import PaymentSuccess from "./pages/PaymentSuccess";
 import MentionsLegales from "./pages/MentionsLegales";
 import CGV from "./pages/CGV";
 import PolitiqueRGPD from "./pages/PolitiqueRGPD";
@@ -87,6 +89,8 @@ function App() {
               <Route path="/" element={<Index />} />
               <Route path="/recherche" element={<SearchResults />} />
               <Route path="/service-selection/:siren" element={<ServiceSelection />} />
+              <Route path="/payment" element={<Payment />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/choisir-statut" element={<ChoisirStatut />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />

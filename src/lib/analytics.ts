@@ -50,5 +50,6 @@ export const ANALYTICS_EVENTS = {
   PROCESS_STEP_VIEW: 'process_step_view',
   TRUST_BADGE_CLICK: 'trust_badge_click',
   COMPETITIVE_COMPARISON_VIEW: 'competitive_comparison_view',
-  GUARANTEE_BADGE_CLICK: 'guarantee_badge_click'
+  GUARANTEE_BADGE_CLICK: 'guarantee_badge_click',
+  PAYMENT_SUCCESS: 'payment_success'
 } as const;
