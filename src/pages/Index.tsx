@@ -1,31 +1,19 @@
-import { Header } from "@/components/Header";
+import { KBISHeader } from "@/components/KBIS/KBISHeader";
 import { KBISHeroSection } from "@/components/KBIS/KBISHeroSection";
-import { HeroSection } from "@/components/HeroSection";
-import { ProcessSection } from "@/components/ProcessSection";
-import { BenefitsSection } from "@/components/BenefitsSection";
-import { PricingComparison } from "@/components/PricingComparison";
-import { LegalStructuresSection } from "@/components/LegalStructuresSection";
-import { SocialProofTestimonials } from "@/components/SocialProofTestimonials";
-import { FAQSection } from "@/components/FAQSection";
-import { MobileStickyCTA } from "@/components/MobileStickyCTA";
-import { ChatbotWidget } from "@/components/ChatbotWidget";
+import { KBISTrustSection } from "@/components/KBIS/KBISTrustSection";
+import { KBISPricingSection } from "@/components/KBIS/KBISPricingSection";
 import { Footer } from "@/components/Footer";
+import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <KBISHeader />
       <KBISHeroSection />
-      <HeroSection />
-      <ProcessSection />
-      <BenefitsSection />
-      <PricingComparison />
-      <LegalStructuresSection />
-      <SocialProofTestimonials />
-      <FAQSection />
+      <KBISTrustSection />
+      <KBISPricingSection />
       <Footer />
       <MobileStickyCTA />
-      <ChatbotWidget />
     </div>
   );
 };

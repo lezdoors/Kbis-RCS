@@ -8,108 +8,81 @@
 
 @layer base {
   :root {
-    /* Institutional Color Palette */
-    --primary: 0 72% 55%; /* #DC2626 - Institutional Red */
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 0 72% 97%; /* Light red for backgrounds */
-    --primary-glow: 0 72% 60%; /* Slightly lighter for glow effects */
+    /* KBIS Express Brand Identity */
+    --primary: 222.2 84% 4.9%; /* Deep Navy #0f172a */
+    --primary-foreground: 210 40% 98%;
+    --primary-light: 222.2 84% 97%;
+    --primary-glow: 222.2 84% 15%;
     
-    /* Sophisticated Secondary Colors */
-    --secondary: 218 91% 58%; /* #1E40AF - Navy Blue */
-    --secondary-foreground: 0 0% 100%;
-    --secondary-light: 218 91% 97%; /* Light navy for backgrounds */
+    /* Gold Secondary for Premium Feel */
+    --secondary: 45 93% 47%; /* Gold #f59e0b */
+    --secondary-foreground: 222.2 84% 4.9%;
+    --secondary-light: 45 93% 97%;
     
-    /* Navy Color Token */
-    --navy: 218 91% 28%; /* #1E40AF - Navy Blue for icons */
-    --navy-foreground: 0 0% 100%;
+    /* Red Accent for CTAs */
+    --destructive: 0 84% 60%; /* Red #ef4444 */
+    --destructive-foreground: 210 40% 98%;
     
-    /* Institutional Color */
-    --institutional: 0 72% 55%; /* #DC2626 - Institutional Red */
-    --institutional-foreground: 0 0% 100%;
+    /* Navy variants */
+    --navy: 222.2 84% 4.9%;
+    --navy-foreground: 210 40% 98%;
+    --navy-50: 222.2 84% 97%;
+    --navy-100: 222.2 84% 95%;
+    --navy-500: 222.2 84% 20%;
+    --navy-900: 222.2 84% 4.9%;
     
-    /* Sophisticated Hero Colors */
-    --hero-navy: 212 47% 23%; /* #1F2937 - Deep navy for text */
-    --hero-blue: 218 91% 58%; /* #1E40AF - Navy blue for accents */
-    --hero-gray: 215 16% 47%; /* #64748B - Elegant gray for subheading */
+    /* Gold variants */
+    --gold: 45 93% 47%;
+    --gold-foreground: 222.2 84% 4.9%;
+    --gold-50: 45 93% 97%;
+    --gold-100: 45 93% 95%;
+    --gold-500: 45 93% 47%;
+    --gold-600: 45 93% 42%;
     
-    /* Neutral Sophisticated Colors */
-    --neutral-dark: 212 47% 23%; /* #1F2937 - Sophisticated dark text */
-    --neutral-light: 210 40% 98%; /* #F8FAFC - Light background */
-    
-    /* Premium Status Colors */
-    --success: 161 94% 30%; /* #059669 - Elegant green */
+    /* Trust and success colors */
+    --success: 161 94% 30%;
     --success-foreground: 0 0% 100%;
-    --warning: 21 100% 35%; /* #B34000 - Administrative orange */
+    --warning: 21 100% 35%;
     --warning-foreground: 0 0% 100%;
     
-    /* Premium Neutral Colors */
-    --background: 0 0% 100%; /* Pure white */
-    --foreground: 0 0% 9%; /* #161616 - Official dark text */
-    
-    --card: 0 0% 100%; /* Pure white cards */
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
     --card-foreground: 0 0% 9%;
-    
-    --muted: 0 0% 97%; /* #F9F9F9 - Light administrative gray */
+    --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
-    
-    --accent: 240 14% 97%; /* Light blue accent */
-    --accent-foreground: 218 100% 28%;
-    
-    --border: 0 0% 90%; /* #E5E5E5 - Subtle borders */
-    --input: 0 0% 98%; /* Very light input background */
-    --ring: 218 100% 28%; /* Primary focus ring */
-    
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    
+    --accent: 222.2 84% 97%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --border: 0 0% 90%;
+    --input: 0 0% 98%;
+    --ring: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
+    --radius: 0.75rem;
     
-    --radius: 0.75rem; /* Larger, more modern radius */
+    /* KBIS Express Gradients */
+    --gradient-navy: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--navy-500)) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--gold-600)) 100%);
+    --gradient-professional: linear-gradient(135deg, hsl(var(--navy-50)) 0%, hsl(var(--gold-50)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--navy-50)) 50%, hsl(var(--gold-50)) 100%);
     
-    /* Premium Design Tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--background)) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 50%, hsl(var(--primary)) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
-
-    /* Apple-style Premium Shadows */
+    /* Professional shadows */
+    --shadow-professional: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --shadow-gold: 0 8px 25px -8px hsl(var(--secondary) / 0.3);
+    --shadow-trust: 0 4px 20px -4px hsl(var(--primary) / 0.15);
     --shadow-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    --shadow-primary: 0 10px 25px -5px rgba(0, 0, 145, 0.1);
-    --shadow-floating: 0 32px 64px -12px rgba(0, 0, 0, 0.14);
-
-    /* Professional Transitions - Subtle and purposeful */
+    
+    /* Professional transitions */
     --transition-smooth: all 0.2s ease-in-out;
     --transition-fast: all 0.15s ease-in-out;
-    --transition-subtle: all 0.1s ease-in-out;
-    --transition-micro: all 0.05s ease;
     
-    /* Apple-style Spacing System */
-    --spacing-section: clamp(4rem, 10vw, 8rem);
-    --spacing-element: clamp(1.5rem, 4vw, 3rem);
-    --container-padding: clamp(1rem, 4vw, 2rem);
-    
-    /* Touch-friendly sizes */
+    /* Touch targets */
     --touch-target: 44px;
     --touch-target-lg: 56px;
-    
-    /* Typography Scale */
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-base: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.25rem;
-    --font-size-2xl: 1.5rem;
-    --font-size-3xl: 1.875rem;
-    --font-size-4xl: 2.25rem;
-    --font-size-5xl: 3rem;
-    --font-size-6xl: 3.75rem;
-    --font-size-7xl: 4.5rem;
     
     /* Sidebar styles */
     --sidebar-background: 0 0% 98%;
@@ -128,7 +101,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'SF Pro Display', 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
     font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 1, 'tnum' 0, 'onum' 1, 'lnum' 0, 'dlig' 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
