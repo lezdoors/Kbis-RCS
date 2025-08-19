@@ -1,27 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Premium French Administrative Portal Design System - Apple/McKinsey Style */
+/* Modern SaaS Design System - Stripe/Linear/Vercel Style */
 
 @layer base {
   :root {
-    /* KBIS Express Professional Brand - Logo Colors */
-    --primary: 222.2 84% 4.9%; /* Deep Blue #1e40af */
-    --primary-foreground: 210 40% 98%;
-    --primary-light: 222.2 84% 97%;
-    --primary-glow: 222.2 84% 15%;
+    /* Modern SaaS Color System */
+    --primary: 215 100% 50%; /* Deep Blue #1e40af */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 215 100% 96%;
+    --primary-glow: 215 100% 92%;
     
-    /* Red Accent from Logo */
-    --secondary: 0 73% 41%; /* Red #dc2626 */
-    --secondary-foreground: 210 40% 98%;
-    --secondary-light: 0 73% 97%;
+    /* Secondary & Accent Colors */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 25% 27%;
     
-    /* Red CTA for Actions */
-    --destructive: 0 73% 41%; /* Red #dc2626 */
-    --destructive-foreground: 210 40% 98%;
+    /* Success Green */
+    --success: 152 69% 31%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Warning/CTA Orange */
+    --warning: 25 95% 53%;
+    --warning-foreground: 0 0% 100%;
     
     /* Navy variants */
     --navy: 222.2 84% 4.9%;
@@ -60,21 +63,25 @@
     /* Semantic Border Tokens */
     --border-soft: 0 0% 90%;
     
-    /* Base colors */
+    /* Base colors - Clean whites and grays */
     --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
+    --foreground: 215 25% 27%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 222.2 84% 97%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --border: 0 0% 90%;
-    --input: 0 0% 98%;
-    --ring: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 27%;
+    --muted: 210 40% 98%; /* #f8fafc */
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 215 25% 27%;
+    --border: 214 32% 91%; /* #e2e8f0 */
+    --input: 0 0% 100%;
+    --ring: 215 100% 50%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 9%;
+    --popover-foreground: 215 25% 27%;
     --radius: 0.75rem;
+    
+    /* Destructive for errors */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
     
     /* KBIS Express Gradients */
     --gradient-navy: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--navy-500)) 100%);
@@ -116,37 +123,37 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
-    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 1, 'tnum' 0, 'onum' 1, 'lnum' 0, 'dlig' 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
   }
 }
 
 @layer components {
-  /* Premium French Administrative Components */
-  .header-administrative {
-    @apply bg-card/95 border-b border-border sticky top-0 z-50 backdrop-blur-xl;
-    box-shadow: var(--shadow-soft);
+  /* Modern SaaS Components */
+  .header-modern {
+    @apply bg-white/80 border-b border-border sticky top-0 z-50 backdrop-blur-xl;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   }
 
-  .container-administrative {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  .container-modern {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  .section-administrative {
-    @apply py-16 sm:py-20 lg:py-24;
+  .section-modern {
+    @apply py-20 sm:py-24 lg:py-32;
   }
 
-  .card-administrative {
-    @apply bg-card border border-border rounded-2xl shadow-sm transition-all duration-300;
-    background: var(--gradient-card);
-    box-shadow: var(--shadow-soft);
+  .card-modern {
+    @apply bg-white border border-border rounded-2xl p-8 transition-all duration-200;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   }
 
-  .card-administrative:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
+  .card-modern:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 
   .form-administrative {
@@ -260,21 +267,22 @@
   }
   */
 
-  /* Premium Typography */
+  /* Modern Typography Hierarchy */
   .text-hero {
-    @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight;
+    color: hsl(var(--foreground));
   }
 
   .text-subtitle {
-    @apply text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed;
+    @apply text-xl md:text-2xl text-muted-foreground font-normal leading-relaxed;
   }
 
-  .text-premium {
-    @apply font-semibold tracking-wide;
+  .text-large {
+    @apply text-lg leading-relaxed;
+  }
+
+  .text-feature {
+    @apply text-base font-medium leading-relaxed;
   }
 
   /* Professional Card Styles - minimal hover effects */

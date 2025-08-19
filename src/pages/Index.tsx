@@ -1,23 +1,27 @@
-import { KBISHeader } from "@/components/KBIS/KBISHeader";
-import { KBISHeroSection } from "@/components/KBISHeroSection";
-import { WhyChooseUsSection } from "@/components/WhyChooseUsSection";
-import { ServicesSection } from "@/components/ServicesSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { FAQSection } from "@/components/FAQSection";
-import { Footer } from "@/components/Footer";
-import { MobileStickyCTA } from "@/components/MobileStickyCTA";
+import { ModernHero } from "@/components/modern/ModernHero";
+import { ModernFeatures } from "@/components/modern/ModernFeatures";
+import { ModernHowItWorks } from "@/components/modern/ModernHowItWorks";
+import { ModernServices } from "@/components/modern/ModernServices";
+import { ModernStats } from "@/components/modern/ModernStats";
+import { ModernTestimonials } from "@/components/modern/ModernTestimonials";
+import { ModernFAQ } from "@/components/modern/ModernFAQ";
+import { ModernHeader } from "@/components/modern/ModernHeader";
+import { ModernFooter } from "@/components/modern/ModernFooter";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
-      <KBISHeader />
-      <KBISHeroSection />
-      <WhyChooseUsSection />
-      <ServicesSection />
-      <TestimonialsSection />
-      <FAQSection />
-      <Footer />
-      <MobileStickyCTA />
+      <ModernHeader />
+      <main>
+        <ModernHero />
+        <ModernFeatures />
+        <ModernHowItWorks />
+        <ModernServices />
+        <ModernStats />
+        <ModernTestimonials />
+        <ModernFAQ />
+      </main>
+      <ModernFooter />
     </div>
   );
 };
