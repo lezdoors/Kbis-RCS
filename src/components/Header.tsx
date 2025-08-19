@@ -73,8 +73,8 @@ export const Header = () => {
           </Button>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
           <div className="md:hidden border-t border-border bg-background">
             <div className="py-6 space-y-6">
               <nav className="space-y-2">

@@ -1,0 +1,51 @@
+{
+  "name": "Inscription RCS",
+  "short_name": "RCS Express",
+  "description": "Créez votre entreprise rapidement avec RCS Express",
+  "icons": [
+    {
+      "src": "/lovable-uploads/0bd61b06-875b-4bde-82a0-31d5601427ff.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/lovable-uploads/0bd61b06-875b-4bde-82a0-31d5601427ff.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e40af",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Créer une entreprise",
+      "short_name": "Créer",
+      "url": "/choisir-statut",
+      "icons": [
+        {
+          "src": "/lovable-uploads/0bd61b06-875b-4bde-82a0-31d5601427ff.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Rechercher un KBIS",
+      "short_name": "Rechercher",
+      "url": "/recherche",
+      "icons": [
+        {
+          "src": "/lovable-uploads/0bd61b06-875b-4bde-82a0-31d5601427ff.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
