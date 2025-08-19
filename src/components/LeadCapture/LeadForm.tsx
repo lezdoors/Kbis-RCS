@@ -4,8 +4,11 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { FormProgress } from '@/components/ui/form-progress';
+import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { useLeadCapture } from './LeadCaptureProvider';
 import { type LeadFormData } from '@/lib/validations/lead';
+import { type Result } from '@/lib/result';
 
 export const LeadForm = () => {
   const { submitLeadData } = useLeadCapture();
@@ -49,9 +52,21 @@ export const LeadForm = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  // Calculate current step based on filled fields
+  const filledFields = Object.values(formData).filter(value => value?.trim()).length;
+  const totalFields = 7;
+  const currentStep = Math.min(filledFields + 1, totalFields);
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto p-6 bg-card rounded-xl border border-[hsl(var(--border-soft))]">
-      <div className="space-y-2">
+    <ErrorBoundary>
+      <div className="max-w-md mx-auto">
+        {/* Sticky progress indicator */}
+        <div className="sticky top-0 z-10 bg-[hsl(var(--bg-page))] py-3 border-b border-[hsl(var(--border-soft))] md:relative md:top-auto md:z-auto md:bg-transparent md:py-0 md:border-b-0">
+          <FormProgress current={currentStep} total={totalFields} />
+        </div>
+        
+        <form onSubmit={handleSubmit} className="space-y-6 p-6 bg-card rounded-xl border border-[hsl(var(--border-soft))] mt-4 md:mt-6">
+          <div className="space-y-2">
         <Label htmlFor="company_name">Nom de l'entreprise *</Label>
         <Input
           id="company_name"
@@ -141,5 +156,7 @@ export const LeadForm = () => {
         {isSubmitting ? 'Envoi en cours...' : 'Envoyer la demande'}
       </Button>
     </form>
+      </div>
+    </ErrorBoundary>
   );
 };
