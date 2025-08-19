@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_analytics: {
+        Row: {
+          avg_processing_time_minutes: number | null
+          created_at: string
+          customer_satisfaction_score: number | null
+          date: string
+          id: string
+          orders_count: number
+          revenue_total: number
+          updated_at: string
+        }
+        Insert: {
+          avg_processing_time_minutes?: number | null
+          created_at?: string
+          customer_satisfaction_score?: number | null
+          date: string
+          id?: string
+          orders_count?: number
+          revenue_total?: number
+          updated_at?: string
+        }
+        Update: {
+          avg_processing_time_minutes?: number | null
+          created_at?: string
+          customer_satisfaction_score?: number | null
+          date?: string
+          id?: string
+          orders_count?: number
+          revenue_total?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       companies: {
         Row: {
           activity_code: string | null
@@ -116,6 +149,134 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          company_name: string
+          contact_email: string
+          contact_name: string | null
+          contact_phone: string | null
+          created_at: string
+          id: string
+          legal_form: string | null
+          notes: string | null
+          siret: string | null
+          status: string
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          company_name: string
+          contact_email: string
+          contact_name?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          id?: string
+          legal_form?: string | null
+          notes?: string | null
+          siret?: string | null
+          status?: string
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          company_name?: string
+          contact_email?: string
+          contact_name?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          id?: string
+          legal_form?: string | null
+          notes?: string | null
+          siret?: string | null
+          status?: string
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
+      support_tickets: {
+        Row: {
+          assigned_to: string | null
+          category: string
+          created_at: string
+          customer_email: string
+          customer_name: string | null
+          description: string
+          id: string
+          order_id: string | null
+          priority: string
+          resolution_notes: string | null
+          resolved_at: string | null
+          status: string
+          subject: string
+          updated_at: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          category?: string
+          created_at?: string
+          customer_email: string
+          customer_name?: string | null
+          description: string
+          id?: string
+          order_id?: string | null
+          priority?: string
+          resolution_notes?: string | null
+          resolved_at?: string | null
+          status?: string
+          subject: string
+          updated_at?: string
+        }
+        Update: {
+          assigned_to?: string | null
+          category?: string
+          created_at?: string
+          customer_email?: string
+          customer_name?: string | null
+          description?: string
+          id?: string
+          order_id?: string | null
+          priority?: string
+          resolution_notes?: string | null
+          resolved_at?: string | null
+          status?: string
+          subject?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "support_tickets_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "kbis_orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -162,13 +323,20 @@ export type Database = {
           updated_at: string
         }[]
       }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
       is_system_admin: {
         Args: Record<PropertyKey, never>
         Returns: boolean
       }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "support" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -295,6 +463,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "support", "user"],
+    },
   },
 } as const
