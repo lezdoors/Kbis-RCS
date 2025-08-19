@@ -1,17 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Shield, Clock, CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { trackEvent, ANALYTICS_EVENTS } from "@/lib/analytics";
-import heroBusinessmanImage from "@/assets/hero-businessman.png";
+import heroImage from "@/assets/hero-image.jpg";
+
 interface HeroSectionProps {
   title?: string;
   subtitle?: string;
   className?: string;
-  // Backward compatibility props (not used in new design)
-  showActivityGrid?: boolean;
-  showTrustIndicators?: boolean;
-  showBulletPoints?: boolean;
-  showUrgencyBanner?: boolean;
   primaryCTA?: {
     text: string;
     action: () => void;
@@ -20,10 +16,15 @@ interface HeroSectionProps {
     text: string;
     action: () => void;
   };
+  // Backward compatibility props (ignored in new design)
+  showActivityGrid?: boolean;
+  showTrustIndicators?: boolean;
+  showBulletPoints?: boolean;
+  showUrgencyBanner?: boolean;
 }
 export const HeroSection = ({
-  title = "OBTENIR KBIS", 
-  subtitle = "Votre partenaire pour créer votre entreprise en 24h",
+  title = "Obtenez votre extrait Kbis en ligne",
+  subtitle = "Démarrez votre demande en quelques minutes. Traitement rapide et accompagnement par des spécialistes.",
   className = "",
   primaryCTA,
   secondaryCTA,
@@ -36,94 +37,123 @@ export const HeroSection = ({
   const navigate = useNavigate();
 
   const defaultPrimaryCTA = {
-    text: "Commencer maintenant",
-    action: () => navigate('/choisir-statut')
+    text: "Commencer la demande",
+    action: () => {
+      trackEvent({
+        event_type: ANALYTICS_EVENTS.HERO_CTA_CLICK
+      });
+      navigate("/commencer");
+    }
+  };
+
+  const defaultSecondaryCTA = {
+    text: "En savoir plus",
+    action: () => {
+      navigate("/informations");
+    }
   };
 
   const finalPrimaryCTA = primaryCTA || defaultPrimaryCTA;
+  const finalSecondaryCTA = secondaryCTA || defaultSecondaryCTA;
 
   return (
-    <section className={`relative bg-white min-h-screen flex items-center justify-center overflow-hidden ${className}`}>
-      {/* Large-scale background typography */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <h1 className="font-elegant font-extralight text-[12rem] sm:text-[16rem] md:text-[20rem] lg:text-[24rem] xl:text-[28rem] text-gray-100/40 leading-none tracking-wider select-none">
-          {title}
-        </h1>
+    <section 
+      className={`relative min-h-screen bg-gradient-to-br from-[hsl(var(--bg-page))] via-[hsl(var(--bg-section))] to-[hsl(var(--bg-page))] overflow-hidden ${className}`}
+      aria-labelledby="hero-heading"
+    >
+      {/* Background decoration */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-1/4 w-72 h-72 bg-[hsl(var(--brand-primary))]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
       </div>
+      
+      <div className="relative z-10 max-w-screen-lg mx-auto px-4 pt-32 pb-20">
+        <div className="text-center space-y-8">
+          {/* Main headline */}
+          <div className="space-y-6">
+            <h1 
+              id="hero-heading"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-[hsl(var(--text-primary))] leading-tight text-balance max-w-4xl mx-auto"
+            >
+              {title}
+            </h1>
+            <p className="text-lg md:text-xl text-[hsl(var(--text-secondary))] max-w-2xl mx-auto leading-relaxed">
+              {subtitle}
+            </p>
+          </div>
 
-      {/* Main content container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 sm:gap-16 lg:gap-32">
-          
-          {/* Left Column - 3D Illustration with Unified Gallery Treatment */}
-          <div className="flex-1 relative max-w-2xl">
-            <div className="relative">
-              {/* Unified gallery frame with artistic layering */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100/30 rounded-3xl transform rotate-1 shadow-lg"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50/80 to-white rounded-3xl transform -rotate-1 shadow-md"></div>
-              
-              {/* Main gallery container with consistent treatment */}
-              <div className="illustration-3d-consistent relative bg-white rounded-3xl p-8 lg:p-12 shadow-xl border border-gray-100/50">
-                {/* Consistent ambient lighting effect */}
-                <div className="absolute top-4 left-4 w-24 h-24 bg-gradient-to-br from-blue-50 to-transparent rounded-full blur-xl opacity-60"></div>
-                <div className="absolute bottom-4 right-4 w-32 h-32 bg-gradient-to-tl from-gray-50 to-transparent rounded-full blur-2xl opacity-40"></div>
-                
-                <img 
-                  src="/lovable-uploads/0a951d9f-bbd3-4723-b5db-128557ca2925.png"
-                  alt="Deux figures 3D blanches s'entraident pour gravir des marches grises - illustration de partenariat et progression professionnelle"
-                  className="relative w-full h-auto object-contain"
-                  loading="eager"
-                />
-                
-                {/* Gallery signature for collection identity */}
-                <div className="gallery-signature">
-                  RCS EXPRESS COLLECTION
-                </div>
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
+            <Button
+              onClick={finalPrimaryCTA.action}
+              className="w-full sm:w-auto h-12 px-8 text-base font-semibold bg-[hsl(var(--brand-primary))] hover:bg-[hsl(var(--brand-primary))]/90 text-[hsl(var(--brand-primary-contrast))] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] focus:ring-4 focus:ring-[hsl(var(--brand-primary))]/20 focus:ring-offset-2 min-h-[48px]"
+              aria-label={`${finalPrimaryCTA.text} - Bouton principal`}
+            >
+              {finalPrimaryCTA.text}
+              <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
+            </Button>
+            
+            <button
+              onClick={finalSecondaryCTA.action}
+              className="text-[hsl(var(--text-primary))] hover:text-[hsl(var(--brand-primary))] font-medium underline underline-offset-4 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-primary))]/20 focus:ring-offset-2 rounded-md px-2 py-1 min-h-[48px]"
+              aria-label={`${finalSecondaryCTA.text} - Lien secondaire`}
+            >
+              {finalSecondaryCTA.text}
+            </button>
+          </div>
+
+          {/* Trust bar */}
+          <div 
+            className="max-w-2xl mx-auto pt-8 mt-8 border-t border-[hsl(var(--border-soft))]"
+            role="list"
+            aria-label="Garanties de service"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
+              <div 
+                className="flex items-center justify-center gap-2"
+                role="listitem"
+              >
+                <Shield className="h-4 w-4 text-success flex-shrink-0" aria-hidden="true" />
+                <span className="text-[hsl(var(--text-secondary))] font-medium">
+                  Paiement sécurisé
+                </span>
+              </div>
+              <div 
+                className="flex items-center justify-center gap-2"
+                role="listitem"
+              >
+                <Clock className="h-4 w-4 text-success flex-shrink-0" aria-hidden="true" />
+                <span className="text-[hsl(var(--text-secondary))] font-medium">
+                  Traitement sous 24–48h
+                </span>
+              </div>
+              <div 
+                className="flex items-center justify-center gap-2"
+                role="listitem"
+              >
+                <CheckCircle className="h-4 w-4 text-success flex-shrink-0" aria-hidden="true" />
+                <span className="text-[hsl(var(--text-secondary))] font-medium">
+                  Support en français
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Content */}
-          <div className="flex-1 space-y-12 lg:space-y-16 text-center lg:text-left max-w-xl">
-            {/* Competitive positioning */}
-            <div className="space-y-8">
-              <p className="text-lg lg:text-xl text-slate-600 font-light leading-relaxed tracking-wide">
-                3x plus rapide que LegalPlace et LegalStart
-              </p>
-              
-              {/* Refined subtitle */}
-              <p className="text-2xl lg:text-3xl text-slate-700 font-light leading-relaxed tracking-wide">
-                {subtitle}
-              </p>
-            </div>
-
-            {/* CTA Section */}
-            <div className="pt-4 lg:pt-8 space-y-4">
-              <Button 
-                onClick={() => {
-                  trackEvent({
-                    event_type: ANALYTICS_EVENTS.HERO_CTA_CLICK
-                  });
-                  finalPrimaryCTA.action();
-                }} 
-                className="bg-slate-900 hover:bg-slate-800 text-white font-medium py-6 px-12 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] min-h-[64px] tracking-wide"
-              >
-                Commencer maintenant - 2 minutes
-                <ArrowRight className="ml-3 w-5 h-5" />
-              </Button>
-              
-              {/* Process guarantee */}
-              <p className="text-sm text-slate-500 font-light tracking-wide">
-                Traitement immédiat - Garantie 24h
-              </p>
+          {/* Illustration */}
+          <div className="relative max-w-md mx-auto mt-12">
+            <div className="illustration-3d-consistent">
+              <img
+                src={heroImage}
+                alt="Illustration représentant la démarche administrative pour obtenir un extrait Kbis"
+                className="w-full h-auto object-contain max-h-80"
+                loading="eager"
+                width="400"
+                height="320"
+              />
             </div>
           </div>
         </div>
       </div>
-
-      {/* Subtle ambient elements */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-slate-50 rounded-full blur-3xl opacity-30"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-slate-100 rounded-full blur-3xl opacity-20"></div>
     </section>
   );
 };

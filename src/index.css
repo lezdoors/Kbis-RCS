@@ -45,6 +45,21 @@
     --warning: 21 100% 35%;
     --warning-foreground: 0 0% 100%;
     
+    /* Semantic Text Tokens */
+    --text-primary: 0 0% 9%;
+    --text-secondary: 0 0% 45%;
+    
+    /* Semantic Background Tokens */
+    --bg-page: 0 0% 100%;
+    --bg-section: 222.2 84% 97%;
+    
+    /* Semantic Brand Tokens */
+    --brand-primary: 222.2 84% 4.9%;
+    --brand-primary-contrast: 210 40% 98%;
+    
+    /* Semantic Border Tokens */
+    --border-soft: 0 0% 90%;
+    
     /* Base colors */
     --background: 0 0% 100%;
     --foreground: 0 0% 9%;
