@@ -14,7 +14,108 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      companies: {
+        Row: {
+          activity_code: string | null
+          activity_description: string | null
+          address: string | null
+          city: string | null
+          company_name: string
+          created_at: string
+          id: string
+          legal_form: string | null
+          postal_code: string | null
+          siren: string
+          siret: string | null
+          updated_at: string
+        }
+        Insert: {
+          activity_code?: string | null
+          activity_description?: string | null
+          address?: string | null
+          city?: string | null
+          company_name: string
+          created_at?: string
+          id?: string
+          legal_form?: string | null
+          postal_code?: string | null
+          siren: string
+          siret?: string | null
+          updated_at?: string
+        }
+        Update: {
+          activity_code?: string | null
+          activity_description?: string | null
+          address?: string | null
+          city?: string | null
+          company_name?: string
+          created_at?: string
+          id?: string
+          legal_form?: string | null
+          postal_code?: string | null
+          siren?: string
+          siret?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      kbis_orders: {
+        Row: {
+          amount_paid: number
+          billing_address: Json | null
+          company_name: string
+          created_at: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string | null
+          delivery_method: string
+          documents_delivered: boolean | null
+          id: string
+          order_number: string
+          service_type: string
+          siren: string
+          status: string
+          stripe_payment_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          amount_paid: number
+          billing_address?: Json | null
+          company_name: string
+          created_at?: string
+          customer_email: string
+          customer_name: string
+          customer_phone?: string | null
+          delivery_method?: string
+          documents_delivered?: boolean | null
+          id?: string
+          order_number?: string
+          service_type?: string
+          siren: string
+          status?: string
+          stripe_payment_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          amount_paid?: number
+          billing_address?: Json | null
+          company_name?: string
+          created_at?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string | null
+          delivery_method?: string
+          documents_delivered?: boolean | null
+          id?: string
+          order_number?: string
+          service_type?: string
+          siren?: string
+          status?: string
+          stripe_payment_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
