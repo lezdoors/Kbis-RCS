@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Company } from '@/hooks/useCompanySearch';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 
 interface CompanyCardProps {
   company: Company;
@@ -12,6 +13,7 @@ interface CompanyCardProps {
 }
 
 export const CompanyCard = ({ company, onOrderKBIS, className }: CompanyCardProps) => {
+  const navigate = useNavigate();
   // Simulate active status (in real app, this would come from API)
   const isActive = true;
   
@@ -116,23 +118,12 @@ export const CompanyCard = ({ company, onOrderKBIS, className }: CompanyCardProp
           {/* Action buttons */}
           <div className="flex flex-col gap-3 min-w-[200px]">
             <Button
-              onClick={() => onOrderKBIS(company, 'express')}
+              onClick={() => navigate(`/service-selection/${company.siren}`)}
               className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
             >
               <div className="text-center">
                 <div>Obtenir le KBIS</div>
-                <div className="text-xs opacity-90">Express - 2h</div>
-              </div>
-            </Button>
-            
-            <Button
-              onClick={() => onOrderKBIS(company, 'standard')}
-              variant="outline"
-              className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-            >
-              <div className="text-center">
-                <div>KBIS Standard</div>
-                <div className="text-xs opacity-70">4h - Plus économique</div>
+                <div className="text-xs opacity-90">À partir de 39€</div>
               </div>
             </Button>
           </div>
