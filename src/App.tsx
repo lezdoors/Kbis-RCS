@@ -1,7 +1,7 @@
 import { Component, ReactNode } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LeadCaptureProvider } from "@/components/LeadCapture/LeadCaptureProvider";
@@ -76,7 +76,7 @@ function App() {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
+        <TooltipPrimitive.Provider>
           <Toaster />
           <Sonner />
           <LeadCaptureProvider>
@@ -100,7 +100,7 @@ function App() {
             </Routes>
             </BrowserRouter>
           </LeadCaptureProvider>
-        </TooltipProvider>
+        </TooltipPrimitive.Provider>
       </QueryClientProvider>
     </ErrorBoundary>
   );
