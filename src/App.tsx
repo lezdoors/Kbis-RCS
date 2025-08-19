@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LeadCaptureProvider } from "@/components/LeadCapture/LeadCaptureProvider";
 import Index from "./pages/Index";
+import SearchResults from "./pages/SearchResults";
 import ChoisirStatut from "./pages/ChoisirStatut";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -83,6 +84,7 @@ function App() {
             <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/recherche" element={<SearchResults />} />
               <Route path="/choisir-statut" element={<ChoisirStatut />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />

@@ -1,30 +1,26 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Search, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "@/hooks/use-toast";
+import { SearchInput } from "@/components/search/SearchInput";
+import { trackEvent, ANALYTICS_EVENTS } from "@/lib/analytics";
 
 export const ModernHero = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { toast } = useToast();
 
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!searchQuery.trim()) return;
+  const handleSearch = (query: string) => {
+    if (!query.trim()) return;
     
-    setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setIsLoading(false);
-    
-    toast({
-      title: "Recherche terminée",
-      description: `Résultats trouvés pour "${searchQuery}"`,
+    // Track analytics
+    trackEvent({
+      event_type: ANALYTICS_EVENTS.HERO_CTA_CLICK,
+      metadata: {
+        action: 'search',
+        search_query: query,
+        source: 'hero_section'
+      }
     });
     
-    navigate(`/recherche?q=${encodeURIComponent(searchQuery)}`);
+    navigate(`/recherche?q=${encodeURIComponent(query.trim())}`);
   };
 
   return (
@@ -51,47 +47,17 @@ export const ModernHero = () => {
 
           {/* Search form */}
           <div className="max-w-2xl mx-auto">
-            <form onSubmit={handleSearch} className="space-y-4">
-              <div className="relative">
-                <div className="card-modern p-2">
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center flex-1 gap-3 px-4">
-                      <Search className="h-5 w-5 text-muted-foreground flex-shrink-0" />
-                      <Input
-                        type="text"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="SIREN, SIRET ou nom d'entreprise"
-                        className="flex-1 border-0 bg-transparent text-lg placeholder:text-muted-foreground focus:outline-none focus:ring-0 p-0"
-                        disabled={isLoading}
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      disabled={!searchQuery.trim() || isLoading}
-                      size="lg"
-                      className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 rounded-xl"
-                    >
-                      {isLoading ? (
-                        <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                          Recherche...
-                        </div>
-                      ) : (
-                        <>
-                          Rechercher
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                </div>
-              </div>
-              
-              <p className="text-sm text-muted-foreground">
-                ex: 123456789, Apple France, ou SASU TECH INNOVATION
-              </p>
-            </form>
+            <SearchInput
+              value={searchQuery}
+              onChange={setSearchQuery}
+              onSearch={handleSearch}
+              placeholder="Nom d'entreprise, SIREN, SIRET ou adresse..."
+              size="large"
+            />
+            
+            <p className="text-sm text-muted-foreground mt-4">
+              ex: 123456789, Apple France, ou SASU TECH INNOVATION
+            </p>
           </div>
 
           {/* Trust indicators */}
