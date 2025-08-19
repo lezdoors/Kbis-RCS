@@ -118,10 +118,69 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      customer_order_summary: {
+        Row: {
+          company_name: string | null
+          created_at: string | null
+          customer_email: string | null
+          customer_name: string | null
+          delivery_method: string | null
+          documents_delivered: boolean | null
+          id: string | null
+          order_number: string | null
+          service_type: string | null
+          siren: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string | null
+          customer_email?: string | null
+          customer_name?: string | null
+          delivery_method?: string | null
+          documents_delivered?: boolean | null
+          id?: string | null
+          order_number?: string | null
+          service_type?: string | null
+          siren?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string | null
+          customer_email?: string | null
+          customer_name?: string | null
+          delivery_method?: string | null
+          documents_delivered?: boolean | null
+          id?: string | null
+          order_number?: string | null
+          service_type?: string | null
+          siren?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
-      [_ in never]: never
+      get_customer_order: {
+        Args: { order_id: string }
+        Returns: {
+          company_name: string
+          created_at: string
+          documents_delivered: boolean
+          id: string
+          order_number: string
+          service_type: string
+          status: string
+        }[]
+      }
+      is_system_admin: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
