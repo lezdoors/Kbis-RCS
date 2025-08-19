@@ -23,11 +23,20 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-12">
-            <a href="#comment-ca-marche" className="text-foreground hover:text-primary font-medium text-base tracking-wide transition-colors duration-200 hover:scale-105">
-              Comment ça marche ?
-            </a>
-            <a href="#pourquoi-nous" className="text-foreground hover:text-primary font-medium text-base tracking-wide transition-colors duration-200 hover:scale-105">
-              Pourquoi nous ?
+            <button 
+              onClick={() => navigate('/#kbis')}
+              className="text-foreground hover:text-primary font-medium text-base tracking-wide transition-colors duration-200 hover:scale-105"
+            >
+              Obtenir KBIS
+            </button>
+            <button 
+              onClick={() => navigate('/choisir-statut')}
+              className="text-foreground hover:text-primary font-medium text-base tracking-wide transition-colors duration-200 hover:scale-105"
+            >
+              Inscription RCS
+            </button>
+            <a href="#tarifs" className="text-foreground hover:text-primary font-medium text-base tracking-wide transition-colors duration-200 hover:scale-105">
+              Tarifs
             </a>
             <a href="#faq" className="text-foreground hover:text-primary font-medium text-base tracking-wide transition-colors duration-200 hover:scale-105">
               Questions fréquentes
@@ -69,11 +78,26 @@ export const Header = () => {
           <div className="md:hidden border-t border-border bg-background">
             <div className="py-6 space-y-6">
               <nav className="space-y-2">
-                <a href="#comment-ca-marche" className="block text-foreground hover:text-primary text-base font-medium py-3 px-4 tracking-wide transition-colors duration-200">
-                  Comment ça marche ?
-                </a>
-                <a href="#pourquoi-nous" className="block text-foreground hover:text-primary text-base font-medium py-3 px-4 tracking-wide transition-colors duration-200">
-                  Pourquoi nous ?
+                <button 
+                  onClick={() => {
+                    navigate('/#kbis');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block text-foreground hover:text-primary text-base font-medium py-3 px-4 tracking-wide transition-colors duration-200 w-full text-left"
+                >
+                  Obtenir KBIS
+                </button>
+                <button 
+                  onClick={() => {
+                    navigate('/choisir-statut');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block text-foreground hover:text-primary text-base font-medium py-3 px-4 tracking-wide transition-colors duration-200 w-full text-left"
+                >
+                  Inscription RCS
+                </button>
+                <a href="#tarifs" className="block text-foreground hover:text-primary text-base font-medium py-3 px-4 tracking-wide transition-colors duration-200">
+                  Tarifs
                 </a>
                 <a href="#faq" className="block text-foreground hover:text-primary text-base font-medium py-3 px-4 tracking-wide transition-colors duration-200">
                   Questions fréquentes
