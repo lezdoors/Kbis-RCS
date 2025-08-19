@@ -33,6 +33,14 @@ export default {
 					light: 'hsl(var(--primary-light))',
 					glow: 'hsl(var(--primary-glow))'
 				},
+				'brand-blue': {
+					DEFAULT: 'hsl(222.2 84% 4.9%)',
+					foreground: 'hsl(210 40% 98%)'
+				},
+				'brand-red': {
+					DEFAULT: 'hsl(0 73% 41%)',
+					foreground: 'hsl(210 40% 98%)'
+				},
 				hero: {
 					navy: 'hsl(var(--hero-navy))',
 					blue: 'hsl(var(--hero-blue))',

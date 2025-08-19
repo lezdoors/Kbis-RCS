@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Building2 } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export const KBISHeader = () => {
   return (
@@ -8,11 +8,17 @@ export const KBISHeader = () => {
         <div className="flex h-16 md:h-20 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <Building2 className="h-8 w-8 text-primary" />
-              <div className="font-bold text-xl text-primary">
-                KBIS Express
-              </div>
+            <img 
+              src="/public/lovable-uploads/44d3fbcd-ea82-40a6-81b1-53e0f643dd45.png" 
+              alt="Créez • Protégez • Lancez"
+              className="h-8 w-auto"
+              onError={(e) => {
+                (e.currentTarget as HTMLElement).style.display = 'none';
+                (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'block';
+              }}
+            />
+            <div className="font-bold text-xl text-brand-blue hidden">
+              Créez • Protégez • Lancez
             </div>
           </div>
 
@@ -20,25 +26,25 @@ export const KBISHeader = () => {
           <nav className="hidden lg:flex items-center space-x-8">
             <a 
               href="#"
-              className="text-foreground hover:text-primary font-medium transition-colors duration-200"
+              className="text-foreground hover:text-brand-blue font-medium transition-colors duration-200"
             >
               Obtenir KBIS
             </a>
             <a 
-              href="#tarifs"
-              className="text-foreground hover:text-primary font-medium transition-colors duration-200"
-            >
-              Tarifs
-            </a>
-            <a 
               href="#support"
-              className="text-foreground hover:text-primary font-medium transition-colors duration-200"
+              className="text-foreground hover:text-brand-blue font-medium transition-colors duration-200"
             >
               Support
             </a>
-            <div className="flex items-center space-x-3 text-primary font-semibold">
+            <a 
+              href="#a-propos"
+              className="text-foreground hover:text-brand-blue font-medium transition-colors duration-200"
+            >
+              À propos
+            </a>
+            <div className="flex items-center space-x-3 text-brand-blue font-semibold">
               <Phone className="w-4 h-4" />
-              <span className="text-sm">01 XX XX XX XX</span>
+              <span className="text-sm">01 23 45 67 89</span>
             </div>
           </nav>
 
@@ -46,12 +52,12 @@ export const KBISHeader = () => {
           <div className="hidden md:flex items-center space-x-4">
             <Button 
               variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white"
             >
               Se connecter
             </Button>
             <Button 
-              className="bg-destructive hover:bg-destructive/90 text-white"
+              className="bg-brand-blue hover:bg-brand-blue/90 text-white"
             >
               Commander
             </Button>

@@ -8,19 +8,19 @@
 
 @layer base {
   :root {
-    /* KBIS Express Brand Identity */
-    --primary: 222.2 84% 4.9%; /* Deep Navy #0f172a */
+    /* KBIS Express Professional Brand - Logo Colors */
+    --primary: 222.2 84% 4.9%; /* Deep Blue #1e40af */
     --primary-foreground: 210 40% 98%;
     --primary-light: 222.2 84% 97%;
     --primary-glow: 222.2 84% 15%;
     
-    /* Gold Secondary for Premium Feel */
-    --secondary: 45 93% 47%; /* Gold #f59e0b */
-    --secondary-foreground: 222.2 84% 4.9%;
-    --secondary-light: 45 93% 97%;
+    /* Red Accent from Logo */
+    --secondary: 0 73% 41%; /* Red #dc2626 */
+    --secondary-foreground: 210 40% 98%;
+    --secondary-light: 0 73% 97%;
     
-    /* Red Accent for CTAs */
-    --destructive: 0 84% 60%; /* Red #ef4444 */
+    /* Red CTA for Actions */
+    --destructive: 0 73% 41%; /* Red #dc2626 */
     --destructive-foreground: 210 40% 98%;
     
     /* Navy variants */
