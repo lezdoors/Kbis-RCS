@@ -32,23 +32,23 @@ export const KBISHeroSection = () => {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-navy-50 via-background to-gold-50 overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-1/4 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute inset-0 opacity-40">
+        <div className="absolute top-20 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="relative z-10 container mx-auto px-4 pt-24 pb-20">
-        <div className="max-w-5xl mx-auto text-center space-y-10">
+      <div className="relative z-10 container mx-auto px-4 pt-32 pb-20">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Main headline */}
-          <div className="space-y-6">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary leading-[0.9] tracking-tight">
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary leading-tight">
               Obtenez votre KBIS
-              <span className="block text-secondary mt-2">en 2 heures</span>
+              <span className="block text-secondary">en 2 heures</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Service le plus rapide de France • Prix transparent • Support 7j/7
-              <span className="block font-semibold text-foreground mt-3 text-lg">
-                📄 Documents officiels • ⚡ Livraison garantie • 🔒 SSL + RGPD + Certifié
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Service rapide, sécurisé et moins cher que la concurrence.
+              <span className="block font-medium text-foreground mt-2">
+                Documents certifiés • Livraison garantie • Prix transparent
               </span>
             </p>
           </div>
@@ -95,27 +95,27 @@ export const KBISHeroSection = () => {
           </div>
 
           {/* Trust indicators */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-8 border-t border-border/30">
-            <div className="flex flex-col items-center text-center space-y-2">
-              <div className="flex items-center gap-2 text-success">
-                <CheckCircle className="h-6 w-6" />
-                <span className="text-2xl font-bold text-primary">50,000+</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-8 border-t border-border/50">
+            <div className="flex items-center justify-center gap-3 text-center">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-success" />
+                <span className="font-semibold text-primary">50,000+</span>
               </div>
-              <span className="text-muted-foreground font-medium">documents traités</span>
+              <span className="text-muted-foreground">KBIS traités</span>
             </div>
-            <div className="flex flex-col items-center text-center space-y-2">
-              <div className="flex items-center gap-2 text-success">
-                <Clock className="h-6 w-6" />
-                <span className="text-2xl font-bold text-primary">2h</span>
+            <div className="flex items-center justify-center gap-3 text-center">
+              <div className="flex items-center gap-2">
+                <Clock className="h-5 w-5 text-success" />
+                <span className="font-semibold text-primary">2h</span>
               </div>
-              <span className="text-muted-foreground font-medium">livraison garantie</span>
+              <span className="text-muted-foreground">Livraison garantie</span>
             </div>
-            <div className="flex flex-col items-center text-center space-y-2">
-              <div className="flex items-center gap-2 text-success">
-                <Shield className="h-6 w-6" />
-                <span className="text-2xl font-bold text-primary">Service</span>
+            <div className="flex items-center justify-center gap-3 text-center">
+              <div className="flex items-center gap-2">
+                <Shield className="h-5 w-5 text-success" />
+                <span className="font-semibold text-primary">€39</span>
               </div>
-              <span className="text-muted-foreground font-medium">premium certifié</span>
+              <span className="text-muted-foreground">Prix transparent</span>
             </div>
           </div>
         </div>
