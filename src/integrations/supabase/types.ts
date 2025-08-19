@@ -118,51 +118,7 @@ export type Database = {
       }
     }
     Views: {
-      customer_order_summary: {
-        Row: {
-          company_name: string | null
-          created_at: string | null
-          customer_email: string | null
-          customer_name: string | null
-          delivery_method: string | null
-          documents_delivered: boolean | null
-          id: string | null
-          order_number: string | null
-          service_type: string | null
-          siren: string | null
-          status: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          company_name?: string | null
-          created_at?: string | null
-          customer_email?: string | null
-          customer_name?: string | null
-          delivery_method?: string | null
-          documents_delivered?: boolean | null
-          id?: string | null
-          order_number?: string | null
-          service_type?: string | null
-          siren?: string | null
-          status?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          company_name?: string | null
-          created_at?: string | null
-          customer_email?: string | null
-          customer_name?: string | null
-          delivery_method?: string | null
-          documents_delivered?: boolean | null
-          id?: string | null
-          order_number?: string | null
-          service_type?: string | null
-          siren?: string | null
-          status?: string | null
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       get_customer_order: {
@@ -175,6 +131,35 @@ export type Database = {
           order_number: string
           service_type: string
           status: string
+        }[]
+      }
+      get_customer_order_secure: {
+        Args: { order_id: string }
+        Returns: {
+          company_name: string
+          created_at: string
+          documents_delivered: boolean
+          id: string
+          order_number: string
+          service_type: string
+          status: string
+        }[]
+      }
+      get_customer_order_summary: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          company_name: string
+          created_at: string
+          customer_email: string
+          customer_name: string
+          delivery_method: string
+          documents_delivered: boolean
+          id: string
+          order_number: string
+          service_type: string
+          siren: string
+          status: string
+          updated_at: string
         }[]
       }
       is_system_admin: {
