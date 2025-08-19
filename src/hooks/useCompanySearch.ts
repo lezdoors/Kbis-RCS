@@ -17,8 +17,10 @@ export interface Company {
 }
 
 export interface SearchError {
-  type: 'validation' | 'network' | 'no_results';
+  type: 'validation' | 'network' | 'no_results' | 'server_error' | 'company_inactive' | 'service_unavailable';
   message: string;
+  code?: string;
+  retryable?: boolean;
 }
 
 export const useCompanySearch = () => {
@@ -180,17 +182,45 @@ export const useCompanySearch = () => {
           });
         }
       }
-    } catch (err) {
-      console.error('Network error:', err);
+    } catch (error: any) {
+      console.error('Error searching companies:', error);
+      
+      let errorType: SearchError['type'] = 'server_error';
+      let errorMessage = 'Erreur lors de la recherche des entreprises. Veuillez réessayer.';
+      let retryable = true;
+      
+      if (error.message?.includes('network') || error.message?.includes('fetch')) {
+        errorType = 'network';
+        errorMessage = 'Problème de connexion. Vérifiez votre connexion internet.';
+      } else if (error.message?.includes('rate limit')) {
+        errorType = 'service_unavailable';
+        errorMessage = 'Service temporairement surchargé. Réessayez dans quelques minutes.';
+      } else if (error.status === 503) {
+        errorType = 'service_unavailable';
+        errorMessage = 'Service de recherche temporairement indisponible.';
+      }
+      
       setError({
-        type: 'network',
-        message: 'Erreur de connexion. Veuillez réessayer'
+        type: errorType,
+        message: errorMessage,
+        code: error.code || 'SEARCH_ERROR',
+        retryable
       });
-      toast({
-        title: 'Erreur de connexion',
-        description: 'Impossible de rechercher les entreprises. Veuillez réessayer.',
-        variant: 'destructive',
-      });
+      
+      // Show fallback UI for service errors
+      if (errorType === 'network' || errorType === 'service_unavailable') {
+        toast({
+          title: 'Service temporairement indisponible',
+          description: 'Nous utilisons des données de démonstration en attendant.',
+          variant: 'destructive',
+        });
+      } else {
+        toast({
+          title: 'Erreur de connexion',
+          description: errorMessage,
+          variant: 'destructive',
+        });
+      }
     } finally {
       setLoading(false);
     }

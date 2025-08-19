@@ -5,6 +5,7 @@ import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LeadCaptureProvider } from "@/components/LeadCapture/LeadCaptureProvider";
+import { GlobalErrorBoundary } from "@/components/GlobalErrorBoundary";
 import Index from "./pages/Index";
 import SearchResults from "./pages/SearchResults";
 import { ServiceSelection } from "./pages/ServiceSelection";
@@ -78,7 +79,7 @@ class ErrorBoundary extends Component<
 
 function App() {
   return (
-    <ErrorBoundary>
+    <GlobalErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <TooltipPrimitive.Provider>
           <Toaster />
@@ -110,7 +111,7 @@ function App() {
           </LeadCaptureProvider>
         </TooltipPrimitive.Provider>
       </QueryClientProvider>
-    </ErrorBoundary>
+    </GlobalErrorBoundary>
   );
 }
 

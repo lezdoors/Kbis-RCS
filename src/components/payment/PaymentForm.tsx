@@ -10,6 +10,8 @@ import { LoadingSpinner } from "@/components/LoadingComponents";
 import { Shield, Lock, CreditCard } from "lucide-react";
 import { PaymentData, BillingAddress } from "@/lib/stripe";
 import { useToast } from "@/hooks/use-toast";
+import { usePaymentErrorHandler } from "@/hooks/useErrorHandler";
+import { ErrorDisplay } from "@/components/ui/error-display";
 
 interface PaymentFormProps {
   orderData: PaymentData;
@@ -20,6 +22,7 @@ export const PaymentForm = ({ orderData, onPaymentSuccess }: PaymentFormProps) =
   const stripe = useStripe();
   const elements = useElements();
   const { toast } = useToast();
+  const { error: paymentError, handlePaymentError, clearError, showErrorToast } = usePaymentErrorHandler();
   
   const [isProcessing, setIsProcessing] = useState(false);
   const [useDifferentBilling, setUseDifferentBilling] = useState(false);
@@ -56,6 +59,7 @@ export const PaymentForm = ({ orderData, onPaymentSuccess }: PaymentFormProps) =
     }
 
     setIsProcessing(true);
+    clearError();
 
     try {
       // Create payment intent on your backend
@@ -69,6 +73,10 @@ export const PaymentForm = ({ orderData, onPaymentSuccess }: PaymentFormProps) =
           billingAddress: useDifferentBilling ? billingAddress : undefined
         }),
       });
+
+      if (!response.ok) {
+        throw { code: 'ORDER_PROCESSING_ERROR', message: 'Erreur lors de la création de la commande' };
+      }
 
       const { client_secret } = await response.json();
 
@@ -95,11 +103,13 @@ export const PaymentForm = ({ orderData, onPaymentSuccess }: PaymentFormProps) =
       });
 
       if (result.error) {
-        toast({
-          title: "Erreur de paiement",
-          description: result.error.message || "Une erreur est survenue lors du paiement.",
-          variant: "destructive"
-        });
+        if (result.error.type === "card_error") {
+          throw { code: 'PAYMENT_DECLINED', message: result.error.message };
+        } else if (result.error.type === "validation_error") {
+          throw { code: 'PAYMENT_DECLINED', message: 'Informations de carte invalides' };
+        } else {
+          throw { code: 'ORDER_PROCESSING_ERROR', message: result.error.message };
+        }
       } else {
         toast({
           title: "Paiement réussi",
@@ -107,20 +117,36 @@ export const PaymentForm = ({ orderData, onPaymentSuccess }: PaymentFormProps) =
         });
         onPaymentSuccess();
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Payment error:', error);
-      toast({
-        title: "Erreur de connexion",
-        description: "Impossible de traiter le paiement. Veuillez réessayer.",
-        variant: "destructive"
-      });
+      handlePaymentError(error);
     } finally {
       setIsProcessing(false);
     }
   };
 
+  const handleRetryPayment = () => {
+    clearError();
+    // Create a synthetic event for retry
+    handleSubmit({ preventDefault: () => {} } as React.FormEvent);
+  };
+
+  const handleContactSupport = () => {
+    // Navigate to support or open contact modal
+    window.open('mailto:support@example.com?subject=Erreur de paiement&body=Code erreur: ' + paymentError?.code, '_blank');
+  };
+
   return (
     <div className="space-y-6">
+      {/* Payment Error Display */}
+      {paymentError && (
+        <ErrorDisplay 
+          error={paymentError}
+          onRetry={handleRetryPayment}
+          onContactSupport={handleContactSupport}
+        />
+      )}
+
       {/* Security Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-2">
