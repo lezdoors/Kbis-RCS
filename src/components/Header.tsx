@@ -5,7 +5,7 @@ import { useState } from "react";
 import { TrustBar } from "@/components/TrustBar";
 
 // Updated logo
-const logoUrl = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/logo%20(Website)-4.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL2xvZ28gKFdlYnNpdGUpLTQucG5nIiwiaWF0IjoxNzUyNjIxNzY1LCJleHAiOjE3ODQxNTc3NjV9.60JyyfwBu1udHkcxoTpXE1yw0ZSnDZ4BxWYKZAOrlwc";
+const logoUrl = "/lovable-uploads/baefcc3d-696b-4676-a726-7234c1b77f2e.png";
 
 export const Header = () => {
   const navigate = useNavigate();
