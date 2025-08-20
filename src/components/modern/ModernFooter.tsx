@@ -71,11 +71,9 @@ export const ModernFooter = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <img 
-              src="/lovable-uploads/baefcc3d-696b-4676-a726-7234c1b77f2e.png" 
-              alt="KBIS Express" 
-              className="h-12 w-auto object-contain"
-            />
+            <div className="font-bold text-xl text-primary">
+              KBIS Express
+            </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Le service premium pour obtenir vos extraits KBIS rapidement et en toute sécurité.
             </p>
