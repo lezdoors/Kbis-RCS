@@ -5,7 +5,7 @@ import { useState } from "react";
 import { TrustBar } from "@/components/TrustBar";
 
 // Updated logo
-const logoUrl = "https://qjktghkheyompsxuwzqo.supabase.co/storage/v1/object/sign/logo/logo%20(Website)-4.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80OGI5ZTJjOS1mNDNhLTQwM2ItOGQ4Zi0yYmZhMDViMmRkYzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL2xvZ28gKFdlYnNpdGUpLTQucG5nIiwiaWF0IjoxNzUyNjIxNzY1LCJleHAiOjE3ODQxNTc3NjV9.60JyyfwBu1udHkcxoTpXE1yw0ZSnDZ4BxWYKZAOrlwc";
+const logoUrl = "/lovable-uploads/2ada5f22-8dd2-405a-9d73-d2ca20da8cf2.png";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export const Header = () => {
         <div className="flex h-20 md:h-24 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img src={logoUrl} alt="RCS Express" className="h-10 w-auto md:h-16 object-contain" />
+            <img src={logoUrl} alt="Créez • Protégez • Lancez" className="h-10 w-auto md:h-16 object-contain" />
           </div>
 
           {/* Desktop Navigation */}

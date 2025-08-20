@@ -21,7 +21,7 @@ export const Footer = () => {
           <div className="space-y-4">
             <div className="mb-4">
               <img 
-                src="/public/lovable-uploads/44d3fbcd-ea82-40a6-81b1-53e0f643dd45.png" 
+                src="/lovable-uploads/2ada5f22-8dd2-405a-9d73-d2ca20da8cf2.png" 
                 alt="Créez • Protégez • Lancez"
                 className="h-8 w-auto brightness-0 invert"
                 onError={(e) => {
