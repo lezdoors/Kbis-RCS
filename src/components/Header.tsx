@@ -5,7 +5,7 @@ import { useState } from "react";
 import { TrustBar } from "@/components/TrustBar";
 
 // Updated logo
-const logoUrl = "https://page.gensparksite.com/v1/base64_upload/b7dd1677b8c9020ecb172713f6585b98";
+const logoUrl = "/lovable-uploads/ba73e7e4-4408-4816-9484-f94b891f5e41.png";
 
 export const Header = () => {
   const navigate = useNavigate();

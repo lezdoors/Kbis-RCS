@@ -3,6 +3,7 @@ import { ArrowRight, Shield, Clock, CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { trackEvent, ANALYTICS_EVENTS } from "@/lib/analytics";
 import heroImage from "@/assets/hero-image.jpg";
+import { HeroSearch } from "@/components/HeroSearch";
 
 interface HeroSectionProps {
   title?: string;
@@ -78,9 +79,12 @@ export const HeroSection = ({
               {title}
             </h1>
             <p className="text-lg md:text-xl text-[hsl(var(--text-secondary))] max-w-2xl mx-auto leading-relaxed">
-              {subtitle}
+              Documents officiels • Support 7j/7 • Prix transparent
             </p>
           </div>
+
+          {/* Hero Search - Most prominent element after headline */}
+          <HeroSearch />
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
