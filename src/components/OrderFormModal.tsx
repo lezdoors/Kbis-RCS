@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Search, ChevronLeft, ChevronRight, Building2, Mail, Phone, User, CreditCard, CheckCircle, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface OrderFormModalProps {
   isOpen: boolean;
@@ -32,6 +34,7 @@ interface FormData {
 }
 
 export const OrderFormModal = ({ isOpen, onClose, selectedService, prefilledCompany }: OrderFormModalProps) => {
+  const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
@@ -125,14 +128,61 @@ export const OrderFormModal = ({ isOpen, onClose, selectedService, prefilledComp
   const handlePayment = async (data: FormData) => {
     setIsProcessing(true);
     
-    // Here you would integrate with Stripe
-    // For now, simulate processing
-    setTimeout(() => {
-      console.log('Order data:', { ...data, service: selectedServiceData });
+    try {
+      const paymentData = {
+        companyName: selectedCompany?.name,
+        siren: selectedCompany?.siren,
+        siret: selectedCompany?.siret,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        serviceType: selectedServiceData.id,
+      };
+
+      console.log('Creating payment for:', paymentData);
+
+      const { data: result, error } = await supabase.functions.invoke('create-payment', {
+        body: paymentData
+      });
+
+      if (error) {
+        console.error('Payment error:', error);
+        toast({
+          title: "Erreur de paiement",
+          description: error.message || "Une erreur est survenue lors du traitement du paiement",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      if (result?.url) {
+        // Open Stripe checkout in a new tab
+        window.open(result.url, '_blank');
+        
+        toast({
+          title: "Redirection vers le paiement",
+          description: "Vous allez être redirigé vers la page de paiement sécurisée",
+        });
+        
+        // Close modal after a short delay
+        setTimeout(() => {
+          onClose();
+        }, 1000);
+      } else {
+        throw new Error('URL de paiement non reçue');
+      }
+
+    } catch (error) {
+      console.error('Payment processing error:', error);
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue lors du traitement de votre demande",
+        variant: "destructive",
+      });
+    } finally {
       setIsProcessing(false);
-      onClose();
-      // Redirect to payment or success page
-    }, 2000);
+    }
   };
 
   const resetModal = () => {
