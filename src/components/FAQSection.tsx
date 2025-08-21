@@ -6,28 +6,24 @@ export const FAQSection = () => {
 
   const faqs = [
     {
-      question: "Quelle est la différence avec Infogreffe ?",
-      answer: "Contrairement à Infogreffe, nous offrons un service premium avec une livraison garantie en 2h maximum, un support client dédié 7j/7, et des prix transparents sans frais cachés. Notre processus est entièrement optimisé pour les entrepreneurs pressés."
+      question: "Qu'est-ce qu'un extrait KBIS ?",
+      answer: "Le KBIS est la carte d'identité officielle d'une entreprise française. Il prouve qu'elle est bien immatriculée au registre du commerce et contient toutes ses informations légales : raison sociale, adresse, dirigeants, capital social, etc."
     },
     {
-      question: "Combien de temps pour recevoir mon KBIS ?",
-      answer: "Nous garantissons une livraison en maximum 2h pour notre service Express, 4h pour le service Standard, et 48h pour l'envoi postal. Dans 95% des cas, vous recevez votre document en moins d'1h30."
+      question: "Pourquoi payer alors que MonIdenum est gratuit ?",
+      answer: "MonIdenum est souvent en panne, complexe à utiliser et réservé aux dirigeants. Notre service garantit une livraison rapide (2-4h) avec un support humain en français, même le week-end. Parfait quand vous êtes pressé ou que les sites officiels ne fonctionnent pas."
     },
     {
-      question: "Le document est-il vraiment officiel ?",
-      answer: "Absolument. Nous obtenons tous nos extraits KBIS directement auprès du Registre du Commerce et des Sociétés (RCS). Nos documents sont 100% officiels et acceptés par toutes les administrations, banques et partenaires commerciaux."
+      question: "Le KBIS obtenu est-il valide partout ?",
+      answer: "Oui, absolument ! Nous récupérons les extraits directement depuis les sources officielles (Infogreffe). Le KBIS que vous recevez a exactement la même valeur légale et est accepté par toutes les banques, administrations et partenaires commerciaux."
     },
     {
-      question: "Que se passe-t-il si ma commande échoue ?",
-      answer: "En cas d'échec de commande (entreprise introuvable, données incorrectes), vous êtes immédiatement remboursé à 100%. Notre équipe vous contacte également pour vous proposer des solutions alternatives."
+      question: "Dans quels délais vais-je recevoir mon KBIS ?",
+      answer: "Standard : 4h maximum par email • Express : 2h maximum par email + SMS • Postal : 48h par courrier recommandé. Service disponible 7j/7, même le week-end."
     },
     {
-      question: "Puis-je obtenir une facture ?",
-      answer: "Oui, une facture détaillée vous est automatiquement envoyée par email dès la validation de votre commande. Vous pouvez également télécharger vos factures depuis votre espace client."
-    },
-    {
-      question: "Vos prix sont-ils vraiment transparents ?",
-      answer: "Nos prix affichés sont définitifs, sans frais cachés ni suppléments surprise. Le prix que vous voyez est exactement ce que vous payez, taxes comprises."
+      question: "Puis-je obtenir le KBIS d'une autre entreprise ?",
+      answer: "Oui, le KBIS est un document public. Vous pouvez demander l'extrait KBIS de n'importe quelle entreprise française immatriculée au RCS. Il suffit de connaître le nom de l'entreprise ou son numéro SIREN."
     }
   ];
 
