@@ -5,7 +5,7 @@ import { useState } from "react";
 import { TrustBar } from "@/components/TrustBar";
 
 // Updated logo
-const logoUrl = "/lovable-uploads/2ada5f22-8dd2-405a-9d73-d2ca20da8cf2.png";
+const logoUrl = "https://page.gensparksite.com/v1/base64_upload/b7dd1677b8c9020ecb172713f6585b98";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -18,7 +18,14 @@ export const Header = () => {
         <div className="flex h-20 md:h-24 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img src={logoUrl} alt="Créez • Protégez • Lancez" className="h-10 w-auto md:h-16 object-contain" />
+            <button onClick={() => navigate('/')} className="focus:outline-none focus:ring-2 focus:ring-primary rounded-md">
+              <img 
+                src={logoUrl} 
+                alt="ObtenirKBIS.fr - Service KBIS rapide" 
+                className="h-10 w-auto object-contain hover:opacity-90 transition-opacity duration-200"
+                style={{ height: '40px' }}
+              />
+            </button>
           </div>
 
           {/* Desktop Navigation */}
