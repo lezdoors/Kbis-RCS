@@ -5,7 +5,7 @@ import { useState } from "react";
 import { TrustBar } from "@/components/TrustBar";
 
 // Updated logo
-const logoUrl = "/lovable-uploads/ba73e7e4-4408-4816-9484-f94b891f5e41.png";
+const logoUrl = "/lovable-uploads/7c5a7116-c32d-424f-918c-d425ab471452.png";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export const Header = () => {
             <button onClick={() => navigate('/')} className="focus:outline-none focus:ring-2 focus:ring-primary rounded-md">
               <img 
                 src={logoUrl} 
-                alt="ObtenirKBIS.fr - Service KBIS rapide" 
+                alt="ObtenirKBIS.fr" 
                 className="h-10 w-auto object-contain hover:opacity-90 transition-opacity duration-200"
                 style={{ height: '40px' }}
               />

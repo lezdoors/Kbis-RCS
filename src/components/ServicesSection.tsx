@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Zap, Send, CheckCircle } from "lucide-react";
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { OrderFormModal } from "@/components/OrderFormModal";
 
 export const ServicesSection = () => {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
@@ -146,47 +146,11 @@ export const ServicesSection = () => {
       </section>
 
       {/* Order Form Modal */}
-      <Dialog open={isOrderModalOpen} onOpenChange={setIsOrderModalOpen}>
-        <DialogContent className="max-w-2xl">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-brand-blue">
-              Commander - Service {selectedService}
-            </DialogTitle>
-          </DialogHeader>
-          
-          <div className="py-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-              <h3 className="font-semibold text-brand-blue mb-2">
-                Service sélectionné: {selectedService}
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Vous allez être redirigé vers le formulaire de commande pour finaliser votre demande d'extrait KBIS.
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              <Button 
-                onClick={() => {
-                  setIsOrderModalOpen(false);
-                  // Here you would redirect to the order form or handle the order
-                  window.location.href = '/commencer';
-                }}
-                className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white h-12"
-              >
-                Continuer vers le formulaire
-              </Button>
-              
-              <Button 
-                variant="outline"
-                onClick={() => setIsOrderModalOpen(false)}
-                className="w-full h-12"
-              >
-                Fermer
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <OrderFormModal
+        isOpen={isOrderModalOpen}
+        onClose={() => setIsOrderModalOpen(false)}
+        selectedService={selectedService}
+      />
     </>
   );
 };
